@@ -4,6 +4,7 @@ import time
 import os
 import sys
 from datetime import datetime
+from tabulate import tabulate
 
 
 SCOPE = [
@@ -78,6 +79,7 @@ def welcome_page():
                               Loading, please wait...                           """)
     time.sleep(3)
     clear_screen()
+
 def transaction_date():
     """
     Gets the date of the transaction from the user.
@@ -106,13 +108,19 @@ def transaction_date():
             return False
         return True
 
+def transaction_category():
+    """
+    Gets the category of the transaction from the user.
+    """
 
 def add_new_expense():
     """
     Gets expense details from user
     """
-    print(r"""
-    ======================= Add new expense =======================
+    print("""
+    --------------------------------------------------------------------------------
+                                    Add New Expense
+    --------------------------------------------------------------------------------
     """)
 
     print(f"You will now need to enter the date, category, description and transaction amount of the expense you would like to add. Please have this information ready.\n")
@@ -121,16 +129,104 @@ def add_new_expense():
     transaction_description()
     transaction_amount()
 
+def by_date():
+    """
+    Displays all transactions made since the beginning of the year to the user in table format
+    """
+    print("""
+    --------------------------------------------------------------------------------
+                            View Statement By Date
+    --------------------------------------------------------------------------------
+    """)
+    print(tabulate(user1, headers=["Date", "Category", "Description", "Amount"]))
+    print("""
+    If you want to go back to the Main Menu, please enter mm:""")
+    try:
+        rtrn_mm = input("")
+
+        if rtrn_mm.lower() == "mm":
+            clear_screen()
+            main_menu()
+        else:
+            raise ValueError("Please enter mm to go back to the Main Menu")
+    except ValueError as e:
+        print("Please enter mm to go back to the Main Menu")
+
+def by_month():
+    """
+    Displays the amount the user has spent each month since the beginning of the year
+    """
+    print("""
+    --------------------------------------------------------------------------------
+                            View Statement By Month
+    --------------------------------------------------------------------------------
+    """)
+
+def by_category():
+    print("""
+    --------------------------------------------------------------------------------
+                          View Statement By Category
+    --------------------------------------------------------------------------------
+    """)   
+
 def view_statement():
     """
     Displays a menu giving 3 options of how the user wants to see their statement: by month, by date, by category
     """
 
+    while True:
+        print("""
+        --------------------------------------------------------------------------------
+                                    View Statement
+        --------------------------------------------------------------------------------
+        """)
+        print("How would you like to see your transactions?")
+        print("""
+        1. By date
+        2. By month
+        3. By category""")
+        print("If you would like to go back to the main menu, please enter MM")
+
+        try:
+            statement_choice = input("")
+
+            # Credit for table format https://www.educba.com/python-print-table/
+            if statement_choice == "1":
+                print("You have chosen option 1: By date.")
+                delayed_clear()
+                by_date()
+                break
+            elif statement_choice == "2":
+                print("You have chosen option 2: By month.")
+                delayed_clear()
+                by_month()
+                break
+            elif statement_choice == "3":
+                print("You have chosen option 3: By category.")
+                delayed_clear()
+                by_category()
+                break
+            elif statement_choice.lower() == "mm":
+                print("You have chosen to go back to the Main Menu")
+                delayed_clear()
+                main_menu()
+                break
+            else:
+                raise ValueError("Please select one of the options provided")
+        except ValueError:
+            print(f'Invalid data.\n Please enter option 1, 2, or 3 to see your transactions or enter mm to go back to the Main Menu')
+            return False
 
 def view_budget_goals():
     """
     Displays users spending goals for each category
     """
+    print("""
+    --------------------------------------------------------------------------------
+                                    Budget Goals
+    --------------------------------------------------------------------------------
+    """)
+    print("""Your goals for each category are:""")
     
 def main_menu():
     """
@@ -138,6 +234,11 @@ def main_menu():
     """
 
     while True:
+        print("""
+        --------------------------------------------------------------------------------
+                                       Main Menu
+        --------------------------------------------------------------------------------
+        """)
         print("""
         What would you like to do today?
         
@@ -149,8 +250,8 @@ def main_menu():
 
 
         try:
-            user_input = input("Enter your choice here: ")
-            print(user_input)
+            user_input = input("        Enter your choice here: ")
+            #print(user_input)
             print(f"You chose option: {user_input}")
             
             if user_input == "1":
@@ -184,11 +285,8 @@ def main_menu():
             return False
         return True
 
-
-
-
-def main():
+def pennywise_program():
     welcome_page()
     main_menu()
 
-main()
+pennywise_program()
