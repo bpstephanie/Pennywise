@@ -33,6 +33,14 @@ def clear_screen():
     else:
         os.system('clear')
 
+def delayed_clear():
+    """
+    Clears CLI code after 2 seconds
+    """
+
+    time.sleep(2)
+    clear_screen()
+
 #Python Typing Text Effect - www.101computing.net/python-typing-text-effect/
 def typingPrint(text):
   for character in text:
@@ -61,17 +69,68 @@ def welcome_page():
     
                                     Welcome back to Pennywise.
 
-Find out how much you have spent this month and if you've done enough to hold off Pennywise...
+Find out how much you have spent this month and if you've been savvy enough to hold off Pennywise...
 
     ''')
-    typingPrint("                                     Loading, please wait...")
-    time.sleep(12)
+    typingPrint("""
+                                      Loading, please wait...                                       """)
+    time.sleep(7)
     clear_screen()
 
 def main_menu():
     """
-    
+    Displays the main menu to user, where they can choose how to proceed
     """
+
+    while True:
+        print("""
+        What would you like to do today?
+        
+        1. Add new expense
+        2. View statement
+        3. View budget goals
+        4. Exit
+        """)
+
+
+        try:
+            user_input = input("Enter your choice here: ")
+            print(user_input)
+            print(f"You chose option: {user_input}")
+            
+            if user_input == "1":
+                print(f"Add new expense form is loading, please wait...")
+                clear_screen()
+                add_new_expense()
+                break
+            elif user_input == "2":
+                print(f"View statement is loading, please wait...")
+                clear_screen()
+                view_statement()
+                break
+            elif user_input == "3":
+                print(f"View budget goals is loading, please wait...")
+                clear_screen()
+                view_budget_goals()
+                break
+            elif user_input == "4":
+                print(f"Exiting, please wait...")
+                delayed_clear()
+                welcome_page()
+                break
+            else:
+                raise ValueError(f'Please select one of the options provided')
+                delayed_clearn()
+                main_menu()
+        except ValueError as e:
+            print(f'Invalid data: {e}, please try again.\n')
+            delayed_clear()
+            main_menu()
+            return False
+        return True
+
+
+
 
 def main():
     welcome_page()
