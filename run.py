@@ -138,6 +138,7 @@ def by_date():
                             View Statement By Date
     --------------------------------------------------------------------------------
     """)
+    # Credit for table format https://www.educba.com/python-print-table/
     print(tabulate(user1, headers=["Date", "Category", "Description", "Amount"]))
     print("""
     If you want to go back to the Main Menu, please enter mm:""")
@@ -189,8 +190,6 @@ def view_statement():
 
         try:
             statement_choice = input("")
-
-            # Credit for table format https://www.educba.com/python-print-table/
             if statement_choice == "1":
                 print("You have chosen option 1: By date.")
                 delayed_clear()
