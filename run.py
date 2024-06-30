@@ -3,7 +3,7 @@ from google.oauth2.service_account import Credentials
 import time
 import os
 import sys
-import datetime
+
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -47,7 +47,7 @@ def typingPrint(text):
   for character in text:
     sys.stdout.write(character)
     sys.stdout.flush()
-    time.sleep(0.1)
+    time.sleep(0.05)
 
 def welcome_page():
     """
@@ -55,29 +55,28 @@ def welcome_page():
     """
     print(r'''
     
-        $$$$$$$\                                                        $$\                     
-        $$  __$$\                                                       \__|                    
-        $$ |  $$ | $$$$$$\  $$$$$$$\  $$$$$$$\  $$\   $$\ $$\  $$\  $$\ $$\  $$$$$$$\  $$$$$$\  
-        $$$$$$$  |$$  __$$\ $$  __$$\ $$  __$$\ $$ |  $$ |$$ | $$ | $$ |$$ |$$  _____|$$  __$$\ 
-        $$  ____/ $$$$$$$$ |$$ |  $$ |$$ |  $$ |$$ |  $$ |$$ | $$ | $$ |$$ |\$$$$$$\  $$$$$$$$ |
-        $$ |      $$   ____|$$ |  $$ |$$ |  $$ |$$ |  $$ |$$ | $$ | $$ |$$ | \____$$\ $$   ____|
-        $$ |      \$$$$$$$\ $$ |  $$ |$$ |  $$ |\$$$$$$$ |\$$$$$\$$$$  |$$ |$$$$$$$  |\$$$$$$$\ 
-        \__|       \_______|\__|  \__|\__|  \__| \____$$ | \_____\____/ \__|\_______/  \_______|
-                                                $$\   $$ |                                      
-                                                \$$$$$$  |                                      
-                                                \______/                                       
+    $$$$$$$\                                                        $$\                     
+    $$  __$$\                                                       \__|                    
+    $$ |  $$ | $$$$$$\  $$$$$$$\  $$$$$$$\  $$\   $$\ $$\  $$\  $$\ $$\  $$$$$$$\  $$$$$$\  
+    $$$$$$$  |$$  __$$\ $$  __$$\ $$  __$$\ $$ |  $$ |$$ | $$ | $$ |$$ |$$  _____|$$  __$$\ 
+    $$  ____/ $$$$$$$$ |$$ |  $$ |$$ |  $$ |$$ |  $$ |$$ | $$ | $$ |$$ |\$$$$$$\  $$$$$$$$ |
+    $$ |      $$   ____|$$ |  $$ |$$ |  $$ |$$ |  $$ |$$ | $$ | $$ |$$ | \____$$\ $$   ____|
+    $$ |      \$$$$$$$\ $$ |  $$ |$$ |  $$ |\$$$$$$$ |\$$$$$\$$$$  |$$ |$$$$$$$  |\$$$$$$$\ 
+    \__|       \_______|\__|  \__|\__|  \__| \____$$ | \_____\____/ \__|\_______/  \_______|
+                                            $$\   $$ |                                      
+                                            \$$$$$$  |                                      
+                                            \______/                                       
 
-        
-                                        Welcome back to Pennywise.
+    
+                                    Welcome back to Pennywise.
 
-    Find out how much you have spent this month and if you've been savvy enough to hold off Pennywise...
+Find out how much you have spent this month and if you've been savvy enough to hold off Pennywise...
 
     ''')
     typingPrint("""
-                                          Loading, please wait...                                       """)
+                                      Loading, please wait...                                       """)
     time.sleep(3)
     clear_screen()
-
 def expense_transaction_date():
     """
     Gets the date of the transaction from the user.
@@ -104,7 +103,7 @@ def view_budget_goals():
     """
     Displays users spending goals for each category
     """
-
+    
 def main_menu():
     """
     Displays the main menu to user, where they can choose how to proceed
@@ -156,6 +155,9 @@ def main_menu():
             main_menu()
             return False
         return True
+
+
+
 
 def main():
     welcome_page()
