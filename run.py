@@ -3,6 +3,7 @@ from google.oauth2.service_account import Credentials
 import time
 import os
 import sys
+from datetime import datetime
 
 
 SCOPE = [
@@ -15,11 +16,9 @@ CREDS = Credentials.from_service_account_file("creds.json")
 SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open("Pennywise")
-jan_expenses = SHEET.worksheet("January")
-feb__expenses = SHEET.worksheet("February")
-mar_expenses = SHEET.worksheet("March")
+user1_expenses = SHEET.worksheet("user1")
 
-jan_data = jan_expenses.get_all_values()
+user1 = user1_expenses.get_all_values()
 
 # Credit for clear screen function: https://www.geeksforgeeks.org/clear-screen-python/
 def clear_screen():
@@ -56,44 +55,71 @@ def welcome_page():
     print(r'''
     
 
-$$$$$$$\                                                  $$\                   
-$$  __$$\                                                 \__|                  
-$$ |  $$ |$$$$$$\ $$$$$$$\ $$$$$$$\ $$\   $$\$$\  $$\  $$\$$\ $$$$$$$\ $$$$$$\  
-$$$$$$$  $$  __$$\$$  __$$\$$  __$$\$$ |  $$ $$ | $$ | $$ $$ $$  _____$$  __$$\ 
-$$  ____/$$$$$$$$ $$ |  $$ $$ |  $$ $$ |  $$ $$ | $$ | $$ $$ \$$$$$$\ $$$$$$$$ |
-$$ |     $$   ____$$ |  $$ $$ |  $$ $$ |  $$ $$ | $$ | $$ $$ |\____$$\$$   ____|
-$$ |     \$$$$$$$\$$ |  $$ $$ |  $$ \$$$$$$$ \$$$$$\$$$$  $$ $$$$$$$  \$$$$$$$\ 
-\__|      \_______\__|  \__\__|  \__|\____$$ |\_____\____/\__\_______/ \_______|
-                                    $$\   $$ |                                  
-                                    \$$$$$$  |                                  
-                                     \______/                                   
+    $$$$$$$\                                                  $$\                   
+    $$  __$$\                                                 \__|                  
+    $$ |  $$ |$$$$$$\ $$$$$$$\ $$$$$$$\ $$\   $$\$$\  $$\  $$\$$\ $$$$$$$\ $$$$$$\  
+    $$$$$$$  $$  __$$\$$  __$$\$$  __$$\$$ |  $$ $$ | $$ | $$ $$ $$  _____$$  __$$\ 
+    $$  ____/$$$$$$$$ $$ |  $$ $$ |  $$ $$ |  $$ $$ | $$ | $$ $$ \$$$$$$\ $$$$$$$$ |
+    $$ |     $$   ____$$ |  $$ $$ |  $$ $$ |  $$ $$ | $$ | $$ $$ |\____$$\$$   ____|
+    $$ |     \$$$$$$$\$$ |  $$ $$ |  $$ \$$$$$$$ \$$$$$\$$$$  $$ $$$$$$$  \$$$$$$$\ 
+    \__|      \_______\__|  \__\__|  \__|\____$$ |\_____\____/\__\_______/ \_______|
+                                        $$\   $$ |                                  
+                                        \$$$$$$  |                                  
+                                        \______/                                   
 
-    
-                            Welcome back to Pennywise.
+        
+                                Welcome back to Pennywise.
 
-Find out how much you have spent this month and if you've been savvy enough to 
-                               hold off Pennywise...
+    Find out how much you have spent this month and if you've been savvy enough to 
+                                hold off Pennywise...
 
-    ''')
+        ''')
     typingPrint("""
                               Loading, please wait...                           """)
     time.sleep(3)
     clear_screen()
-def expense_transaction_date():
+def transaction_date():
     """
     Gets the date of the transaction from the user.
     """
-    transaction_date = input(r"""
-    Please enter the date of the transaction in the following format(YYYY/MM/DD):
-    >""")
+    while True:
+        try:
+            print(f"Please enter the date of the transaction in the following format(DD-MM-YYYY):")
+
+            global transaction_date 
+            transaction_date = input("")
+
+            # Converts user date input into datetime object
+            # CCredit for code https://stackoverflow.com/questions/53248537/typeerror-not-supported-between-instances-of-datetime-datetime-and-str
+            new_date = datetime.strptime(transaction_date, '%d-%m-%Y')
+            
+            # initializing date ranges
+            min_date = datetime(2024, 1, 1)
+            max_date = datetime.now()
+
+            if new_date >= min_date and new_date <= max_date:
+                return new_date
+            else:
+                raise ValueError("The date you've entered is out of range")
+        except ValueError:
+            print(f'Invalid data.\n Please enter a date which lies between 01-01-2024 and today.')
+            return False
+        return True
+
 
 def add_new_expense():
     """
     Gets expense details from user
     """
-    expense_transaction_date()
+    print(r"""
+    ======================= Add new expense =======================
+    """)
 
-
+    print(f"You will now need to enter the date, category, description and transaction amount of the expense you would like to add. Please have this information ready.\n")
+    transaction_date()
+    transaction_category()
+    transaction_description()
+    transaction_amount()
 
 def view_statement():
     """
