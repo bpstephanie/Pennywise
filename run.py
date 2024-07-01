@@ -18,8 +18,8 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open("Pennywise")
 user1_expenses = SHEET.worksheet("user1")
-
 user1 = user1_expenses.get_all_values()
+#print(user1)
 
 # Credit for clear screen function: https://www.geeksforgeeks.org/clear-screen-python/
 def clear_screen():
@@ -77,7 +77,7 @@ def welcome_page():
         ''')
     typingPrint("""
                               Loading, please wait...                           """)
-    time.sleep(3)
+    time.sleep(1)
     clear_screen()
 
 def transaction_date():
@@ -163,12 +163,31 @@ def by_month():
     --------------------------------------------------------------------------------
     """)
 
-def by_category():
+def by_category(user1):
+    """
+    Calculates total expenses in each category and displays them to the user.
+    """
     print("""
     --------------------------------------------------------------------------------
                           View Statement By Category
     --------------------------------------------------------------------------------
-    """)   
+    """)
+    category_total = {}
+
+    for row in user1:
+        category = row[1]
+        amount = float(row[3])
+
+        if category in category_total:
+            category_total[category] += amount
+        else:
+            category_total[category] = amount
+
+    #total_amount = sum(amount.range(0,-1))    
+    alphabetized_category_total = dict(sorted(category_total.items()))
+    print(tabulate(alphabetized_category_total.items(), headers = ["Category", "Amount"]))
+    #print(total_amount)
+
 
 def view_statement():
     """
@@ -203,7 +222,7 @@ def view_statement():
             elif statement_choice == "3":
                 print("You have chosen option 3: By category.")
                 delayed_clear()
-                by_category()
+                by_category(user1)
                 break
             elif statement_choice.lower() == "mm":
                 print("You have chosen to go back to the Main Menu")
@@ -250,7 +269,7 @@ def main_menu():
 
         try:
             user_input = input("        Enter your choice here: ")
-            #print(user_input)
+            
             print(f"You chose option: {user_input}")
             
             if user_input == "1":
