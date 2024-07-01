@@ -110,48 +110,60 @@ def get_transaction_date():
             return False
         return True
 
-def transaction_category(user1):
+def get_transaction_category(user1):
     """
     Gets the category of the transaction from the user.
     """
+    print()
+    print(f"The current category choices are: ")
+    print()
+    current_choices = [row[1] for row in user1]
+    one_cat_list = []
+
+    # Credit for code https://www.dataquest.io/blog/how-to-remove-duplicates-from-a-python-list/
+    for category in current_choices:
+        if category not in one_cat_list:
+            one_cat_list.append(category)
+            
+    sorted_list = sorted(one_cat_list)
+    for i in sorted_list:
+        print(i)
+
     while True:
-        print()
-        print(f"The current category choices are: ")
-        print()
-        current_choices = [row[1] for row in user1]
-        one_cat_list = []
-
-        # Credit for code https://www.dataquest.io/blog/how-to-remove-duplicates-from-a-python-list/
-        for category in current_choices:
-            if category not in one_cat_list:
-                one_cat_list.append(category)
-                
-        sorted_list = sorted(one_cat_list)
-        for i in sorted_list:
-            print(i)
-
         print()
         print('Please enter the category of the transaction:')
         print()
         user_input = input(">")
         expense_input_category = user_input.capitalize()
-
+    
         try:
-            if expense_input_category in one_cat_list:
-                print(expense_input_category)
-                print(one_cat_list)
-            elif expense_input_category not in one_cat_list:
-                one_cat_list.append(expense_input_category)
-                print(one_cat_list)
+            if expense_input_category.isalpha():
+                return expense_input_category
             else:
-                print('help, something wrong')
-        except ValueError:
-            print("Oops, it looks like something went wrong. Please try again.")
-            transaction_category()
-            return False
-    return True
+                raise ValueError("")
+        except ValueError as e:
+            print(f"Invalid input: {e}. The category needs to include letters only.")
+        
 
+def get_transaction_description():
+    """
+    Gets the description of the transaction from the user.
+    """
 
+    # Credit for code to only accept letters: https://www.shiksha.com/online-courses/articles/isalpha-method-in-python/#:~:text=The%20isalpha()%20method%20can,entered%20only%20contains%20alphabetic%20characters.
+    while True:
+        try:
+            print('Please enter the description of the transaction, e.g. Gym')
+            tran_descr = input('>')
+
+            if len(tran_descr) > 3 and len(tran_descr) < 30 and tran_descr.isalpha():
+                return tran_descr
+            else:
+                raise ValueError("")
+        except ValueError as e:
+            print(f"Invalid input: The description needs to be between 3 and 30 letters long.")
+
+            
 def add_new_expense():
     """
     Gets expense details from user
@@ -164,8 +176,8 @@ def add_new_expense():
     print(f"You will now need to enter the date, category, description and transaction amount of the expense you would like to add. Please have this information ready.\n")
     print()
     get_transaction_date()
-    transaction_category()
-    #transaction_description()
+    get_transaction_category(user1)
+    get_transaction_description()
     #transaction_amount()
 
 def by_date():
@@ -226,7 +238,6 @@ def by_category(user1):
     alphabetized_category_total = dict(sorted(category_total.items()))
     print(tabulate(alphabetized_category_total.items(), headers = ["Category", "Amount"]))
     #print(total_amount)
-
 
 def view_statement():
     """
@@ -346,6 +357,7 @@ def pennywise_program():
     welcome_page()
     main_menu()
 
-#pennywise_program()
+pennywise_program()
 #add_new_expense()
-transaction_category(user1)
+#get_transaction_category(user1)
+#get_transaction_description()
