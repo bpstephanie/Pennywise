@@ -5,6 +5,7 @@ import os
 import sys
 from datetime import datetime
 from tabulate import tabulate
+from colorama import Back, Fore, Style
 
 
 SCOPE = [
@@ -39,7 +40,7 @@ def delayed_clear():
     Clears CLI code after 2 seconds
     """
 
-    time.sleep(2)
+    time.sleep(10)
     clear_screen()
 
 #Python Typing Text Effect - www.101computing.net/python-typing-text-effect/
@@ -53,7 +54,7 @@ def welcome_page():
     """
     Displays welcome text
     """
-    print(r'''
+    print(Fore.GREEN + r'''
     
 
     $$$$$$$\                                                  $$\                   
@@ -68,15 +69,17 @@ def welcome_page():
                                         \$$$$$$  |                                  
                                         \______/                                   
 
-        
+    ''' + Style.RESET_ALL + '''    
                                 Welcome back to Pennywise.
 
     Find out how much you have spent this month and if you've been savvy enough to 
                                 hold off Pennywise...
 
         ''')
+    print(Fore.BLUE)
     typingPrint("""
-                              Loading, please wait...                           """)
+                                Loading, please wait...                           """)
+    print(Style.RESET_ALL)
     time.sleep(1)
     clear_screen()
 
@@ -103,9 +106,9 @@ def get_transaction_date():
             if new_date >= min_date and new_date <= max_date:
                 return new_date
             else:
-                raise ValueError("The date you've entered is out of range")
+                raise ValueError(Fore.RED + "The date you've entered is out of range" + Style.RESET_ALL)
         except ValueError:
-            print('Invalid data. Please enter a date which lies between 01-01-2024 and today.')
+            print(Fore.RED + 'Invalid data. Please enter a date which lies between 01-01-2024 and today.' + Style.RESET_ALL)
             get_transaction_date()
             return False
         return True
@@ -142,9 +145,8 @@ def get_transaction_category(user1):
             else:
                 raise ValueError("")
         except ValueError as e:
-            print(f"Invalid input: {e}. The category needs to include letters only.")
+            print(Fore.RED + f"Invalid input: {e}. The category needs to include letters only." + Style.RESET_ALL)
         
-
 def get_transaction_description():
     """
     Gets the description of the transaction from the user.
@@ -161,9 +163,8 @@ def get_transaction_description():
             else:
                 raise ValueError("")
         except ValueError as e:
-            print(f"Invalid input: The description needs to be between 3 and 30 letters long.")
-
-            
+            print(Fore.RED + f"Invalid input: The description needs to be between 3 and 30 letters long." + Style.RESET_ALL)
+           
 def add_new_expense():
     """
     Gets expense details from user
@@ -261,35 +262,55 @@ def view_statement():
             statement_choice = input("")
             if statement_choice == "1":
                 print("You have chosen option 1: By date.")
-                delayed_clear()
+                print()
+                print(Fore.BLUE)
+                typingPrint("""
+                        Loading, please wait...                           """)
+                print(Style.RESET_ALL)
+                clear_screen()
                 by_date()
                 break
             elif statement_choice == "2":
                 print("You have chosen option 2: By month.")
-                delayed_clear()
+                print()
+                print(Fore.BLUE)
+                typingPrint("""
+                        Loading, please wait...                           """)
+                print(Style.RESET_ALL)
+                clear_screen()
                 by_month()
                 break
             elif statement_choice == "3":
                 print("You have chosen option 3: By category.")
-                delayed_clear()
+                print()
+                print(Fore.BLUE)
+                typingPrint("""
+                        Loading, please wait...                           """)
+                print(Style.RESET_ALL)
+                clear_screen()
                 by_category(user1)
                 break
             elif statement_choice.lower() == "mm":
                 print("You have chosen to go back to the Main Menu")
-                delayed_clear()
+                print()
+                print(Fore.BLUE)
+                typingPrint("""
+                        Loading, please wait...                           """)
+                print(Style.RESET_ALL)
+                clear_screen()
                 main_menu()
                 break
             else:
-                raise ValueError("Please select one of the options provided")
+                raise ValueError(Fore.RED + "Please select one of the options provided" + Style.RESET_ALL)
         except ValueError:
-            print(f'Invalid data.\n Please enter option 1, 2, or 3 to see your transactions or enter mm to go back to the Main Menu')
+            print(Fore.RED + f'Invalid data.\n Please enter option 1, 2, or 3 to see your transactions or enter mm to go back to the Main Menu' + Style.RESET_ALL)
             return False
 
 def view_budget_goals():
     """
     Displays users spending goals for each category
     """
-    print("""
+    print(Fore.MAGENTA + """
     --------------------------------------------------------------------------------
                                     Budget Goals
     --------------------------------------------------------------------------------
@@ -320,38 +341,51 @@ def main_menu():
         try:
             user_input = input("        Enter your choice here: ")
             
-            print(f"You chose option: {user_input}")
-            
             if user_input == "1":
-                print(f"Add new expense form is loading, please wait...")
+                print(f"        You chose option: {user_input}")
+                print()
+                print(Fore.BLUE)
+                typingPrint("""
+                        Add new expense form is loading, please wait...                           """)
+                print(Style.RESET_ALL)
                 clear_screen()
                 add_new_expense()
                 break
             elif user_input == "2":
-                print(f"View statement is loading, please wait...")
+                print(f"        You chose option: {user_input}")
+                print()
+                print(Fore.BLUE)
+                typingPrint("""
+                        View statement is loading, please wait...                           """)
+                print(Style.RESET_ALL)
                 clear_screen()
                 view_statement()
                 break
             elif user_input == "3":
-                print(f"View budget goals is loading, please wait...")
+                print(f"        You chose option: {user_input}")
+                print()
+                print(Fore.BLUE)
+                typingPrint("""
+                            View budget goals is loading, please wait...                           """)
+                print(Style.RESET_ALL)
                 clear_screen()
                 view_budget_goals()
                 break
             elif user_input == "4":
-                print(f"Exiting, please wait...")
+                print(f"        You chose option: {user_input}")
+                print()
+                print(Fore.YELLOW)
+                typingPrint("""
+                                        Exiting, please wait...                           """)
+                print(Style.RESET_ALL)
                 delayed_clear()
                 welcome_page()
                 break
             else:
-                raise ValueError(f'Please select one of the options provided')
-                delayed_clearn()
-                main_menu()
+                raise ValueError("")
         except ValueError as e:
-            print(f'Invalid data: {e}, please try again.\n')
+            print(Fore.RED + f'Invalid data: Please select one of the options provided' + Style.RESET_ALL)
             delayed_clear()
-            main_menu()
-            return False
-        return True
 
 def pennywise_program():
     welcome_page()
