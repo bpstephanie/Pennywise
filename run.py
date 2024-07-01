@@ -210,9 +210,9 @@ def confirm_new_expense():
     print(f"                Category:           {expense_input_category}")
     print(f"                Description:        {new_description}")
     print(f"                Amount:             £{new_amount}")
-
-    print("Is this information correct? Please enter Y/N")
-    new_exp_answer = input(">")
+    print()
+    print("         Is this information correct? Please enter Y/N")
+    new_exp_answer = input("                >")
 
     while True:
         try:
@@ -227,7 +227,8 @@ def confirm_new_expense():
                 1. Re-enter the information?
                 2. Return to the Main Menu?
                 
-                If you wanted to enter Y for the previous question but made a mistake, please enter Y now to save your information.""")
+                If you wanted to enter Y for the previous question but made a mistake,
+                please enter Y now to save your information.""")
                 print()
                 no_answer = input(">")
                 print()
