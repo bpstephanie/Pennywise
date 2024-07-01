@@ -37,7 +37,7 @@ def clear_screen():
 
 def delayed_clear():
     """
-    Clears CLI code after 2 seconds
+    Clears CLI code after 10 seconds
     """
 
     time.sleep(10)
@@ -91,10 +91,9 @@ def get_transaction_date():
         try:
             print()
             print(f"Please enter the date of the transaction in the following format(DD-MM-YYYY):")
-            global expense_input_date
             print()
             expense_input_date = input(">")
-
+            global new_date
             # Converts user date input into datetime object
             # CCredit for code https://stackoverflow.com/questions/53248537/typeerror-not-supported-between-instances-of-datetime-datetime-and-str
             new_date = datetime.strptime(expense_input_date, '%d-%m-%Y')
@@ -131,40 +130,130 @@ def get_transaction_category(user1):
     sorted_list = sorted(one_cat_list)
     for i in sorted_list:
         print(i)
+    print()
+    print()
+    print("You can also choose a different category. Please remember to keep it to 1 word.")
+    print()
 
     while True:
         print()
         print('Please enter the category of the transaction:')
         print()
         user_input = input(">")
+
+        global expense_input_category
         expense_input_category = user_input.capitalize()
     
         try:
-            if expense_input_category.isalpha():
+            if expense_input_category.isalpha() and len(expense_input_category) < 15:
                 return expense_input_category
             else:
                 raise ValueError("")
         except ValueError as e:
-            print(Fore.RED + f"Invalid input: {e}. The category needs to include letters only." + Style.RESET_ALL)
+            print(Fore.RED + f"Invalid input: {e}. The category must be 14 letters or less." + Style.RESET_ALL)
         
 def get_transaction_description():
     """
     Gets the description of the transaction from the user.
     """
-
     # Credit for code to only accept letters: https://www.shiksha.com/online-courses/articles/isalpha-method-in-python/#:~:text=The%20isalpha()%20method%20can,entered%20only%20contains%20alphabetic%20characters.
     while True:
         try:
-            print('Please enter the description of the transaction, e.g. Gym')
-            tran_descr = input('>')
+            print('Please enter the description of the transaction.')
+            global new_description
+            new_description = input('>')
 
-            if len(tran_descr) > 3 and len(tran_descr) < 30 and tran_descr.isalpha():
-                return tran_descr
+            if len(new_description) > 3 and len(new_description) < 30 and new_description.isalpha():
+                return new_description
             else:
                 raise ValueError("")
         except ValueError as e:
             print(Fore.RED + f"Invalid input: The description needs to be between 3 and 30 letters long." + Style.RESET_ALL)
-           
+
+def get_transaction_amount():
+    """
+    Gets the amount of the transaction from the user.
+    """
+    while True:
+        print('Please enter the amount of the transaction, e.g. 29.95')
+        print()
+        print("Please do not include currency and make sure the amount is not more than 5000")
+        tran_amnt = input('>')
+        global new_amount
+        new_amount = float(tran_amnt)
+        try:
+            if new_amount != "" and new_amount > 0 and new_amount <= 5000:
+                return new_amount
+                break
+            else:
+                raise ValueError("")
+        except ValueError as e:
+            print(Fore.RED + "Invalid input: Please make sure you have not entered an amount more than 5000." + Style.RESET_ALL)
+
+def confirm_new_expense():
+    """
+    Summarizes all the new expense information the user has given.
+    Asks user to confirm all details are correct.
+    """
+    print()
+    print("""
+    --------------------------------------------------------------------------------
+                                    Add New Expense
+    --------------------------------------------------------------------------------
+    """)
+    print()
+    print("""
+                    Here is the new expense information you provided:               
+    """)
+    print()
+    print(f"                Date:               {new_date}")
+    print(f"                Category:           {expense_input_category}")
+    print(f"                Description:        {new_description}")
+    print(f"                Amount:             £{new_amount}")
+
+    print("Is this information correct? Please enter Y/N")
+    new_exp_answer = input(">")
+
+    while True:
+        try:
+            if new_exp_answer.lower() == "y":
+                confirmed_expense = [new_date, expense_input_category, new_description, new_amount]
+                #update_worksheet(confirmed_expense)
+                break
+            elif new_exp_answer.lower() == 'n':
+                print("""
+                Would you like to: 
+                
+                1. Re-enter the information?
+                2. Return to the Main Menu?
+                
+                If you wanted to enter Y for the previous question but made a mistake, please enter Y now to save your information.""")
+                print()
+                no_answer = input(">")
+                print()
+                if no_answer == "1":
+                    print(Fore.BLUE)
+                    typingPrint("               Deleting new expense data, please wait...               ")
+                    print(Style.RESET_ALL)
+                    clear_screen()
+                    add_new_expense()
+                elif no_answer == "2":
+                    print(Fore.BLUE)
+                    typingPrint("    Deleting new expense data and returning to Main Menu, please wait...               ")
+                    print(Style.RESET_ALL)
+                    clear_screen()
+                    main_menu()
+                elif no_answer.lower() == "y":
+                    confirmed_expense = [new_date, expense_input_category, new_description, new_amount]
+                    #update_worksheet(confirmed_expense)
+                    break
+                else:
+                    raise ValueError("")
+            else:
+                raise ValueError("")
+        except ValueError as e:
+            print("Invalid input")
+
 def add_new_expense():
     """
     Gets expense details from user
@@ -179,7 +268,13 @@ def add_new_expense():
     get_transaction_date()
     get_transaction_category(user1)
     get_transaction_description()
-    #transaction_amount()
+    get_transaction_amount()
+    print(Fore.BLUE)
+    typingPrint("           Loading new expense summary...                          ")
+    print(Style.RESET_ALL)
+    time.sleep(2)
+    clear_screen()
+    confirm_new_expense()
 
 def by_date():
     """
@@ -301,7 +396,7 @@ def view_statement():
                 main_menu()
                 break
             else:
-                raise ValueError(Fore.RED + "Please select one of the options provided" + Style.RESET_ALL)
+                raise ValueError("")
         except ValueError:
             print(Fore.RED + f'Invalid data.\n Please enter option 1, 2, or 3 to see your transactions or enter mm to go back to the Main Menu' + Style.RESET_ALL)
             return False
