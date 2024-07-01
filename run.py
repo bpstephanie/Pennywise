@@ -80,20 +80,21 @@ def welcome_page():
     time.sleep(1)
     clear_screen()
 
-def transaction_date():
+def get_transaction_date():
     """
     Gets the date of the transaction from the user.
     """
     while True:
         try:
+            print()
             print(f"Please enter the date of the transaction in the following format(DD-MM-YYYY):")
-
-            global transaction_date 
-            transaction_date = input("")
+            global expense_input_date
+            print()
+            expense_input_date = input(">")
 
             # Converts user date input into datetime object
             # CCredit for code https://stackoverflow.com/questions/53248537/typeerror-not-supported-between-instances-of-datetime-datetime-and-str
-            new_date = datetime.strptime(transaction_date, '%d-%m-%Y')
+            new_date = datetime.strptime(expense_input_date, '%d-%m-%Y')
             
             # initializing date ranges
             min_date = datetime(2024, 1, 1)
@@ -104,14 +105,52 @@ def transaction_date():
             else:
                 raise ValueError("The date you've entered is out of range")
         except ValueError:
-            print(f'Invalid data.\n Please enter a date which lies between 01-01-2024 and today.')
+            print('Invalid data. Please enter a date which lies between 01-01-2024 and today.')
+            get_transaction_date()
             return False
         return True
 
-def transaction_category():
+def transaction_category(user1):
     """
     Gets the category of the transaction from the user.
     """
+    while True:
+        print()
+        print(f"The current category choices are: ")
+        print()
+        current_choices = [row[1] for row in user1]
+        one_cat_list = []
+
+        # Credit for code https://www.dataquest.io/blog/how-to-remove-duplicates-from-a-python-list/
+        for category in current_choices:
+            if category not in one_cat_list:
+                one_cat_list.append(category)
+                
+        sorted_list = sorted(one_cat_list)
+        for i in sorted_list:
+            print(i)
+
+        print()
+        print('Please enter the category of the transaction:')
+        print()
+        user_input = input(">")
+        expense_input_category = user_input.capitalize()
+
+        try:
+            if expense_input_category in one_cat_list:
+                print(expense_input_category)
+                print(one_cat_list)
+            elif expense_input_category not in one_cat_list:
+                one_cat_list.append(expense_input_category)
+                print(one_cat_list)
+            else:
+                print('help, something wrong')
+        except ValueError:
+            print("Oops, it looks like something went wrong. Please try again.")
+            transaction_category()
+            return False
+    return True
+
 
 def add_new_expense():
     """
@@ -122,12 +161,12 @@ def add_new_expense():
                                     Add New Expense
     --------------------------------------------------------------------------------
     """)
-
     print(f"You will now need to enter the date, category, description and transaction amount of the expense you would like to add. Please have this information ready.\n")
-    transaction_date()
+    print()
+    get_transaction_date()
     transaction_category()
-    transaction_description()
-    transaction_amount()
+    #transaction_description()
+    #transaction_amount()
 
 def by_date():
     """
@@ -307,4 +346,6 @@ def pennywise_program():
     welcome_page()
     main_menu()
 
-pennywise_program()
+#pennywise_program()
+#add_new_expense()
+transaction_category(user1)
