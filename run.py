@@ -20,7 +20,6 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open("Pennywise")
 user1_expenses = SHEET.worksheet("user1")
 user1 = user1_expenses.get_all_values()
-#print(user1)
 
 # Credit for clear screen function: https://www.geeksforgeeks.org/clear-screen-python/
 def clear_screen():
@@ -102,7 +101,7 @@ def get_transaction_date():
             expense_input_date = input(">")
             global new_date
             # Converts user date input into datetime object
-            # CCredit for code https://stackoverflow.com/questions/53248537/typeerror-not-supported-between-instances-of-datetime-datetime-and-str
+            # Credit for code https://stackoverflow.com/questions/53248537/typeerror-not-supported-between-instances-of-datetime-datetime-and-str
             date = datetime.datetime.strptime(expense_input_date, '%d/%m/%Y')
             
             # initializing date ranges
@@ -110,15 +109,12 @@ def get_transaction_date():
             max_date = datetime.datetime.now()
 
             if date >= min_date and date <= max_date:
-                new_date = date.date() 
+                new_date = date.date().strftime("%d/%m/%Y")
                 return new_date
             else:
                 raise ValueError(Fore.RED + "The date you've entered is out of range" + Style.RESET_ALL)
         except ValueError:
             print(Fore.RED + 'Invalid data. Please enter a date which lies between 01/01/2024 and today.' + Style.RESET_ALL)
-            get_transaction_date()
-            return False
-        return True
 
 def get_transaction_category(user1):
     """
@@ -230,16 +226,16 @@ def confirm_new_expense():
     """)
     print()
     print("""
-                    Here is the new expense information you provided:               
+                Here is the new expense information you provided:               
     """)
     print()
-    print(f"                Date:               {new_date}")
-    print(f"                Category:           {expense_input_category}")
-    print(f"                Description:        {new_description}")
-    print(f"                Amount:             £{new_amount}")
+    print(f"                          Date:               {new_date}")
+    print(f"                          Category:           {expense_input_category}")
+    print(f"                          Description:        {new_description}")
+    print(f"                          Amount:             £{new_amount}")
     print()
-    print("         Is this information correct? Please enter Y/N")
-    new_exp_answer = input("                >")
+    print("                 Is this information correct? Please enter Y/N")
+    new_exp_answer = input("                    >")
 
     while True:
         try:
@@ -249,15 +245,15 @@ def confirm_new_expense():
                 break
             elif new_exp_answer.lower() == 'n':
                 print("""
-                Would you like to: 
+                          Would you like to: 
                 
-                1. Re-enter the information?
-                2. Return to the Main Menu?
+                          1. Re-enter the information?
+                          2. Return to the Main Menu?
                 
-                If you wanted to enter Y for the previous question but made a mistake,
-                please enter Y now to save your information.""")
+                If you wanted to enter 'YES' for the previous question but made
+                a mistake, please enter Y now to save your information.""")
                 print()
-                no_answer = input(">")
+                no_answer = input("                             >")
                 print()
                 if no_answer == "1":
                     print(Fore.BLUE)
@@ -295,18 +291,18 @@ def update_worksheet(data):
 
     while True:
         print("""
-        What would you like to do next?
+                          What would you like to do next?
         
-        1. Add another expense
-        2. Go back to Main Menu
+                          1. Add another expense
+                          2. Go back to Main Menu
         """)
 
 
         try:
-            user_input = input("        Enter your choice here: ")
+            user_input = input("                          Enter your choice here: ")
             
             if user_input == "1":
-                print(f"        You chose option: {user_input}")
+                print(f"                          You chose option: {user_input}")
                 print()
                 print(Fore.BLUE)
                 typingPrint("""
@@ -316,11 +312,11 @@ def update_worksheet(data):
                 add_new_expense()
                 break
             elif user_input == "2":
-                print(f"        You chose option: {user_input}")
+                print(f"                          You chose option: {user_input}")
                 print()
                 print(Fore.BLUE)
                 typingPrint("""
-                        Returning to Main Menu, please wait...                           """)
+                            Returning to Main Menu, please wait...                           """)
                 print(Style.RESET_ALL)
                 clear_screen()
                 main_menu()
@@ -328,7 +324,7 @@ def update_worksheet(data):
             else:
                 raise ValueError("")
         except ValueError as e:
-            print(Fore.RED + f'Invalid data: Please select one of the options provided' + Style.RESET_ALL)
+            print(Fore.RED + f'               Invalid data: Please select one of the options provided' + Style.RESET_ALL)
             delayed_clear()
 
 def add_new_expense():
@@ -343,7 +339,7 @@ def add_new_expense():
     clear_screen()
     get_transaction_amount()
     print(Fore.BLUE)
-    typingPrint("           Loading new expense summary...                          ")
+    typingPrint("         Loading new expense summary...                          ")
     print(Style.RESET_ALL)
     time.sleep(2)
     clear_screen()
@@ -358,20 +354,31 @@ def by_date():
                             View Statement By Date
     --------------------------------------------------------------------------------
     """)
-    # Credit for table format https://www.educba.com/python-print-table/
-    print(tabulate(user1, headers=["Date", "Category", "Description", "Amount"]))
-    print("""
-    If you want to go back to the Main Menu, please enter mm:""")
-    try:
-        rtrn_mm = input("")
+    while True:
+        # Credit for sorting the date by date: https://docs.python.org/3/howto/sorting.html
+        sorted_user1 = sorted(user1, key=lambda i: datetime.datetime.strptime(i[0], "%d/%m/%Y"))
+        
+        # Credit for table format https://www.educba.com/python-print-table/
+        print(tabulate(sorted_user1, headers=["Date", "Category", "Description", "Amount"]))
+        print("""
+        What would you like to do next?
+        1. Go back to View Statement Menu
+        2. Go back to Main Menu
+        """)
+        
+        try:
+            user_input = input("")
 
-        if rtrn_mm.lower() == "mm":
-            clear_screen()
-            main_menu()
-        else:
-            raise ValueError("Please enter mm to go back to the Main Menu")
-    except ValueError as e:
-        print("Please enter mm to go back to the Main Menu")
+            if user_input.lower() == "1":
+                clear_screen()
+                view_statement()
+            elif user_input.lower() == "2":
+                clear_screen()
+                main_menu()
+            else:
+                raise ValueError("")
+        except ValueError as e:
+            print("Invalid input: Please choose option 1 or option 2.")
 
 def by_month():
     """
@@ -419,41 +426,41 @@ def view_statement():
                                     View Statement
         --------------------------------------------------------------------------------
         """)
-        print("How would you like to see your transactions?")
+        print("     How would you like to see your transactions?")
         print("""
         1. By date
         2. By month
         3. By category""")
-        print("If you would like to go back to the main menu, please enter MM")
+        print("     If you would like to go back to the main menu, please enter MM")
 
         try:
-            statement_choice = input("")
+            statement_choice = input("        >")
             if statement_choice == "1":
-                print("You have chosen option 1: By date.")
+                print("     You have chosen option 1: By date.")
                 print()
                 print(Fore.BLUE)
                 typingPrint("""
-                        Loading, please wait...                           """)
+                                Loading, please wait...                           """)
                 print(Style.RESET_ALL)
                 clear_screen()
                 by_date()
                 break
             elif statement_choice == "2":
-                print("You have chosen option 2: By month.")
+                print("     You have chosen option 2: By month.")
                 print()
                 print(Fore.BLUE)
                 typingPrint("""
-                        Loading, please wait...                           """)
+                                Loading, please wait...                           """)
                 print(Style.RESET_ALL)
                 clear_screen()
                 by_month()
                 break
             elif statement_choice == "3":
-                print("You have chosen option 3: By category.")
+                print("     You have chosen option 3: By category.")
                 print()
                 print(Fore.BLUE)
                 typingPrint("""
-                        Loading, please wait...                           """)
+                                Loading, please wait...                           """)
                 print(Style.RESET_ALL)
                 clear_screen()
                 by_category(user1)
@@ -559,7 +566,8 @@ def pennywise_program():
     welcome_page()
     main_menu()
 
-pennywise_program()
+#pennywise_program()
 #add_new_expense()
 #get_transaction_category(user1)
 #get_transaction_description()
+view_statement()
