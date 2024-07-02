@@ -3,7 +3,7 @@ from google.oauth2.service_account import Credentials
 import time
 import os
 import sys
-from datetime import datetime
+import datetime
 from tabulate import tabulate
 from colorama import Back, Fore, Style
 
@@ -87,27 +87,35 @@ def get_transaction_date():
     """
     Gets the date of the transaction from the user.
     """
+    print("""
+    --------------------------------------------------------------------------------
+                                    Add New Expense
+    --------------------------------------------------------------------------------
+    """)
+    print(f"You will now need to enter the date, category, description and transaction amount of the expense you would like to add. Please have this information ready.\n")
+    print()
     while True:
         try:
             print()
-            print(f"Please enter the date of the transaction in the following format(DD-MM-YYYY):")
+            print(f"Please enter the date of the transaction in the following format(DD/MM/YYYY):")
             print()
             expense_input_date = input(">")
             global new_date
             # Converts user date input into datetime object
             # CCredit for code https://stackoverflow.com/questions/53248537/typeerror-not-supported-between-instances-of-datetime-datetime-and-str
-            new_date = datetime.strptime(expense_input_date, '%d-%m-%Y')
+            date = datetime.datetime.strptime(expense_input_date, '%d/%m/%Y')
             
             # initializing date ranges
-            min_date = datetime(2024, 1, 1)
-            max_date = datetime.now()
+            min_date = datetime.datetime(2024, 1, 1)
+            max_date = datetime.datetime.now()
 
-            if new_date >= min_date and new_date <= max_date:
+            if date >= min_date and date <= max_date:
+                new_date = date.date() 
                 return new_date
             else:
                 raise ValueError(Fore.RED + "The date you've entered is out of range" + Style.RESET_ALL)
         except ValueError:
-            print(Fore.RED + 'Invalid data. Please enter a date which lies between 01-01-2024 and today.' + Style.RESET_ALL)
+            print(Fore.RED + 'Invalid data. Please enter a date which lies between 01/01/2024 and today.' + Style.RESET_ALL)
             get_transaction_date()
             return False
         return True
@@ -116,6 +124,13 @@ def get_transaction_category(user1):
     """
     Gets the category of the transaction from the user.
     """
+    print("""
+    --------------------------------------------------------------------------------
+                                    Add New Expense
+    --------------------------------------------------------------------------------
+    """)
+    print(f"You will now need to enter the date, category, description and transaction amount of the expense you would like to add. Please have this information ready.\n")
+    print()
     print()
     print(f"The current category choices are: ")
     print()
@@ -131,21 +146,19 @@ def get_transaction_category(user1):
     for i in sorted_list:
         print(i)
     print()
-    print()
-    print("You can also choose a different category. Please remember to keep it to 1 word.")
+    print("You can also choose a different category.")
     print()
 
     while True:
         print()
         print('Please enter the category of the transaction:')
-        print()
         user_input = input(">")
 
         global expense_input_category
         expense_input_category = user_input.capitalize()
     
         try:
-            if expense_input_category.isalpha() and len(expense_input_category) < 15:
+            if expense_input_category !='' and len(expense_input_category) <= 15 and all(chr.isalpha() or chr.isspace() for chr in expense_input_category):
                 return expense_input_category
             else:
                 raise ValueError("")
@@ -156,6 +169,13 @@ def get_transaction_description():
     """
     Gets the description of the transaction from the user.
     """
+    print("""
+    --------------------------------------------------------------------------------
+                                    Add New Expense
+    --------------------------------------------------------------------------------
+    """)
+    print(f"You will now need to enter the date, category, description and transaction amount of the expense you would like to add. Please have this information ready.\n")
+    print()
     # Credit for code to only accept letters: https://www.shiksha.com/online-courses/articles/isalpha-method-in-python/#:~:text=The%20isalpha()%20method%20can,entered%20only%20contains%20alphabetic%20characters.
     while True:
         try:
@@ -163,7 +183,7 @@ def get_transaction_description():
             global new_description
             new_description = input('>')
 
-            if len(new_description) > 3 and len(new_description) < 30 and new_description.isalpha():
+            if new_description != '' and 3 <= len(new_description) <= 30 and all(chr.isalpha() or chr.isspace() for chr in new_description):
                 return new_description
             else:
                 raise ValueError("")
@@ -174,6 +194,13 @@ def get_transaction_amount():
     """
     Gets the amount of the transaction from the user.
     """
+    print("""
+    --------------------------------------------------------------------------------
+                                    Add New Expense
+    --------------------------------------------------------------------------------
+    """)
+    print(f"You will now need to enter the date, category, description and transaction amount of the expense you would like to add. Please have this information ready.\n")
+    print()
     while True:
         print('Please enter the amount of the transaction, e.g. 29.95')
         print()
@@ -217,8 +244,8 @@ def confirm_new_expense():
     while True:
         try:
             if new_exp_answer.lower() == "y":
-                confirmed_expense = [new_date, expense_input_category, new_description, new_amount]
-                #update_worksheet(confirmed_expense)
+                confirmed_expense = [str(new_date), expense_input_category, new_description, new_amount]
+                update_worksheet(confirmed_expense)
                 break
             elif new_exp_answer.lower() == 'n':
                 print("""
@@ -246,7 +273,7 @@ def confirm_new_expense():
                     main_menu()
                 elif no_answer.lower() == "y":
                     confirmed_expense = [new_date, expense_input_category, new_description, new_amount]
-                    #update_worksheet(confirmed_expense)
+                    update_worksheet(confirmed_expense)
                     break
                 else:
                     raise ValueError("")
@@ -255,20 +282,65 @@ def confirm_new_expense():
         except ValueError as e:
             print("Invalid input")
 
+def update_worksheet(data):
+    """
+        Update user1 worksheet, add new row with the list data provided
+    """
+    print(Fore.BLUE)
+    typingPrint("                      Updating worksheet, please wait...               ")
+    print(Style.RESET_ALL)
+    user1_expenses = SHEET.worksheet("user1")
+    user1_expenses.append_row(data)
+    print('                       Worksheet updated successfully.\n')
+
+    while True:
+        print("""
+        What would you like to do next?
+        
+        1. Add another expense
+        2. Go back to Main Menu
+        """)
+
+
+        try:
+            user_input = input("        Enter your choice here: ")
+            
+            if user_input == "1":
+                print(f"        You chose option: {user_input}")
+                print()
+                print(Fore.BLUE)
+                typingPrint("""
+                        Add new expense form is loading, please wait...                           """)
+                print(Style.RESET_ALL)
+                clear_screen()
+                add_new_expense()
+                break
+            elif user_input == "2":
+                print(f"        You chose option: {user_input}")
+                print()
+                print(Fore.BLUE)
+                typingPrint("""
+                        Returning to Main Menu, please wait...                           """)
+                print(Style.RESET_ALL)
+                clear_screen()
+                main_menu()
+                break
+            else:
+                raise ValueError("")
+        except ValueError as e:
+            print(Fore.RED + f'Invalid data: Please select one of the options provided' + Style.RESET_ALL)
+            delayed_clear()
+
 def add_new_expense():
     """
     Gets expense details from user
     """
-    print("""
-    --------------------------------------------------------------------------------
-                                    Add New Expense
-    --------------------------------------------------------------------------------
-    """)
-    print(f"You will now need to enter the date, category, description and transaction amount of the expense you would like to add. Please have this information ready.\n")
-    print()
     get_transaction_date()
+    clear_screen()
     get_transaction_category(user1)
+    clear_screen()
     get_transaction_description()
+    clear_screen()
     get_transaction_amount()
     print(Fore.BLUE)
     typingPrint("           Loading new expense summary...                          ")
@@ -442,7 +514,7 @@ def main_menu():
                 print()
                 print(Fore.BLUE)
                 typingPrint("""
-                        Add new expense form is loading, please wait...                           """)
+                        Add new expense form is loading, please wait...                 """)
                 print(Style.RESET_ALL)
                 clear_screen()
                 add_new_expense()
@@ -452,7 +524,7 @@ def main_menu():
                 print()
                 print(Fore.BLUE)
                 typingPrint("""
-                        View statement is loading, please wait...                           """)
+                        View statement is loading, please wait...                       """)
                 print(Style.RESET_ALL)
                 clear_screen()
                 view_statement()
@@ -462,7 +534,7 @@ def main_menu():
                 print()
                 print(Fore.BLUE)
                 typingPrint("""
-                            View budget goals is loading, please wait...                           """)
+                            View budget goals is loading, please wait...                """)
                 print(Style.RESET_ALL)
                 clear_screen()
                 view_budget_goals()
@@ -472,7 +544,7 @@ def main_menu():
                 print()
                 print(Fore.YELLOW)
                 typingPrint("""
-                                        Exiting, please wait...                           """)
+                                        Exiting, please wait...                         """)
                 print(Style.RESET_ALL)
                 delayed_clear()
                 welcome_page()
