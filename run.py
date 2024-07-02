@@ -98,7 +98,7 @@ def get_transaction_date():
             print()
             print(f"Please enter the date of the transaction in the following format(DD/MM/YYYY):")
             print()
-            expense_input_date = input(">")
+            expense_input_date = input("> \n")
             global new_date
             # Converts user date input into datetime object
             # Credit for code https://stackoverflow.com/questions/53248537/typeerror-not-supported-between-instances-of-datetime-datetime-and-str
@@ -128,7 +128,7 @@ def get_transaction_category(user1):
     print(f"You will now need to enter the date, category, description and transaction amount of the expense you would like to add. Please have this information ready.\n")
     print()
     print()
-    print(f"The current category choices are: ")
+    print(f"The current category you have are: ")
     print()
     current_choices = [row[1] for row in user1]
     one_cat_list = []
@@ -142,13 +142,13 @@ def get_transaction_category(user1):
     for i in sorted_list:
         print(i)
     print()
-    print("You can also choose a different category.")
+    print("You can also enter a different category.")
     print()
 
     while True:
         print()
         print('Please enter the category of the transaction:')
-        user_input = input(">")
+        user_input = input("> \n")
 
         global expense_input_category
         expense_input_category = user_input.capitalize()
@@ -177,7 +177,7 @@ def get_transaction_description():
         try:
             print('Please enter the description of the transaction.')
             global new_description
-            new_description = input('>')
+            new_description = input('> \n')
 
             if new_description != '' and 3 <= len(new_description) <= 30 and all(chr.isalpha() or chr.isspace() for chr in new_description):
                 return new_description
@@ -201,9 +201,9 @@ def get_transaction_amount():
         print('Please enter the amount of the transaction, e.g. 29.95')
         print()
         print("Please do not include currency and make sure the amount is not more than 5000")
-        tran_amnt = input('>')
+        user_input = input('> \n')
         global new_amount
-        new_amount = float(tran_amnt)
+        new_amount = float(user_input)
         try:
             if new_amount != "" and new_amount > 0 and new_amount <= 5000:
                 return new_amount
@@ -235,15 +235,15 @@ def confirm_new_expense():
     print(f"                          Amount:             £{new_amount}")
     print()
     print("                 Is this information correct? Please enter Y/N")
-    new_exp_answer = input("                    >")
+    user_input = input("                    > \n")
 
     while True:
         try:
-            if new_exp_answer.lower() == "y":
+            if user_input.lower() == "y":
                 confirmed_expense = [str(new_date), expense_input_category, new_description, new_amount]
                 update_worksheet(confirmed_expense)
                 break
-            elif new_exp_answer.lower() == 'n':
+            elif user_input.lower() == 'n':
                 print("""
                           Would you like to: 
                 
@@ -253,7 +253,7 @@ def confirm_new_expense():
                 If you wanted to enter 'YES' for the previous question but made
                 a mistake, please enter Y now to save your information.""")
                 print()
-                no_answer = input("                             >")
+                no_answer = input("                             > \n")
                 print()
                 if no_answer == "1":
                     print(Fore.BLUE)
@@ -299,7 +299,7 @@ def update_worksheet(data):
 
 
         try:
-            user_input = input("                          Enter your choice here: ")
+            user_input = input("                          > \n")
             
             if user_input == "1":
                 print(f"                          You chose option: {user_input}")
@@ -367,7 +367,7 @@ def by_date():
         """)
         
         try:
-            user_input = input("")
+            user_input = input("> \n")
 
             if user_input.lower() == "1":
                 clear_screen()
@@ -419,7 +419,7 @@ def by_category_per_year(user1):
         
         """)
     
-    user_input = input("        >")
+    user_input = input("        > \n")
     try:
         if user_input == "1":
             print(f"    You chose option: {user_input}")
@@ -452,7 +452,7 @@ def by_category():
         
         If you would like to go back to the Main Menu, please enter MM""")
     
-    user_input = input("    >")
+    user_input = input("    > \n")
     
     try:
         if user_input == "1":
@@ -497,8 +497,8 @@ def view_statement():
         print("     If you would like to go back to the main menu, please enter MM")
 
         try:
-            statement_choice = input("        >")
-            if statement_choice == "1":
+            user_input = input("        > \n")
+            if user_input == "1":
                 print("     You have chosen option 1: By date.")
                 print()
                 print(Fore.BLUE)
@@ -508,7 +508,7 @@ def view_statement():
                 clear_screen()
                 by_date()
                 break
-            elif statement_choice == "2":
+            elif user_input == "2":
                 print("     You have chosen option 2: By month.")
                 print()
                 print(Fore.BLUE)
@@ -518,7 +518,7 @@ def view_statement():
                 clear_screen()
                 by_month()
                 break
-            elif statement_choice == "3":
+            elif user_input == "3":
                 print("     You have chosen option 3: By category.")
                 print()
                 print(Fore.BLUE)
@@ -528,7 +528,7 @@ def view_statement():
                 clear_screen()
                 by_category()
                 break
-            elif statement_choice.lower() == "mm":
+            elif user_input.lower() == "mm":
                 print("You have chosen to go back to the Main Menu")
                 print()
                 print(Fore.BLUE)
@@ -577,7 +577,7 @@ def main_menu():
 
 
         try:
-            user_input = input("        Enter your choice here: ")
+            user_input = input("        Enter your choice here: \n")
             
             if user_input == "1":
                 print(f"        You chose option: {user_input}")
