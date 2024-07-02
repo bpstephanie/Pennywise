@@ -380,25 +380,17 @@ def by_date():
         except ValueError as e:
             print("Invalid input: Please choose option 1 or option 2.")
 
-def by_month():
+def by_category_per_month(user1):
     """
-    Displays the amount the user has spent each month since the beginning of the year
+    Calculates total expenses in each category per month and displays them to the user.
     """
-    print("""
-    --------------------------------------------------------------------------------
-                            View Statement By Month
-    --------------------------------------------------------------------------------
-    """)
+    print("PER MONTH")
 
-def by_category(user1):
+def by_category_per_year(user1):
     """
-    Calculates total expenses in each category and displays them to the user.
+    Calculates total expenses in each category since the beginning of the year and displays them to the user.
     """
-    print("""
-    --------------------------------------------------------------------------------
-                          View Statement By Category
-    --------------------------------------------------------------------------------
-    """)
+    print("PER YEAR")
     category_total = {}
 
     for row in user1:
@@ -409,11 +401,82 @@ def by_category(user1):
             category_total[category] += amount
         else:
             category_total[category] = amount
-
-    #total_amount = sum(amount.range(0,-1))    
+    
+    total_amount = 0
+    for value in user1:
+        total_amount += float(value[3])
+       
     alphabetized_category_total = dict(sorted(category_total.items()))
     print(tabulate(alphabetized_category_total.items(), headers = ["Category", "Amount"]))
-    #print(total_amount)
+    print()
+    print(f"TOTAL:       {total_amount}")
+    print()
+    print("""
+        What would you like to do next?
+
+        1. Go back to View Statement Menu
+        2. Go back to Main Menu
+        
+        """)
+    
+    user_input = input("        >")
+    try:
+        if user_input == "1":
+            print(f"    You chose option: {user_input}")
+            clear_screen()
+            view_statement()
+        elif user_input == "2":
+            print(f"    You chose option: {user_input}")
+            clear_screen()
+            main_menu()
+        else:
+            raise ValueError("")
+    except ValueError as e:
+        print("Please choose from one of the options above.")
+
+def by_category():
+    """
+    Calculates total expenses in each category and displays them to the user.
+    """
+    print("""
+    --------------------------------------------------------------------------------
+                          View Statement By Category
+    --------------------------------------------------------------------------------
+    """)
+    
+    print("""
+        Would you like to see transactions per category per month or per year?
+        
+        1. Per month
+        2. Per year
+        
+        If you would like to go back to the Main Menu, please enter MM""")
+    
+    user_input = input("    >")
+    
+    try:
+        if user_input == "1":
+            print(f"    You chose option: {user_input}")
+            print()
+            by_category_per_month(user1)
+        elif user_input == "2":
+            print(f"    You chose option: {user_input}")
+            print()
+            by_category_per_year(user1)
+        elif user_input.lower() == "mm":
+            print(f"    You chose option: {user_input}")
+            print()
+            clear_screen()
+            main_menu()
+        else:
+            raise ValueError("")
+    except ValueError as e:
+        print("Please choose from one of the options above.")     
+
+def by_month():
+    """
+    Displays the amount the user has spent each month since the beginning of the year
+    """
 
 def view_statement():
     """
@@ -463,7 +526,7 @@ def view_statement():
                                 Loading, please wait...                           """)
                 print(Style.RESET_ALL)
                 clear_screen()
-                by_category(user1)
+                by_category()
                 break
             elif statement_choice.lower() == "mm":
                 print("You have chosen to go back to the Main Menu")
