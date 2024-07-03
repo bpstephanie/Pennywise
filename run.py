@@ -26,13 +26,7 @@ def clear_screen():
     """
     Clears CLI ahead of next code page
     """
-    # for windows
-    if os.name == 'nt':
-        os.system('cls')
- 
-    # for mac and linux(here, os.name is 'posix')
-    else:
-        os.system('clear')
+    os.system('clear')
 
 def delayed_clear():
     """
@@ -79,19 +73,19 @@ def welcome_page():
     typingPrint("""
                                 Loading, please wait...                           """)
     print(Style.RESET_ALL)
-    time.sleep(1)
-    clear_screen()
+    delayed_clear()
 
 def get_transaction_date():
     """
     Gets the date of the transaction from the user.
     """
     print("""
-    --------------------------------------------------------------------------------
+    ----------------------------------------------------------------------------
                                     Add New Expense
-    --------------------------------------------------------------------------------
+    ----------------------------------------------------------------------------
     """)
-    print(f"You will now need to enter the date, category, description and transaction amount of the expense you would like to add. Please have this information ready.\n")
+    print(f"    You will now need to enter the date, category, description and amount of 
+        the expense you would like to add. Please have this information ready.\n")
     print()
     while True:
         try:
@@ -128,7 +122,7 @@ def get_transaction_category(user1):
     print(f"You will now need to enter the date, category, description and transaction amount of the expense you would like to add. Please have this information ready.\n")
     print()
     print()
-    print(f"The current category you have are: ")
+    print(f"You may eneter a cateogry you have already used or choose another.")
     print()
     current_choices = [row[1] for row in user1]
     one_cat_list = []
@@ -141,14 +135,11 @@ def get_transaction_category(user1):
     sorted_list = sorted(one_cat_list)
     for i in sorted_list:
         print(i)
-    print()
-    print("You can also enter a different category.")
-    print()
 
     while True:
         print()
         print('Please enter the category of the transaction:')
-        user_input = input("> \n")
+        user_input = input("> ")
 
         global expense_input_category
         expense_input_category = user_input.capitalize()
