@@ -84,8 +84,8 @@ def get_transaction_date():
                                     Add New Expense
     ----------------------------------------------------------------------------
     """)
-    print(f"    You will now need to enter the date, category, description and amount of 
-        the expense you would like to add. Please have this information ready.\n")
+    print("""    You will now need to enter the date, category, description and amount of 
+        the expense you would like to add. Please have this information ready.""")
     print()
     while True:
         try:
