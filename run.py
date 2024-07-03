@@ -6,6 +6,7 @@ import sys
 import datetime
 from tabulate import tabulate
 from colorama import Back, Fore, Style
+import math
 
 
 SCOPE = [
@@ -69,7 +70,7 @@ def welcome_page():
         ''')
     print(Fore.BLUE)
     typingPrint("""
-    Loading, please wait...""")
+                         Loading, please wait...""")
     print(Style.RESET_ALL)
 
 def get_transaction_date():
@@ -89,9 +90,10 @@ def get_transaction_date():
     while True:
         try:
             print()
-            print(f"Please enter the date of the transaction in the following format(DD/MM/YYYY):")
+            print("""    Please enter the date of the transaction in the following format
+    (DD/MM/YYYY):""")
             print()
-            expense_input_date = input(">")
+            expense_input_date = input("    >")
             global new_date
             # Converts user date input into datetime object
             # Credit for code https://stackoverflow.com/questions/53248537/typeerror-not-supported-between-instances-of-datetime-datetime-and-str
@@ -105,9 +107,9 @@ def get_transaction_date():
                 new_date = date.date().strftime("%d/%m/%Y")
                 return new_date
             else:
-                raise ValueError(Fore.RED + "The date you've entered is out of range" + Style.RESET_ALL)
+                raise ValueError(Fore.RED + "    The date you've entered is out of range" + Style.RESET_ALL)
         except ValueError:
-            print(Fore.RED + 'Invalid data. Please enter a date which lies between 01/01/2024 and today.' + Style.RESET_ALL)
+            print(Fore.RED + '    Invalid data. Please enter a date which lies between 01/01/2024 and today.' + Style.RESET_ALL)
 
 def get_transaction_category(user1):
     """
@@ -124,7 +126,7 @@ def get_transaction_category(user1):
     information ready.""")
     print()
     print()
-    print(f"You may eneter a cateogry you have already used or choose another.")
+    print(f"    You may eneter a cateogry you have already used or choose another.")
     print()
     current_choices = [row[1] for row in user1]
     one_cat_list = []
@@ -136,12 +138,12 @@ def get_transaction_category(user1):
             
     sorted_list = sorted(one_cat_list)
     for i in sorted_list:
-        print(i)
+        print(f'            {i}')
 
     while True:
         print()
-        print('Please enter the category of the transaction:')
-        user_input = input("> ")
+        print('    Please enter the category of the transaction:')
+        user_input = input("    > ")
 
         global expense_input_category
         expense_input_category = user_input.capitalize()
@@ -152,7 +154,7 @@ def get_transaction_category(user1):
             else:
                 raise ValueError("")
         except ValueError as e:
-            print(Fore.RED + f"Invalid input: {e}. The category must be 14 letters or less." + Style.RESET_ALL)
+            print(Fore.RED + f"    Invalid input: {e}. The category must be 14 letters or less." + Style.RESET_ALL)
         
 def get_transaction_description():
     """
@@ -171,16 +173,16 @@ def get_transaction_description():
     # Credit for code to only accept letters: https://www.shiksha.com/online-courses/articles/isalpha-method-in-python/#:~:text=The%20isalpha()%20method%20can,entered%20only%20contains%20alphabetic%20characters.
     while True:
         try:
-            print('Please enter the description of the transaction.')
+            print('    Please enter the description of the transaction.')
             global new_description
-            new_description = input('>')
+            new_description = input('    >')
 
             if new_description != '' and 3 <= len(new_description) <= 30 and all(chr.isalpha() or chr.isspace() for chr in new_description):
                 return new_description
             else:
                 raise ValueError("")
         except ValueError as e:
-            print(Fore.RED + f"Invalid input: The description needs to be between 3 and 30 letters long." + Style.RESET_ALL)
+            print(Fore.RED + f"    Invalid input: The description needs to be between 3 and 30 letters long." + Style.RESET_ALL)
 
 def get_transaction_amount():
     """
@@ -197,20 +199,23 @@ def get_transaction_amount():
     information ready.""")
     print()
     while True:
-        print('Please enter the amount of the transaction, e.g. 29.95')
+        print('    Please enter the amount of the transaction, e.g. 29.95')
         print()
-        print("Please do not include currency and make sure the amount is not more than 5000")
-        user_input = input('>')
+        print("""    Please do not include currency and make sure the amount is not more
+    than 999""")
+        user_input = input('    >')
         global new_amount
         new_amount = float(user_input)
+        
         try:
-            if new_amount != "" and new_amount > 0 and new_amount <= 5000:
+            if new_amount != "" and new_amount > 0 and new_amount < 1000:
                 return new_amount
                 break
             else:
                 raise ValueError("")
         except ValueError as e:
-            print(Fore.RED + "Invalid input: Please make sure you have not entered an amount more than 5000." + Style.RESET_ALL)
+            print(Fore.RED + """    Invalid input: Please make sure you have not entered an amount more
+            than 999.""" + Style.RESET_ALL)
 
 def confirm_new_expense():
     """
@@ -225,15 +230,15 @@ def confirm_new_expense():
     """)
     print()
     print("""
-                Here is the new expense information you provided:               
+            Here is the new expense information you provided:               
     """)
     print()
-    print(f"                          Date:               {new_date}")
-    print(f"                          Category:           {expense_input_category}")
-    print(f"                          Description:        {new_description}")
-    print(f"                          Amount:             £{new_amount}")
+    print(f"                      Date:               {new_date}")
+    print(f"                      Category:           {expense_input_category}")
+    print(f"                      Description:        {new_description}")
+    print(f"                      Amount:             £{math.ceil(new_amount*100)/100}")
     print()
-    print("                 Is this information correct? Please enter Y/N")
+    print("             Is this information correct? Please enter Y/N")
     user_input = input("                    >")
 
     while True:
@@ -244,25 +249,26 @@ def confirm_new_expense():
                 break
             elif user_input.lower() == 'n':
                 print("""
-                Would you like to: 
+            Would you like to: 
                 
-                1. Re-enter the information?
-                2. Return to the Main Menu?
+            1. Re-enter the information?
+            2. Return to the Main Menu?
                 
-                If you wanted to enter 'YES' for the previous question but made
-                a mistake, please enter Y now to save your information.""")
+            If you wanted to enter 'YES' for the previous question but
+            made a mistake, please enter Y now to save your 
+            information.""")
                 print()
-                no_answer = input(">")
+                no_answer = input("                >")
                 print()
                 if no_answer == "1":
                     print(Fore.BLUE)
-                    typingPrint("Deleting new expense data, please wait...")
+                    typingPrint("                Deleting new expense data, please wait...")
                     print(Style.RESET_ALL)
                     clear_screen()
                     add_new_expense()
                 elif no_answer == "2":
                     print(Fore.BLUE)
-                    typingPrint("Deleting new expense data and returning to Main Menu, please wait...")
+                    typingPrint("        Deleting new expense data and returning to Main Menu, please wait...")
                     print(Style.RESET_ALL)
                     clear_screen()
                     main_menu()
@@ -275,18 +281,18 @@ def confirm_new_expense():
             else:
                 raise ValueError("")
         except ValueError as e:
-            print(Fore.RED + "Invalid input: Please choose one of the options above")
+            print(Fore.RED + "                Invalid input: Please choose one of the options above")
 
 def update_worksheet(data):
     """
         Update user1 worksheet, add new row with the list data provided
     """
     print(Fore.BLUE)
-    typingPrint("Updating worksheet, please wait...")
+    typingPrint("               Updating worksheet, please wait...")
     print(Style.RESET_ALL)
     user1_expenses = SHEET.worksheet("user1")
     user1_expenses.append_row(data)
-    print('Worksheet updated successfully.\n')
+    print('                Worksheet updated successfully.\n')
 
     while True:
         print("""
@@ -297,22 +303,22 @@ def update_worksheet(data):
         """)
 
         try:
-            user_input = input(">")
+            user_input = input("    >")
             
             if user_input == "1":
-                print(f"You chose option: {user_input}")
+                print(f"    You chose option: {user_input}")
                 print()
                 print(Fore.BLUE)
-                typingPrint("""Add new expense form is loading, please wait...""")
+                typingPrint("""        Add new expense form is loading, please wait...""")
                 print(Style.RESET_ALL)
                 clear_screen()
                 add_new_expense()
                 break
             elif user_input == "2":
-                print(f"You chose option: {user_input}")
+                print(f"    You chose option: {user_input}")
                 print()
                 print(Fore.BLUE)
-                typingPrint("""Returning to Main Menu, please wait...""")
+                typingPrint("""           Returning to Main Menu, please wait...""")
                 print(Style.RESET_ALL)
                 clear_screen()
                 main_menu()
@@ -320,7 +326,7 @@ def update_worksheet(data):
             else:
                 raise ValueError("")
         except ValueError as e:
-            print(Fore.RED + f'Invalid data: Please select one of the options provided' + Style.RESET_ALL)
+            print(Fore.RED + f'    Invalid data: Please select one of the options provided' + Style.RESET_ALL)
             delayed_clear()
 
 def add_new_expense():
@@ -335,7 +341,7 @@ def add_new_expense():
     clear_screen()
     get_transaction_amount()
     print(Fore.BLUE)
-    typingPrint("Loading new expense summary...")
+    typingPrint("        Loading new expense summary...")
     print(Style.RESET_ALL)
     time.sleep(2)
     clear_screen()
@@ -355,7 +361,7 @@ def by_date():
         sorted_user1 = sorted(user1, key=lambda i: datetime.datetime.strptime(i[0], "%d/%m/%Y"))
         
         # Credit for table format https://www.educba.com/python-print-table/
-        print(tabulate(sorted_user1, headers=["Date", "Category", "Description", "Amount"]))
+        print(f'    {tabulate(sorted_user1, headers=["Date", "Category", "Description", "Amount"])}')
         print("""
         What would you like to do next?
         1. Go back to View Statement Menu
@@ -363,7 +369,7 @@ def by_date():
         """)
         
         try:
-            user_input = input(">")
+            user_input = input("    >")
 
             if user_input.lower() == "1":
                 clear_screen()
@@ -374,7 +380,7 @@ def by_date():
             else:
                 raise ValueError("")
         except ValueError as e:
-            print("Invalid input: Please choose option 1 or option 2.")
+            print("    Invalid input: Please choose option 1 or option 2.")
 
 def by_category_per_month(user1):
     """
@@ -389,9 +395,9 @@ def by_category_per_year(user1):
     print("PER YEAR")
     category_total = {}
 
-    for row in user1:
-        category = row[1]
-        amount = float(row[3])
+    for column in user1:
+        category = column[1]
+        amount = float(column[3])
 
         if category in category_total:
             category_total[category] += amount
@@ -405,7 +411,7 @@ def by_category_per_year(user1):
     alphabetized_category_total = dict(sorted(category_total.items()))
     print(tabulate(alphabetized_category_total.items(), headers = ["Category", "Amount"]))
     print()
-    print(f"TOTAL:       {total_amount}")
+    print(f"TOTAL:       {print(math.ceil(total_amount*100)/100)}")
     print()
     print("""
     What would you like to do next?
@@ -448,26 +454,26 @@ def by_category():
         
     If you would like to go back to the Main Menu, please enter MM""")
     
-    user_input = input(">")
+    user_input = input("    >")
     
     try:
         if user_input == "1":
-            print(f"You chose option: {user_input}")
+            print(f"    You chose option: {user_input}")
             print()
             by_category_per_month(user1)
         elif user_input == "2":
-            print(f"You chose option: {user_input}")
+            print(f"    You chose option: {user_input}")
             print()
             by_category_per_year(user1)
         elif user_input.lower() == "mm":
-            print(f"You chose option: {user_input}")
+            print(f"    You chose option: {user_input}")
             print()
             clear_screen()
             main_menu()
         else:
             raise ValueError("")
     except ValueError as e:
-        print("Please choose from one of the options above.")     
+        print("    Invalid input: Please choose from one of the options above.")     
 
 def by_month():
     """
@@ -485,51 +491,51 @@ def view_statement():
                                 View Statement
         --------------------------------------------------------------------
         """)
-        print("How would you like to see your transactions?")
+        print("        How would you like to see your transactions?")
         print("""
         1. By date
         2. By month
         3. By category""")
-        print("If you would like to go back to the main menu, please enter MM")
+        print("        If you would like to go back to the main menu, please enter MM")
 
         try:
-            user_input = input(">")
+            user_input = input("        >")
             if user_input == "1":
-                print("You have chosen option 1: By date.")
+                print("        You have chosen option 1: By date.")
                 print()
                 print(Fore.BLUE)
                 typingPrint("""
-                Loading, please wait...""")
+                                Loading, please wait...""")
                 print(Style.RESET_ALL)
                 clear_screen()
                 by_date()
                 break
             elif user_input == "2":
-                print("You have chosen option 2: By month.")
+                print("        You have chosen option 2: By month.")
                 print()
                 print(Fore.BLUE)
                 typingPrint("""
-                Loading, please wait...""")
+                                Loading, please wait...""")
                 print(Style.RESET_ALL)
                 clear_screen()
                 by_month()
                 break
             elif user_input == "3":
-                print("You have chosen option 3: By category.")
+                print("        You have chosen option 3: By category.")
                 print()
                 print(Fore.BLUE)
                 typingPrint("""
-                Loading, please wait...""")
+                                Loading, please wait...""")
                 print(Style.RESET_ALL)
                 clear_screen()
                 by_category()
                 break
             elif user_input.lower() == "mm":
-                print("You have chosen to go back to the Main Menu")
+                print("        You have chosen to go back to the Main Menu")
                 print()
                 print(Fore.BLUE)
                 typingPrint("""
-                Loading, please wait...""")
+                                Loading, please wait...""")
                 print(Style.RESET_ALL)
                 clear_screen()
                 main_menu()
@@ -537,7 +543,7 @@ def view_statement():
             else:
                 raise ValueError("")
         except ValueError:
-            print(Fore.RED + f'Invalid data.\n Please enter option 1, 2, or 3 to see your transactions or enter mm to go back to the Main Menu' + Style.RESET_ALL)
+            print(Fore.RED + '        Invalid data: Please choose one of the options above or enter MM to go back to the Main Menu.' + Style.RESET_ALL)
             return False
 
 def view_budget_goals():
@@ -573,44 +579,44 @@ def main_menu():
 
 
         try:
-            user_input = input(">")
+            user_input = input("        >")
             
             if user_input == "1":
-                print(f"You chose option: {user_input}")
+                print(f"        You chose option: {user_input}")
                 print()
                 print(Fore.BLUE)
                 typingPrint("""
-                Add new expense form is loading, please wait...""")
+                        Add new expense form is loading, please wait...""")
                 print(Style.RESET_ALL)
                 clear_screen()
                 add_new_expense()
                 break
             elif user_input == "2":
-                print(f"You chose option: {user_input}")
+                print(f"        You chose option: {user_input}")
                 print()
                 print(Fore.BLUE)
                 typingPrint("""
-                View statement is loading, please wait...""")
+                        View statement is loading, please wait...""")
                 print(Style.RESET_ALL)
                 clear_screen()
                 view_statement()
                 break
             elif user_input == "3":
-                print(f"You chose option: {user_input}")
+                print(f"        You chose option: {user_input}")
                 print()
                 print(Fore.BLUE)
                 typingPrint("""
-                View budget goals is loading, please wait...""")
+                        View budget goals is loading, please wait...""")
                 print(Style.RESET_ALL)
                 clear_screen()
                 view_budget_goals()
                 break
             elif user_input == "4":
-                print(f"You chose option: {user_input}")
+                print(f"        You chose option: {user_input}")
                 print()
                 print(Fore.YELLOW)
                 typingPrint("""
-                Exiting, please wait...""")
+                                Exiting, please wait...""")
                 print(Style.RESET_ALL)
                 delayed_clear()
                 welcome_page()
@@ -618,7 +624,7 @@ def main_menu():
             else:
                 raise ValueError("")
         except ValueError as e:
-            print(Fore.RED + f'Invalid data: Please select one of the options provided' + Style.RESET_ALL)
+            print(Fore.RED + f'        Invalid data: Please select one of the options provided' + Style.RESET_ALL)
             delayed_clear()
 
 def pennywise_program():
@@ -626,8 +632,10 @@ def pennywise_program():
     delayed_clear()
     main_menu()
 
-pennywise_program()
-#add_new_expense()
+#pennywise_program()
+add_new_expense()
 #get_transaction_category(user1)
 ##get_transaction_description()
 #view_statement()
+#by_category_per_year(user1)
+#get_transaction_amount()
