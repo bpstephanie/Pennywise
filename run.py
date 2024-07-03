@@ -156,7 +156,7 @@ def get_transaction_category(user1):
             global expense_input_category
             expense_input_category = user_input.capitalize()
         
-            if 3 <= len(expense_input_category) <= 15 and len(expense_input_category.strip()) != 0:
+            if 3 <= len(expense_input_category) <= 15 and len(expense_input_category.strip()) != 0 and expense_input_category.isalpha():
                 return expense_input_category
             else:
                 raise ValueError("")
@@ -185,7 +185,7 @@ def get_transaction_description():
             new_description = input('    >')
 
             # Credit to disallow the user from only entering, starting with or ending with whitespace: https://stackoverflow.com/questions/68417120/not-allowing-spaces-in-string-input-python 
-            if 3 <= len(new_description) <= 30 and len(new_description.strip()) != 0:
+            if 3 <= len(new_description) <= 30 and len(new_description.strip()) != 0 and new_description.isalpha():
                 return new_description
                 break
             else:
@@ -300,7 +300,7 @@ def update_worksheet(data):
     typingPrint(Colors.BLUE + "           Updating worksheet, please wait..." + Colors.WHITE)
     user1_expenses = SHEET.worksheet("user1")
     user1_expenses.append_row(data)
-    print('                Worksheet updated successfully.\n')
+    print('                Worksheet updated successfully.')
 
     while True:
         print("""
