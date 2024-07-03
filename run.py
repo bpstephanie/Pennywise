@@ -25,6 +25,8 @@ user1 = user1_expenses.get_all_values()
 class Colors:
     GREEN, RED, WHITE, YELLOW  = '\033[92m', '\033[91m', '\033[97m', '\033[93m]'
     BLUE, PURPLE, CYAN = '\033[94m', '\033[95m', '\033[96m'
+    BOLD, ITALICS = '\033[1m', '\x1B[3m'
+    END = '\033[0m'
 
 # Credit for clear screen function: https://www.geeksforgeeks.org/clear-screen-python/
 def clear_screen():
@@ -141,21 +143,25 @@ def get_transaction_category(user1):
     sorted_list = sorted(one_cat_list)
     for i in sorted_list:
         print(f'            {i}')
+
+    print()
+
     while True:
         try:        
             print()
             print('    Please enter the category of the transaction:')
             user_input = input("    > ")
+            print()
 
             global expense_input_category
             expense_input_category = user_input.capitalize()
         
-            if expense_input_category !='' and len(expense_input_category) <= 15 and all(chr.isalpha() or chr.isspace() for chr in expense_input_category):
+            if 3 <= len(expense_input_category) <= 15 and len(expense_input_category.strip()) != 0:
                 return expense_input_category
             else:
                 raise ValueError("")
         except ValueError as e:
-            print(Colors.RED + f"    Invalid input: {e}. The category must be 14 letters or less." + Colors.WHITE)
+            print(Colors.RED + f"    Invalid input: {e} The category must be between 3 - 15 letters." + Colors.END)
         
 def get_transaction_description():
     """
@@ -178,8 +184,10 @@ def get_transaction_description():
             global new_description
             new_description = input('    >')
 
-            if new_description != ' ' and 3 <= len(new_description) <= 30 and all(chr.isalpha() or chr.isspace() for chr in new_description):
+            # Credit to disallow the user from only entering, starting with or ending with whitespace: https://stackoverflow.com/questions/68417120/not-allowing-spaces-in-string-input-python 
+            if 3 <= len(new_description) <= 30 and len(new_description.strip()) != 0:
                 return new_description
+                break
             else:
                 raise ValueError("")
         except ValueError as e:
@@ -336,7 +344,7 @@ def add_new_expense():
     get_transaction_description()
     clear_screen()
     get_transaction_amount()
-    typingPrint(Colors.BLUE + "        Loading new expense summary..." + Colors.WHITE)
+    typingPrint(Colors.BLUE + "             Loading new expense summary..." + Colors.WHITE)
     time.sleep(2)
     clear_screen()
     confirm_new_expense()
@@ -535,28 +543,28 @@ def main_menu():
                 print(f"        You chose option: {user_input}")
                 print()
                 typingPrint(Colors.BLUE + """
-                        Add new expense form is loading, please wait...""" + Colors.WHITE)
+                    Add new expense form is loading, please wait...""" + Colors.WHITE)
                 clear_screen()
                 add_new_expense()
             elif user_input == "2":
                 print(f"        You chose option: {user_input}")
                 print()
                 typingPrint(Colors.BLUE + """
-                        View statement is loading, please wait...""" + Colors.WHITE)
+                    View statement is loading, please wait...""" + Colors.WHITE)
                 clear_screen()
                 view_statement()
             elif user_input == "3":
                 print(f"        You chose option: {user_input}")
                 print()
                 typingPrint(Colors.BLUE + """
-                        View budget goals is loading, please wait...""" + Colors.WHITE)
+                    View budget goals is loading, please wait...""" + Colors.WHITE)
                 clear_screen()
                 view_budget_goals()
             elif user_input == "4":
                 print(f"        You chose option: {user_input}")
                 print()
                 typingPrint(Colors.YELLOW + """
-                                Exiting, please wait...""" + Colors.WHITE)
+                            Exiting, please wait...""" + Colors.WHITE)
                 clear_screen()
                 pennywise_program()
             else:
