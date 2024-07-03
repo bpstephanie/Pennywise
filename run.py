@@ -275,7 +275,7 @@ def confirm_new_expense():
             else:
                 raise ValueError("")
         except ValueError as e:
-            print("Invalid input")
+            print(Fore.RED + "Invalid input: Please choose one of the options above")
 
 def update_worksheet(data):
     """
