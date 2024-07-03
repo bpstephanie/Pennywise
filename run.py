@@ -7,6 +7,7 @@ import datetime
 from tabulate import tabulate
 from colorama import Back, Fore, Style
 import math
+from collections import defaultdict
 
 
 SCOPE = [
@@ -388,6 +389,8 @@ def by_category_per_month(user1):
     """
     print("PER MONTH")
 
+    category_monthly = defaultdict(lambda:"Not present")
+
 def by_category_per_year(user1):
     """
     Calculates total expenses in each category since the beginning of the year and displays them to the user.
@@ -632,8 +635,8 @@ def pennywise_program():
     delayed_clear()
     main_menu()
 
-#pennywise_program()
-add_new_expense()
+pennywise_program()
+#add_new_expense()
 #get_transaction_category(user1)
 ##get_transaction_description()
 #view_statement()
