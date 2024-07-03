@@ -629,8 +629,8 @@ def pennywise_program():
     welcome_page()
     main_menu()
 
-#pennywise_program()
+pennywise_program()
 #add_new_expense()
 #get_transaction_category(user1)
-#get_transaction_description()
-view_statement()
+##get_transaction_description()
+#view_statement()
