@@ -35,7 +35,7 @@ def delayed_clear():
     Clears CLI code after 10 seconds
     """
 
-    time.sleep(10)
+    time.sleep(6)
     clear_screen()
 
 #Python Typing Text Effect - www.101computing.net/python-typing-text-effect/
@@ -127,7 +127,7 @@ def get_transaction_category(user1):
     information ready.""")
     print()
     print()
-    print(f"    You may eneter a cateogry you have already used or choose another.")
+    print(f"    You may eneter a category you have already used or choose another.")
     print()
     current_choices = [row[1] for row in user1]
     one_cat_list = []
@@ -140,16 +140,15 @@ def get_transaction_category(user1):
     sorted_list = sorted(one_cat_list)
     for i in sorted_list:
         print(f'            {i}')
-
     while True:
-        print()
-        print('    Please enter the category of the transaction:')
-        user_input = input("    > ")
+        try:        
+            print()
+            print('    Please enter the category of the transaction:')
+            user_input = input("    > ")
 
-        global expense_input_category
-        expense_input_category = user_input.capitalize()
-    
-        try:
+            global expense_input_category
+            expense_input_category = user_input.capitalize()
+        
             if expense_input_category !='' and len(expense_input_category) <= 15 and all(chr.isalpha() or chr.isspace() for chr in expense_input_category):
                 return expense_input_category
             else:
@@ -178,7 +177,7 @@ def get_transaction_description():
             global new_description
             new_description = input('    >')
 
-            if new_description != '' and 3 <= len(new_description) <= 30 and all(chr.isalpha() or chr.isspace() for chr in new_description):
+            if new_description != ' ' and 3 <= len(new_description) <= 30 and all(chr.isalpha() or chr.isspace() for chr in new_description):
                 return new_description
             else:
                 raise ValueError("")
@@ -200,23 +199,24 @@ def get_transaction_amount():
     information ready.""")
     print()
     while True:
-        print('    Please enter the amount of the transaction, e.g. 29.95')
-        print()
-        print("""    Please do not include currency and make sure the amount is not more
-    than 999""")
-        user_input = input('    >')
-        global new_amount
-        new_amount = float(user_input)
-        
         try:
-            if new_amount != "" and new_amount > 0 and new_amount < 1000:
+            print('    Please enter the amount of the transaction, e.g. 29.95')
+            print()
+            print("""    Please do not include currency and make sure you have entered a
+        number between 0 - 999.""")
+            user_input = input('    >')
+            global new_amount
+            new_amount = float(user_input)
+        
+        
+            if new_amount != "" and 0 < new_amount < 1000:
                 return new_amount
                 break
             else:
                 raise ValueError("")
         except ValueError as e:
-            print(Fore.RED + """    Invalid input: Please make sure you have not entered an amount more
-            than 999.""" + Style.RESET_ALL)
+            print(Fore.RED + """    Invalid input: Please make sure you have entered a number between
+            0 - 999.""" + Style.RESET_ALL)
 
 def confirm_new_expense():
     """
@@ -239,11 +239,11 @@ def confirm_new_expense():
     print(f"                      Description:        {new_description}")
     print(f"                      Amount:             £{math.ceil(new_amount*100)/100}")
     print()
-    print("             Is this information correct? Please enter Y/N")
-    user_input = input("                    >")
 
     while True:
         try:
+            print("             Is this information correct? Please enter Y/N")
+            user_input = input("                    >")
             if user_input.lower() == "y":
                 confirmed_expense = [str(new_date), expense_input_category, new_description, new_amount]
                 update_worksheet(confirmed_expense)
@@ -258,31 +258,35 @@ def confirm_new_expense():
             If you wanted to enter 'YES' for the previous question but
             made a mistake, please enter Y now to save your 
             information.""")
-                print()
-                no_answer = input("                >")
-                print()
-                if no_answer == "1":
-                    print(Fore.BLUE)
-                    typingPrint("                Deleting new expense data, please wait...")
-                    print(Style.RESET_ALL)
-                    clear_screen()
-                    add_new_expense()
-                elif no_answer == "2":
-                    print(Fore.BLUE)
-                    typingPrint("        Deleting new expense data and returning to Main Menu, please wait...")
-                    print(Style.RESET_ALL)
-                    clear_screen()
-                    main_menu()
-                elif no_answer.lower() == "y":
-                    confirmed_expense = [new_date, expense_input_category, new_description, new_amount]
-                    update_worksheet(confirmed_expense)
-                    break
-                else:
-                    raise ValueError("")
+                while True:
+                    try:
+                        print()
+                        no_answer = input("                >")
+                        print()
+                        if no_answer == "1":
+                            print(Fore.BLUE)
+                            typingPrint("                Deleting new expense data, please wait...")
+                            print(Style.RESET_ALL)
+                            clear_screen()
+                            add_new_expense()
+                        elif no_answer == "2":
+                            print(Fore.BLUE)
+                            typingPrint("        Deleting new expense data and returning to Main Menu, please wait...")
+                            print(Style.RESET_ALL)
+                            clear_screen()
+                            main_menu()
+                        elif no_answer.lower() == "y":
+                            confirmed_expense = [new_date, expense_input_category, new_description, new_amount]
+                            update_worksheet(confirmed_expense)
+                            break
+                        else:
+                            raise ValueError("")
+                    except ValueError as e:
+                        print(Fore.RED + "Invalid input: Please choose one of the options above" + Style.RESET_ALL)
             else:
                 raise ValueError("")
         except ValueError as e:
-            print(Fore.RED + "                Invalid input: Please choose one of the options above")
+            print(Fore.RED + "Invalid input: Please choose one of the options above" + Style.RESET_ALL)
 
 def update_worksheet(data):
     """
