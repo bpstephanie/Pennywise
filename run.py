@@ -110,6 +110,7 @@ def get_transaction_date():
             if date >= min_date and date <= max_date:
                 new_date = date.date().strftime("%d/%m/%Y")
                 return new_date
+                clear_screen()
             else:
                 raise ValueError("")
         except ValueError:
@@ -158,10 +159,11 @@ def get_transaction_category(user1):
         
             if 3 <= len(expense_input_category) <= 15 and len(expense_input_category.strip()) != 0 and expense_input_category.isalpha():
                 return expense_input_category
+                clear_screen()
             else:
                 raise ValueError("")
         except ValueError as e:
-            print(Colors.RED + f"    Invalid input: {e} The category must be between 3 - 15 letters." + Colors.END)
+            print(Colors.RED + f"    Invalid input: {e} The category must be ONE word between 3 - 15 letters." + Colors.END)
         
 def get_transaction_description():
     """
@@ -187,11 +189,12 @@ def get_transaction_description():
             # Credit to disallow the user from only entering, starting with or ending with whitespace: https://stackoverflow.com/questions/68417120/not-allowing-spaces-in-string-input-python 
             if 3 <= len(new_description) <= 30 and len(new_description.strip()) != 0 and new_description.isalpha():
                 return new_description
+                clear_screen()
                 break
             else:
                 raise ValueError("")
         except ValueError as e:
-            print(Colors.RED + f"    Invalid input: The description needs to be between 3 and 30 letters long." + Colors.WHITE)
+            print(Colors.RED + f"    Invalid input: The description needs to be ONE word between 3 and 30 letters long." + Colors.WHITE)
 
 def get_transaction_amount():
     """
@@ -222,6 +225,7 @@ def get_transaction_amount():
         
             if new_amount != "" and 0 < new_amount < 1000:
                 return new_amount
+                clear_screen()
             else:
                 raise ValueError("")
         except ValueError as e:
@@ -298,9 +302,10 @@ def update_worksheet(data):
         Update user1 worksheet, add new row with the list data provided
     """
     typingPrint(Colors.BLUE + "           Updating worksheet, please wait..." + Colors.WHITE)
+    print()
     user1_expenses = SHEET.worksheet("user1")
     user1_expenses.append_row(data)
-    print('                Worksheet updated successfully.')
+    print(Color.PURPLE + Color.BOLD + '                Worksheet updated successfully.' + Color.END)
 
     while True:
         print("""
@@ -323,7 +328,7 @@ def update_worksheet(data):
             elif user_input == "2":
                 print(f"    You chose option: {user_input}")
                 print()
-                typingPrint(Colors.YELLOW + """           Returning to Main Menu, please wait...""" + Colors.WHITE)
+                typingPrint(Colors.YELLOW + "           Returning to Main Menu, please wait..." + Colors.WHITE)
                 clear_screen()
                 main_menu()
                 break
