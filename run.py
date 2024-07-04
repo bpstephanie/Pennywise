@@ -113,6 +113,7 @@ def get_transaction_date():
                 raise ValueError("")
         except ValueError:
             print(Colors.RED + '    Invalid data. Please enter a date which lies between 01/01/2024 and today.' + Colors.WHITE)
+    clear_screen()
 
 def get_transaction_category(user1):
     """
@@ -569,5 +570,5 @@ def pennywise_program():
     delayed_clear()
     main_menu()
 
-print("TEST CLEAR SCREEN")
+print(" NEXT TEST CLEAR SCREEN")
 pennywise_program()
