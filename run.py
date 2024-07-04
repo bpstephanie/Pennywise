@@ -107,7 +107,6 @@ def get_transaction_date():
 
             if date >= min_date and date <= max_date:
                 new_date = date.date().strftime("%d/%m/%Y")
-                return new_date
                 clear_screen()
                 get_transaction_category(user1)
             else:
@@ -157,7 +156,6 @@ def get_transaction_category(user1):
             expense_input_category = user_input.capitalize()
         
             if 3 <= len(expense_input_category) <= 15 and len(expense_input_category.strip()) != 0 and expense_input_category.isalpha():
-                return expense_input_category
                 clear_screen()
                 get_transaction_description()
             else:
@@ -175,11 +173,11 @@ def get_transaction_description():
                             Add New Expense
     --------------------------------------------------------------------
     """)
-    #print("""
-    #You will now need to enter the date, category, description and 
-    #amount of the expense you would like to add. Please have this 
-    #information ready.""")
-    #print()
+    print("""
+    You will now need to enter the date, category, description and 
+    amount of the expense you would like to add. Please have this 
+    information ready.""")
+    print()
     
     # Credit for code to only accept letters: https://www.shiksha.com/online-courses/articles/isalpha-method-in-python/#:~:text=The%20isalpha()%20method%20can,entered%20only%20contains%20alphabetic%20characters.
     while True:
@@ -190,9 +188,8 @@ def get_transaction_description():
 
             # Credit to disallow the user from only entering, starting with or ending with whitespace: https://stackoverflow.com/questions/68417120/not-allowing-spaces-in-string-input-python 
             if 3 <= len(new_description) <= 30 and len(new_description.strip()) != 0 and new_description.isalpha():
-                return new_description
                 clear_screen()
-                get_transaction_amount
+                get_transaction_amount()
             else:
                 raise ValueError("")
         except ValueError as e:
@@ -226,7 +223,6 @@ def get_transaction_amount():
             new_amount = float("{:.2f}".format(user_input))
         
             if new_amount != "" and 0 < new_amount < 1000:
-                return new_amount
                 print()
                 typingPrint(Colors.BLUE + "             Loading new expense summary..." + Colors.WHITE)
                 clear_screen()
@@ -312,7 +308,7 @@ def update_worksheet(data):
     print()
     user1_expenses = SHEET.worksheet("user1")
     user1_expenses.append_row(data)
-    print(Colors.PURPLE + Colors.BOLD + '            Worksheet updated successfully.' + Colors.END)
+    print(Colors.PURPLE + Colors.BOLD + '           Worksheet updated successfully.' + Colors.END)
     print()
 
     while True:
@@ -360,6 +356,11 @@ def by_date():
     
     # Credit for table format https://www.educba.com/python-print-table/
     print(f'{tabulate(sorted_user1, headers=["Date", "Category", "Description", "Amount"])}')
+    print()
+    print(Colors.CYAN + Colors.ITALICS + """    PLEASE NOTE: If you have just added an new expense via the 
+    'Add new expense form' it will not yet show up here. It will only 
+    be able to view once you log on again.""" + Colors.END)
+    print()
     print("""
     What would you like to do next?
     1. Go back to View Statement Menu
@@ -414,7 +415,11 @@ def by_category(user1):
     alphabetized_category_total = dict(sorted(category_total.items()))
     print(tabulate(alphabetized_category_total.items(), headers = ["Category", "Amount"]))
     print()
-    print(f"TOTAL:       {print(math.ceil(total_amount*100)/100)}")
+    print(f"TOTAL:          {total_amount}")
+    print()
+    print(Colors.CYAN + Colors.ITALICS + """    PLEASE NOTE: If you have just added an new expense via the 
+    'Add new expense form' it will not yet show up here. It will only 
+    be able to view once you log on again.""" + Colors.END)
     print()
     print("""
     What would you like to do next?
@@ -567,7 +572,6 @@ def pennywise_program():
     main_menu()
 
 pennywise_program()
-#add_new_expense()
 #get_transaction_category(user1)
 ##get_transaction_description()
 #view_statement()
