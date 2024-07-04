@@ -83,15 +83,6 @@ def get_transaction_date():
     """
     Gets the date of the transaction from the user.
     """
-    print("""
-    --------------------------------------------------------------------
-                            Add New Expense
-    --------------------------------------------------------------------
-    """)
-    print("""
-    You will now need to enter the date, category, description and 
-    amount of the expense you would like to add. Please have this 
-    information ready.""")
     print()
     while True:
         try:
@@ -112,7 +103,7 @@ def get_transaction_date():
 
             if date >= min_date and date <= max_date:
                 new_date = date.date().strftime("%d/%m/%Y")
-                break
+                clear_screen()
             else:
                 raise ValueError("")
         except ValueError:
@@ -123,15 +114,6 @@ def get_transaction_category(user1):
     """
     Gets the category of the transaction from the user.
     """
-    print("""
-    --------------------------------------------------------------------
-                            Add New Expense
-    --------------------------------------------------------------------
-    """)
-    print("""
-    You will now need to enter the date, category, description and 
-    amount of the expense you would like to add. Please have this 
-    information ready.""")
     print()
     print()
     print(f"    You may enter a category you have already used or choose another.")
@@ -171,15 +153,6 @@ def get_transaction_description():
     """
     Gets the description of the transaction from the user.
     """
-    print("""
-    --------------------------------------------------------------------
-                            Add New Expense
-    --------------------------------------------------------------------
-    """)
-    print("""
-    You will now need to enter the date, category, description and 
-    amount of the expense you would like to add. Please have this 
-    information ready.""")
     print()
     
     # Credit for code to only accept letters: https://www.shiksha.com/online-courses/articles/isalpha-method-in-python/#:~:text=The%20isalpha()%20method%20can,entered%20only%20contains%20alphabetic%20characters.
@@ -201,15 +174,6 @@ def get_transaction_amount():
     """
     Gets the amount of the transaction from the user.
     """
-    print("""
-    --------------------------------------------------------------------
-                            Add New Expense
-    --------------------------------------------------------------------
-    """)
-    print("""
-    You will now need to enter the date, category, description and 
-    amount of the expense you would like to add. Please have this 
-    information ready.""")
     print()
     while True:
         try:
@@ -344,6 +308,15 @@ def add_new_expense():
     """
     
     """
+    print("""
+    --------------------------------------------------------------------
+                            Add New Expense
+    --------------------------------------------------------------------
+    """)
+    print("""
+    You will now need to enter the date, category, description and 
+    amount of the expense you would like to add. Please have this 
+    information ready.""")
     get_transaction_date()
     clear_screen()
     get_transaction_category(user1)
