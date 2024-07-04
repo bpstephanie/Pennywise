@@ -92,8 +92,9 @@ def get_transaction_date():
     while True:
         try:
             print()
-            print("""    Please enter the date of the transaction in the following format
-    (DD/MM/YYYY):""")
+            print("""    
+                Please enter the date of the transaction in the following format
+                (DD/MM/YYYY):""")
             print()
             expense_input_date = input("    >")
             global new_date
@@ -107,6 +108,7 @@ def get_transaction_date():
 
             if date >= min_date and date <= max_date:
                 new_date = date.date().strftime("%d/%m/%Y")
+                clear_screen()
                 get_transaction_category(user1)
             else:
                 raise ValueError("")
@@ -156,6 +158,7 @@ def get_transaction_category(user1):
             expense_input_category = user_input.capitalize()
         
             if 3 <= len(expense_input_category) <= 15 and len(expense_input_category.strip()) != 0 and expense_input_category.isalpha():
+                clear_screen()
                 get_transaction_description()
             else:
                 raise ValueError("")
@@ -187,6 +190,7 @@ def get_transaction_description():
 
             # Credit to disallow the user from only entering, starting with or ending with whitespace: https://stackoverflow.com/questions/68417120/not-allowing-spaces-in-string-input-python 
             if 3 <= len(new_description) <= 30 and len(new_description.strip()) != 0 and new_description.isalpha():
+                clear_screen()
                 get_transaction_amount()
             else:
                 raise ValueError("")
@@ -223,6 +227,7 @@ def get_transaction_amount():
             if new_amount != "" and 0 < new_amount < 1000:
                 print()
                 typingPrint(Colors.BLUE + "             Loading new expense summary..." + Colors.WHITE)
+                clear_screen()
                 confirm_new_expense()
 
             else:
@@ -322,6 +327,7 @@ def update_worksheet(data):
                 print(f"    You chose option: {user_input}")
                 print()
                 typingPrint(Colors.BLUE + """        Add new expense form is loading, please wait...""" + Colors.WHITE)
+                clear_screen()
                 get_transaction_date()
                 break
             elif user_input == "2":
@@ -370,6 +376,7 @@ def by_date():
                 print()
                 typingPrint(Colors.BLUE + """
                                 Loading, please wait...""" + Colors.WHITE)
+                clear_screen()
                 view_statement()
             elif user_input.lower() == "2":
                 print("        You have chosen togo back to Main Menu.")
@@ -431,6 +438,7 @@ def by_category(user1):
             print()
             typingPrint(Colors.BLUE + """
                                 Loading, please wait...""" + Colors.WHITE)
+            clear_screen()
             view_statement()
         elif user_input == "2":
             print("        You have chosen to go back to Main Menu.")
@@ -475,18 +483,21 @@ def view_statement():
                 print()
                 typingPrint(Colors.BLUE + """
                                 Loading, please wait...""" + Colors.WHITE)
+                clear_screen()
                 by_date()
             elif user_input == "2":
                 print("        You have chosen option 2: By month.")
                 print()
                 typingPrint(Colors.BLUE + """
                                 Loading, please wait...""" + Colors.WHITE)
+                clear_screen()
                 by_month()
             elif user_input == "3":
                 print("        You have chosen option 3: By category.")
                 print()
                 typingPrint(Colors.BLUE + """
                                 Loading, please wait...""" + Colors.WHITE)
+                clear_screen()
                 by_category(user1)
             elif user_input.lower() == "mm":
                 print("        You have chosen to go back to the Main Menu")
@@ -552,8 +563,5 @@ def pennywise_program():
     delayed_clear()
     main_menu()
 
+print("TESTING CLEAR SCREEN")
 pennywise_program()
-#get_transaction_category(user1)
-##get_transaction_description()
-#view_statement()
-#main_menu()
