@@ -68,10 +68,8 @@ def welcome_page():
                                    $$   $$                                   
                                     $$$$$                                    
     ''' + Colors.WHITE + '''    
-                        Welcome back to Pennywise.
-
-    Find out how much you have spent this month and if you've been savvy 
-                       enough to hold off Pennywise...
+    Welcome back to Pennywise, your budget tracker to keep you on top of
+                               your expenses.
 
         ''')
     typingPrint(Colors.BLUE + """
@@ -111,6 +109,7 @@ def get_transaction_date():
                 new_date = date.date().strftime("%d/%m/%Y")
                 return new_date
                 clear_screen()
+                get_transaction_category(user1)
             else:
                 raise ValueError("")
         except ValueError:
@@ -160,6 +159,7 @@ def get_transaction_category(user1):
             if 3 <= len(expense_input_category) <= 15 and len(expense_input_category.strip()) != 0 and expense_input_category.isalpha():
                 return expense_input_category
                 clear_screen()
+                get_transaction_description()
             else:
                 raise ValueError("")
         except ValueError as e:
@@ -170,11 +170,11 @@ def get_transaction_description():
     Gets the description of the transaction from the user.
     """
     
-    #print("""
-    #--------------------------------------------------------------------
-    #                        Add New Expense
-    #--------------------------------------------------------------------
-    #""")
+    print("""
+    --------------------------------------------------------------------
+                            Add New Expense
+    --------------------------------------------------------------------
+    """)
     #print("""
     #You will now need to enter the date, category, description and 
     #amount of the expense you would like to add. Please have this 
@@ -192,6 +192,7 @@ def get_transaction_description():
             if 3 <= len(new_description) <= 30 and len(new_description.strip()) != 0 and new_description.isalpha():
                 return new_description
                 clear_screen()
+                get_transaction_amount
             else:
                 raise ValueError("")
         except ValueError as e:
@@ -202,16 +203,16 @@ def get_transaction_amount():
     Gets the amount of the transaction from the user.
     """
     
-    #print("""
-    #--------------------------------------------------------------------
-    #                        Add New Expense
-    #--------------------------------------------------------------------
-    #""")
-    #print("""
-    #You will now need to enter the date, category, description and 
-    #amount of the expense you would like to add. Please have this 
-    #information ready.""")
-    #print()
+    print("""
+    --------------------------------------------------------------------
+                            Add New Expense
+    --------------------------------------------------------------------
+    """)
+    print("""
+    You will now need to enter the date, category, description and 
+    amount of the expense you would like to add. Please have this 
+    information ready.""")
+    print()
     while True:
         try:
             print('    Please enter the amount of the transaction, e.g. 29.95')
@@ -224,10 +225,13 @@ def get_transaction_amount():
             # https://stackoverflow.com/questions/51690770/how-to-restrict-user-to-input-only-upto-two-decimal-point-float-numbers-in-pytho
             new_amount = float("{:.2f}".format(user_input))
         
-        
             if new_amount != "" and 0 < new_amount < 1000:
                 return new_amount
+                print()
+                typingPrint(Colors.BLUE + "             Loading new expense summary..." + Colors.WHITE)
                 clear_screen()
+                confirm_new_expense()
+
             else:
                 raise ValueError("")
         except ValueError as e:
@@ -283,7 +287,7 @@ def confirm_new_expense():
                         if no_answer == "1":
                             typingPrint(Colors.BLUE + "                Deleting new expense data, please wait..." + Colors.WHITE)
                             clear_screen()
-                            add_new_expense()
+                            get_transaction_date()
                         elif no_answer == "2":
                             typingPrint(Colors.YELLOW + "        Deleting new expense data and returning to Main Menu, please wait..." + Colors.WHITE)
                             clear_screen()
@@ -304,11 +308,12 @@ def update_worksheet(data):
     """
         Update user1 worksheet, add new row with the list data provided
     """
-    typingPrint(Colors.BLUE + "           Updating worksheet, please wait..." + Colors.WHITE)
+    typingPrint(Colors.BLUE + "            Updating worksheet, please wait..." + Colors.WHITE)
     print()
     user1_expenses = SHEET.worksheet("user1")
     user1_expenses.append_row(data)
-    print(Colors.PURPLE + Colors.BOLD + '                Worksheet updated successfully.' + Colors.END)
+    print(Colors.PURPLE + Colors.BOLD + '            Worksheet updated successfully.' + Colors.END)
+    print()
 
     while True:
         print("""
@@ -326,7 +331,7 @@ def update_worksheet(data):
                 print()
                 typingPrint(Colors.BLUE + """        Add new expense form is loading, please wait...""" + Colors.WHITE)
                 clear_screen()
-                add_new_expense()
+                get_transaction_date()
                 break
             elif user_input == "2":
                 print(f"    You chose option: {user_input}")
@@ -340,22 +345,6 @@ def update_worksheet(data):
         except ValueError as e:
             print(Colors.RED + f'    Invalid data: Please select one of the options provided' + Colors.WHITE)
             delayed_clear()
-
-def add_new_expense():
-    """
-    Gets expense details from user
-    """
-    get_transaction_date()
-    clear_screen()
-    get_transaction_category(user1)
-    clear_screen()
-    get_transaction_description()
-    clear_screen()
-    get_transaction_amount()
-    typingPrint(Colors.BLUE + "             Loading new expense summary..." + Colors.WHITE)
-    time.sleep(2)
-    clear_screen()
-    confirm_new_expense()
 
 def by_date():
     """
@@ -541,8 +530,7 @@ def main_menu():
         
         1. Add new expense
         2. View statement
-        3. View budget goals
-        4. Exit
+        3. Exit
         """)
     while True:
         try:
@@ -553,7 +541,7 @@ def main_menu():
                 typingPrint(Colors.BLUE + """
                     Add new expense form is loading, please wait...""" + Colors.WHITE)
                 clear_screen()
-                add_new_expense()
+                get_transaction_date()
             elif user_input == "2":
                 print(f"        You chose option: {user_input}")
                 print()
@@ -562,13 +550,6 @@ def main_menu():
                 clear_screen()
                 view_statement()
             elif user_input == "3":
-                print(f"        You chose option: {user_input}")
-                print()
-                typingPrint(Colors.BLUE + """
-                    View budget goals is loading, please wait...""" + Colors.WHITE)
-                clear_screen()
-                view_budget_goals()
-            elif user_input == "4":
                 print(f"        You chose option: {user_input}")
                 print()
                 typingPrint(Colors.YELLOW + """
