@@ -33,6 +33,7 @@ def clear_screen():
         os.system("cls")
     else:
         os.system("clear")
+    print("\033c", end="")
 
 def delayed_clear():
     """
@@ -536,5 +537,5 @@ def pennywise_program():
     delayed_clear()
     main_menu()
 
-print("ATTEMPT 7")
+print("ATTEMPT 8")
 pennywise_program()
