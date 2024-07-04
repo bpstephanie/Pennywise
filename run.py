@@ -85,18 +85,17 @@ def get_transaction_date():
     --------------------------------------------------------------------
     """)
     print("""
-    You will now need to enter the date, category, description and 
+    You will now need to enter the date, category, description and
     amount of the expense you would like to add. Please have this 
     information ready.""")
     print()
     while True:
         try:
             print()
-            print("""    
-                Please enter the date of the transaction in the 
-                following format (DD/MM/YYYY):""")
+            print("""    Please enter the date of the transaction in the following format 
+        (DD/MM/YYYY):""")
             print()
-            expense_input_date = input("    >")
+            expense_input_date = input(Fore.LIGHTMAGENTA_EX + "    >" + Style.RESET_ALL)
             global new_date
             # Converts user date input into datetime object
             # Credit for code https://stackoverflow.com/questions/53248537/typeerror-not-supported-between-instances-of-datetime-datetime-and-str
@@ -151,7 +150,7 @@ def get_transaction_category(user1):
         try:        
             print()
             print('    Please enter the category of the transaction:')
-            user_input = input("    > ")
+            user_input = input(Fore.LIGHTCYAN_EX + "    > " + Style.RESET_ALL)
             print()
 
             global expense_input_category
@@ -177,12 +176,13 @@ def get_transaction_description():
     You will now need to enter the date, category, description and 
     amount of the expense you would like to add. Please have this 
     information ready.""")
+    print()
     # Credit for code to only accept letters: https://www.shiksha.com/online-courses/articles/isalpha-method-in-python/#:~:text=The%20isalpha()%20method%20can,entered%20only%20contains%20alphabetic%20characters.
     while True:
         try:
             print('    Please enter the description of the transaction.')
             global new_description
-            new_description = input('    >')
+            new_description = input(Fore.LIGHTCYAN_EX + '    >' + Style.RESET_ALL)
 
             # Credit to disallow the user from only entering, starting with or ending with whitespace: https://stackoverflow.com/questions/68417120/not-allowing-spaces-in-string-input-python 
             if 3 <= len(new_description) <= 30 and len(new_description.strip()) != 0 and new_description.isalpha():
@@ -212,7 +212,7 @@ def get_transaction_amount():
             print()
             print("""    Please do not include currency and make sure you have entered a
         number between 0 - 999.""")
-            user_input = float(input('    >'))
+            user_input = float(input(Fore.LIGHTCYAN_EX + '    >' + Style.RESET_ALL))
             global new_amount
             # Credit for rounding user input to 2 decimal places: 
             # https://stackoverflow.com/questions/51690770/how-to-restrict-user-to-input-only-upto-two-decimal-point-float-numbers-in-pytho
@@ -220,7 +220,7 @@ def get_transaction_amount():
         
             if new_amount != "" and 0 < new_amount < 1000:
                 print()
-                typingPrint(Fore.BLUE + "             Loading new expense summary..." + Fore.WHITE)
+                typingPrint(Fore.BLUE + "                  Loading new expense summary..." + Fore.WHITE)
                 break
             else:
                 raise ValueError("")
@@ -253,7 +253,7 @@ def confirm_new_expense():
     while True:
         try:
             print("             Is this information correct? Please enter Y/N")
-            user_input = input("                    >")
+            user_input = input(Fore.LIGHTCYAN_EX + "                    >" + Style.RESET_ALL)
             if user_input.lower() == "y":
                 confirmed_expense = [str(new_date), expense_input_category, new_description, new_amount]
                 update_worksheet(confirmed_expense)
@@ -271,7 +271,7 @@ def confirm_new_expense():
                 while True:
                     try:
                         print()
-                        no_answer = input("                >")
+                        no_answer = input(Fore.LIGHTCYAN_EX + "                >" + Style.RESET_ALL)
                         print()
                         if no_answer == "1":
                             typingPrint(Fore.BLUE + "                Deleting new expense data, please wait..." + Fore.WHITE)
@@ -297,11 +297,11 @@ def update_worksheet(data):
     """
         Update user1 worksheet, add new row with the list data provided
     """
-    typingPrint(Fore.BLUE + "            Updating worksheet, please wait..." + Fore.WHITE)
+    typingPrint(Fore.BLUE + "                   Updating worksheet, please wait..." + Fore.WHITE)
     print()
     user1_expenses = SHEET.worksheet("user1")
     user1_expenses.append_row(data)
-    print(Fore.MAGENTA + Style.BRIGHT + '           Worksheet updated successfully.' + Fore.WHITE)
+    print(Fore.MAGENTA + Style.BRIGHT + '                   Worksheet updated successfully.' + Style.RESET_ALL)
     print()
 
     while True:
@@ -313,7 +313,7 @@ def update_worksheet(data):
         """)
 
         try:
-            user_input = input("    >")
+            user_input = input(Fore.LIGHTCYAN_EX + "    >" + Style.RESET_ALL)
             
             if user_input == "1":
                 print(f"    You chose option: {user_input}")
@@ -376,16 +376,16 @@ def by_date():
     """)
     while True:        
         try:
-            user_input = input("    >")
+            user_input = input(Fore.LIGHTCYAN_EX + "    >" + Style.RESET_ALL)
             if user_input.lower() == "1":
-                print("        You have chosen to go back to View Statement Menu.")
+                print("    You have chosen to go back to View Statement Menu.")
                 print()
                 typingPrint(Fore.BLUE + """
                                 Loading, please wait...""" + Fore.WHITE)
                 clear_screen()
                 view_statement()
             elif user_input.lower() == "2":
-                print("        You have chosen togo back to Main Menu.")
+                print("    You have chosen togo back to Main Menu.")
                 print()
                 typingPrint(Fore.YELLOW + """
                                 Loading, please wait...""" + Fore.WHITE)
@@ -438,7 +438,7 @@ def by_category(user1):
     """)
 
     try:
-        user_input = input(">")
+        user_input = input(Fore.LIGHTCYAN_EX + "    >" + Style.RESET_ALL)
         if user_input == "1":
             print("        You have chosen to go back to View Statement Menu.")
             print()
@@ -456,7 +456,7 @@ def by_category(user1):
         else:
             raise ValueError("")
     except ValueError as e:
-        print("Invalid input: Please choose from one of the options above.")    
+        print(Fore.RED + "Invalid input: Please choose from one of the options above." + Style.RESET_ALL)    
 
 def by_month():
     """
@@ -483,7 +483,7 @@ def view_statement():
     print("        If you would like to go back to the main menu, please enter MM")
     while True:
         try:
-            user_input = input("        >")
+            user_input = input(Fore.LIGHTCYAN_EX + "        >" + Style.RESET_ALL)
             if user_input == "1":
                 print("        You have chosen option 1: By date.")
                 print()
@@ -537,7 +537,7 @@ def main_menu():
         """)
     while True:
         try:
-            user_input = input("        >")
+            user_input = input(Fore.LIGHTCYAN_EX + "        >" + Style.RESET_ALL)
             if user_input == "1":
                 print(f"        You chose option: {user_input}")
                 print()
@@ -572,5 +572,5 @@ def pennywise_program():
     delayed_clear()
     main_menu()
 
-print("ATTEMPT 8")
+print("ATTEMPT 9")
 pennywise_program()
