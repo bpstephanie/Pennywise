@@ -360,6 +360,7 @@ def by_date():
     --------------------------------------------------------------------
     """)
     # Credit for sorting the date by date: https://docs.python.org/3/howto/sorting.html
+    
     sorted_user1 = sorted(user1, key=lambda i: datetime.datetime.strptime(i[0], "%d/%m/%Y"))
     
     # Credit for table format https://www.educba.com/python-print-table/
@@ -462,8 +463,49 @@ def by_month():
     """
     Displays the amount the user has spent each month since the beginning of the year
     """
-    clear_screen()
-    print("Has this worked?")
+    month_total = 0
+
+    for entry in user1:
+        date_string = entry[0]
+        category = entry[1]
+        description = entry[2]
+        amount = float(entry[3])
+
+        if date_string[3] == '0' and date_string[4] == '1':
+            month_total += amount
+        else:
+            month_total = amount
+        
+        
+
+    total_amount = 0
+    for value in user1:
+        total_amount += float(value[3])
+
+    print(total_amount)
+
+    #alphabetized_month = sorted(jan, key=lambda x:x[0])
+    #print(tabulate(jan, headers = ["Date", "Category", "Description", "Amount"]))
+    #print()
+    #print(f"TOTAL:          {total_amount}")
+            #if day_in_jan in january:
+            #    january[day_in_jan] += amount
+            #else:
+            #    january[day] = amount
+            
+    
+        #if date_string in january:
+        #    january[date_string] += amount
+        #else:
+        #    january[date_string] = amount
+
+        #total_amount = 0
+        #for value in user1:
+        #    total_amount += float(value[3])
+        #print(total_amount)
+
+
+
 
 def view_statement():
     """
@@ -573,4 +615,5 @@ def pennywise_program():
     main_menu()
 
 print("ATTEMPT 9")
-pennywise_program()
+#pennywise_program()
+by_month()
