@@ -78,6 +78,21 @@ At the top left of the page, just above the console screen, there is a Run Progr
 
 [Back To Top](<#contents>)
 
+### Flowchart
+
+The flowchart for Pennywise was made with the online service [Diagrams.net](https://app.diagrams.net/). The goal was to keep it as simple to understand as possible. It was made prior to starting and was a very helpful guide when coding the logic.
+
+<details>
+  <summary>Flowchart</summary>
+  Is this hidden?
+</details>
+
+[Back To Top](<#contents>)
+
+### Data Model
+
+[Back To Top](<#contents>)
+
 ### Design Choices
 
  - ### Typography
@@ -86,8 +101,7 @@ At the top left of the page, just above the console screen, there is a Run Progr
  - ### Colour Scheme
    Pennywise is back-end program therefore not much styling or visual design has been implementes. 
 
-   * [Ansi](https://pypi.org/project/ansi/) library for Python was used to add colour to the program to give visual feedback to the user.
-   
+   * [Ansi Colors](https://pypi.org/project/ansicolors/) library for Python was used to add colour to the program to give visual feedback to the user.
 
  [Back To Top](<#contents>)
 
