@@ -169,16 +169,18 @@ def get_transaction_description():
     """
     Gets the description of the transaction from the user.
     """
-    print("""
-    --------------------------------------------------------------------
-                            Add New Expense
-    --------------------------------------------------------------------
-    """)
-    print("""
-    You will now need to enter the date, category, description and 
-    amount of the expense you would like to add. Please have this 
-    information ready.""")
-    print()
+    
+    #print("""
+    #--------------------------------------------------------------------
+    #                        Add New Expense
+    #--------------------------------------------------------------------
+    #""")
+    #print("""
+    #You will now need to enter the date, category, description and 
+    #amount of the expense you would like to add. Please have this 
+    #information ready.""")
+    #print()
+    
     # Credit for code to only accept letters: https://www.shiksha.com/online-courses/articles/isalpha-method-in-python/#:~:text=The%20isalpha()%20method%20can,entered%20only%20contains%20alphabetic%20characters.
     while True:
         try:
@@ -190,7 +192,6 @@ def get_transaction_description():
             if 3 <= len(new_description) <= 30 and len(new_description.strip()) != 0 and new_description.isalpha():
                 return new_description
                 clear_screen()
-                break
             else:
                 raise ValueError("")
         except ValueError as e:
@@ -200,16 +201,17 @@ def get_transaction_amount():
     """
     Gets the amount of the transaction from the user.
     """
-    print("""
-    --------------------------------------------------------------------
-                            Add New Expense
-    --------------------------------------------------------------------
-    """)
-    print("""
-    You will now need to enter the date, category, description and 
-    amount of the expense you would like to add. Please have this 
-    information ready.""")
-    print()
+    
+    #print("""
+    #--------------------------------------------------------------------
+    #                        Add New Expense
+    #--------------------------------------------------------------------
+    #""")
+    #print("""
+    #You will now need to enter the date, category, description and 
+    #amount of the expense you would like to add. Please have this 
+    #information ready.""")
+    #print()
     while True:
         try:
             print('    Please enter the amount of the transaction, e.g. 29.95')
@@ -237,6 +239,7 @@ def confirm_new_expense():
     Summarizes all the new expense information the user has given.
     Asks user to confirm all details are correct.
     """
+    clear_screen()
     print()
     print("""
     --------------------------------------------------------------------
@@ -305,7 +308,7 @@ def update_worksheet(data):
     print()
     user1_expenses = SHEET.worksheet("user1")
     user1_expenses.append_row(data)
-    print(Color.PURPLE + Color.BOLD + '                Worksheet updated successfully.' + Color.END)
+    print(Colors.PURPLE + Colors.BOLD + '                Worksheet updated successfully.' + Colors.END)
 
     while True:
         print("""
