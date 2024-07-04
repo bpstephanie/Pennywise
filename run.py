@@ -104,6 +104,7 @@ def get_transaction_date():
             if date >= min_date and date <= max_date:
                 new_date = date.date().strftime("%d/%m/%Y")
                 clear_screen()
+                break
             else:
                 raise ValueError("")
         except ValueError:
@@ -153,7 +154,6 @@ def get_transaction_description():
     """
     Gets the description of the transaction from the user.
     """
-    print()
     
     # Credit for code to only accept letters: https://www.shiksha.com/online-courses/articles/isalpha-method-in-python/#:~:text=The%20isalpha()%20method%20can,entered%20only%20contains%20alphabetic%20characters.
     while True:
@@ -308,15 +308,6 @@ def add_new_expense():
     """
     
     """
-    print("""
-    --------------------------------------------------------------------
-                            Add New Expense
-    --------------------------------------------------------------------
-    """)
-    print("""
-    You will now need to enter the date, category, description and 
-    amount of the expense you would like to add. Please have this 
-    information ready.""")
     get_transaction_date()
     clear_screen()
     get_transaction_category(user1)
