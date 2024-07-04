@@ -33,7 +33,11 @@ def clear_screen():
     """
     Clears CLI ahead of next code page
     """
-    os.system('clear')
+    
+    if os.name == "nt":
+        os.system("cls")
+    else:
+        os.system("clear")
 
 def delayed_clear():
     """
@@ -570,5 +574,5 @@ def pennywise_program():
     delayed_clear()
     main_menu()
 
-print(" NEXT TEST CLEAR SCREEN")
+print(" NEW ATTEMPT TEST CLEAR SCREEN")
 pennywise_program()
