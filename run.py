@@ -350,7 +350,7 @@ def add_new_expense():
     clear_screen()
     get_transaction_description()
     clear_screen()
-    get_transaction_amount
+    get_transaction_amount()
     clear_screen()
     confirm_new_expense()
 
