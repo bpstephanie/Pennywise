@@ -479,7 +479,6 @@ def view_statement():
                                 Loading, please wait...""" + Colors.WHITE)
                 clear_screen()
                 by_date()
-                break
             elif user_input == "2":
                 print("        You have chosen option 2: By month.")
                 print()
@@ -487,7 +486,6 @@ def view_statement():
                                 Loading, please wait...""" + Colors.WHITE)
                 clear_screen()
                 by_month()
-                break
             elif user_input == "3":
                 print("        You have chosen option 3: By category.")
                 print()
@@ -495,7 +493,6 @@ def view_statement():
                                 Loading, please wait...""" + Colors.WHITE)
                 clear_screen()
                 by_category(user1)
-                break
             elif user_input.lower() == "mm":
                 print("        You have chosen to go back to the Main Menu")
                 print()
