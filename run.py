@@ -130,7 +130,7 @@ def get_transaction_category(user1):
     information ready.""")
     print()
     print()
-    print(f"    You may eneter a category you have already used or choose another.")
+    print(f"    You may enter a category you have already used or choose another.")
     print()
     current_choices = [row[1] for row in user1]
     one_cat_list = []

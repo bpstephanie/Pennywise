@@ -18,20 +18,20 @@ Welcome to <a href="https://pennywise-budget-tracker-ce1c05dc8133.herokuapp.com/
     * [Colour Scheme](<#colour-scheme>)
 * [**Features**](<#features>)
   * [Existing Features](<#existing-features>)
-    * [Welcome Message Modal](#welcome-message-modal)
-    * [How To Play Modal](<#how-to-play-modal>)
-    * [Main Game Page](<#main-game-page>)
-    * [Main Heading](<#main-heading>)
-    * [Home Button](<#home-button>)
-    * [Username](<#username>)
-    * [Start Game Button](<#start-game-button>)
-      * [Restart Button](<#restart-button>)
-    * [Main Game Area](<#main-game-area>)
-      * [Question Counter](<#question-counter>)
-      * [Question Area](<#question-area>)
-      * [Answer Buttons](<#answer-buttons>)
-      * [Score Area](<#score-area>)
-    * [Footer](<#footer>)
+    * [Welcome Page](<#welcome-page>)
+    * [Main Menu](<#main-menu>)
+    * [Add New Expense](<#add-new-expense>)
+      * [Add Date of Transaction](<#add-date-of-transaction>)
+      * [Add Category of Transaction](<#add-category-of-transaction>)
+      * [Add Description of Transaction](<#add-description-of-transaction>)
+      * [Add Amount of Transaction](<#add-amount-of-transaction>)
+      * [Confirm Transaction](<#confirm-transaction>)
+      * [Update Worksheet](<#update-worksheet>)
+    * [View Statement](<#view-statement>)
+      * [By Date](<#by-date>)
+      * [By Month](<#by-month>)
+      * [By Category](<#by-category>)
+    * [Add Budget Goals](<#add-budget=goals>)
   * [**Future Features**](<#future-features>)
 * [**Technologies Used**](<#technologies-used>)
   * [Languages](<#languages>)
@@ -84,12 +84,22 @@ The flowchart for Pennywise was made with the online service [Diagrams.net](http
 
 <details>
   <summary>Flowchart</summary>
-  Is this hidden?
+  ![Flowchart](assets/images/PP3_Flowchart.webp)
 </details>
 
 [Back To Top](<#contents>)
 
 ### Data Model
+
+[Google Sheets](https://workspace.google.com/products/sheets/) have been used to store all data. All data the the user inputs and views is retreived from and update to the Google Sheet. The name of the workbook is Pennywise and the name of the worksheet is user1.
+
+The worksheet has 4 columns of data that save the date, category, description and amount of each transaction.
+
+<details>
+  <summary>Google Sheet</summary>
+  ![Pennywise Google Sheet](assets/images/PP3_Google_Sheet.png)
+</details>
+
 
 [Back To Top](<#contents>)
 
@@ -108,7 +118,7 @@ The flowchart for Pennywise was made with the online service [Diagrams.net](http
 # Features
   ## Existing Features
 
-  - ### Welcome Message Modal
+  - ### Welcome Page
     When the user first enters the site, a welcome message modal appears with two buttons, the 'How To Play' button which takes the user to the instructions for the quiz and the 'Let's get Started' button which closes the modal and takes the user to the [Main Game Page](<#main-game-page>).
 
     Welcome Message Modal Desktop:\
@@ -117,98 +127,32 @@ The flowchart for Pennywise was made with the online service [Diagrams.net](http
     Welcome Message Modal Mobile:\
     ![Welcome Message Modal Mobile](media/site-screenshots//welcome-modal-mobile.png)
 
-  - ### How To Play Modal
-    This modal gives instructions to the user on how to play the quiz. When exiting this pop-up they will be taken back to the [Welcome Message Modal](<#welcome-message-modal>).
+  - ### Main Menu
 
-    How To Play Modal Desktop:
-    ![How To Play Modal Desktop](media/site-screenshots/howtoplay-modal.png)
-
-    How To Play Modal Mobile: \
-    ![How To Play Modal Mobile](media/site-screenshots/howtoplaymodal-mobile.png)
-
-  - ### Main Game Page
-    - #### Main Heading
-      A large stylized font which is fully responsive to different screen sizes.
-
-      Desktop Main Heading:
-      ![Main Heading Desktop](media/site-screenshots/main-heading.png)
-
-      Mobile Main Heading:\
-      ![Main Heading Mobile](media/site-screenshots//main-heading-mobile.png)
+  - ### Add New Expense
+    - #### Add Date of Transaction
     
-    - #### Home Button
-      The home button will take the user back to the welcome message modal where that can access the instructions. 
+    - #### Add Category of Transaction
 
-      ![Home Button](media/site-screenshots/home-button.png)
+    - #### Add Description of Transaction
 
-    - #### Username 
-      In order for a user to play the quiz, a username must be entered. The username has to be 3 - 10 characters long and must be letters.
+    - #### Add Amount of Transaction
 
-      Username Desktop:
-      ![Username Area Desktop](media/site-screenshots/username.png)
+    - #### Confirm Transaction
 
-      Username Mobile: \
-      ![Username Area Desktop](media/site-screenshots/username-mobile.png)
+    - #### Update Worksheet
+  
+  - ### View Statement
+    - #### By Date
 
-      Invalid Username Alert: \
-      ![Invalid Username Alert](media/site-screenshots/invalid-username.png)
+    - #### By Month
 
-    - #### Start Game Button
-      Once a username has been entered, a good luck message is shown and the 'Start' Button appears for the user to begin.
+    - #### By Category
+  
+  - ### Add Budget Goals
 
-      Successful Username Input Message and Start Button: 
-      ![Successful Username Input Message and Start Button](media/site-screenshots/successful-input.png) 
-
-      Button Hover Effect:\
-      ![Button Hover Effect](media/site-screenshots/button-hover.png)
-
-      - ##### Restart Button
-        Once the start button has been pressed, the text changes to 'Restart. This allows the user to restart the game any time they want. Once pressed, the score board and question counter will reset and a new set of random questions will be allocated to the round.
-
-        Restart Button:\
-        ![Restart Button](media/site-screenshots/restart-button.png)
-
-    - #### Main Game Area
-
-      Main Game Area Desktop:\
-      ![Main Game Area Desktop](media/site-screenshots/game-area-desktop.png)
-
-      Main Game Area Mobile: \
-      ![Main Game Area Mobile](media/site-screenshots/game-area-mobile.png)
-
-      The main game area consists of 4 parts:
-
-      - ##### Question Counter 
-        It will display 0/10 until the user starts the quiz. For every question that appears on screen, the counter will increase by 1 until it reaches 10, this has been generated through JavaScript.
-
-      - ##### Question Area 
-        It is generated from a JavaScript array. The questions are chosen randomly out of a possible 50 questions. When the user has finished their quiz, a final 'Well done' or 'Bad luck' message appears depending on the score of the user. Six questions and above correct out of ten warrants the user a well done message, five correct answers and below receive a bad luck message.
-
-        Well Done Message:
-        ![Well Done Message](media/site-screenshots/well-done.png)
-
-        Bad Luck Message:
-        ![Bad Luck Message](media/site-screenshots/bad-luck.png)
-
-      - ##### Answer Buttons
-        Each of the answer buttons display the name of the country they represent as well as the flag. The flag was chosen as the background for more visual users and is faded out to improve contrast and readability.
-
-        The answer buttons have a hover effect when the user moves their mouse over them. If the correct answer is chosen, the text and border will highlight green for two seconds, if the incorrect answer is chosen, the text and border will highlight red for two seconds. In both cases there is also a corresponding sound.
-
-        After much consideration, it was decided not to highlight the correct answer if the user gets the answer wrong. This was chosen to allow the user to play the quiz more times until they get the answer correct.
-
-        Correct Answer Visual Feedback:
-        ![Correct Answer Visual Feedback](media/site-screenshots/correct-answer.png)
-
-        Incorrect Answer Visual Feedback:
-        ![Incorrect Answer Visual Feedback](media/site-screenshots/incorrect-answer.png)
-
-      - ##### Score Area
-        The score area tracks both the number of correct answers and incorrect answers.
-
-    - #### Footer
-      The footer consists of two links to the LinkedIn and GitHub profiles of myself, respectively.
-      ![The Footer](media/site-screenshots/footer.png)
+  - ### Input Validation
+      
   
  [Back To Top](<#contents>)
 
@@ -226,26 +170,32 @@ The flowchart for Pennywise was made with the online service [Diagrams.net](http
 
 The following languages were used to create and develop this website:
 
-* [HTML5](https://html.spec.whatwg.org/) - provides the content and structure for the website.
-* [CSS](https://www.w3.org/Style/CSS/Overview.en.html) - provides the styling.
-* [JavaScript](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/What_is_JavaScript) - provides the responsive quiz elements.
+* [Python](https://www.python.org/)
 
-### Resources and Tools
-* [Balsamiq](https://balsamiq.com/wireframes/)
+### RFrameworks, Libraries and Packages
+* [Google Sheets](https://workspace.google.com/products/sheets/)
 * [Gitpod](https://www.gitpod.io/#get-started) 
 * [Github](https://github.com/)
-* [Favicon](https://favicon.io/)
-* [DevTools](https://developer.chrome.com/docs/devtools)
-* [Google Fonts](https://fonts.google.com/)
-* [Font Awesome](https://fontawesome.com/)
-* [Am I Responsive](https://ui.dev/amiresponsive)
+* [Gitbash](https://en.wikipedia.org/wiki/Bash_(Unix_shell))
+* [Heroku](https://dashboard.heroku.com/)
+* [GSpread](https://docs.gspread.org/en/latest/)
+* [GoogleOAuth](https://developers.google.com/identity/protocols/oauth2)
+* [Patorjk](https://patorjk.com/) - used to create the logo, however it had to be edited as was too large for the console.
+* [Time](https://docs.python.org/3/library/time.html)
+* [Os](https://docs.python.org/3/library/os.html)
+* [Sys](https://docs.python.org/3/library/sys.html)
+* [Datetime](https://docs.python.org/3/library/datetime.html)
+* [Tabulate](https://pypi.org/project/tabulate/)
+* [Math](https://docs.python.org/3/library/math.html)
+* [Collections](https://docs.python.org/3/library/collections.html#)
 * [CloudConvert](https://cloudconvert.com/png-to-webp)
 * [TinyPNG](https://tinypng.com/)
+* [PEP8]
 
  [Back To Top](<#contents>)
 
 # Testing
-Please refer [**_here_**](TESTING.md) for more information about testing on The Country Quiz.
+
 
  [Back To Top](<#contents>)
 
