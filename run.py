@@ -92,10 +92,10 @@ def get_transaction_date():
     while True:
         try:
             print()
-            print("""    Please enter the date of the transaction in the following format 
-        (DD/MM/YYYY):""")
+            print(Fore.LIGHTCYAN_EX + """    Please enter the date of the transaction in the following format 
+    (DD/MM/YYYY):""")
             print()
-            expense_input_date = input(Fore.LIGHTMAGENTA_EX + "    >" + Style.RESET_ALL)
+            expense_input_date = input( "    >" + Style.RESET_ALL)
             global new_date
             # Converts user date input into datetime object
             # Credit for code https://stackoverflow.com/questions/53248537/typeerror-not-supported-between-instances-of-datetime-datetime-and-str
@@ -149,8 +149,8 @@ def get_transaction_category(user1):
     while True:
         try:        
             print()
-            print('    Please enter the category of the transaction:')
-            user_input = input(Fore.LIGHTCYAN_EX + "    > " + Style.RESET_ALL)
+            print(Fore.LIGHTCYAN_EX + '    Please enter the category of the transaction:')
+            user_input = input("    > " + Style.RESET_ALL)
             print()
 
             global expense_input_category
@@ -180,9 +180,9 @@ def get_transaction_description():
     # Credit for code to only accept letters: https://www.shiksha.com/online-courses/articles/isalpha-method-in-python/#:~:text=The%20isalpha()%20method%20can,entered%20only%20contains%20alphabetic%20characters.
     while True:
         try:
-            print('    Please enter the description of the transaction.')
+            print(Fore.LIGHTCYAN_EX + '    Please enter the description of the transaction.')
             global new_description
-            new_description = input(Fore.LIGHTCYAN_EX + '    >' + Style.RESET_ALL)
+            new_description = input('    >' + Style.RESET_ALL)
 
             # Credit to disallow the user from only entering, starting with or ending with whitespace: https://stackoverflow.com/questions/68417120/not-allowing-spaces-in-string-input-python 
             if 3 <= len(new_description) <= 30 and len(new_description.strip()) != 0 and new_description.isalpha():
@@ -208,11 +208,11 @@ def get_transaction_amount():
     print()
     while True:
         try:
-            print('    Please enter the amount of the transaction, e.g. 29.95')
+            print(Fore.LIGHTCYAN_EX + '    Please enter the amount of the transaction, e.g. 29.95')
             print()
-            print("""    Please do not include currency and make sure you have entered a
+            print(Style.DIM + """    Please do not include currency and make sure you have entered a
         number between 0 - 999.""")
-            user_input = float(input(Fore.LIGHTCYAN_EX + '    >' + Style.RESET_ALL))
+            user_input = float(input(Style.NORMAL + '    >' + Style.RESET_ALL))
             global new_amount
             # Credit for rounding user input to 2 decimal places: 
             # https://stackoverflow.com/questions/51690770/how-to-restrict-user-to-input-only-upto-two-decimal-point-float-numbers-in-pytho
@@ -252,8 +252,8 @@ def confirm_new_expense():
 
     while True:
         try:
-            print("             Is this information correct? Please enter Y/N")
-            user_input = input(Fore.LIGHTCYAN_EX + "                    >" + Style.RESET_ALL)
+            print(Fore.LIGHTCYAN_EX + "             Is this information correct? Please enter Y/N")
+            user_input = input("                    >" + Style.RESET_ALL)
             if user_input.lower() == "y":
                 confirmed_expense = [str(new_date), expense_input_category, new_description, new_amount]
                 update_worksheet(confirmed_expense)
