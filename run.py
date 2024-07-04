@@ -108,6 +108,7 @@ def get_transaction_date():
 
             if date >= min_date and date <= max_date:
                 new_date = date.date().strftime("%d/%m/%Y")
+                break
             else:
                 raise ValueError("")
         except ValueError:
@@ -155,7 +156,7 @@ def get_transaction_category(user1):
             expense_input_category = user_input.capitalize()
         
             if 3 <= len(expense_input_category) <= 15 and len(expense_input_category.strip()) != 0 and expense_input_category.isalpha():
-                return
+                break
             else:
                 raise ValueError("")
         except ValueError as e:
@@ -185,7 +186,7 @@ def get_transaction_description():
 
             # Credit to disallow the user from only entering, starting with or ending with whitespace: https://stackoverflow.com/questions/68417120/not-allowing-spaces-in-string-input-python 
             if 3 <= len(new_description) <= 30 and len(new_description.strip()) != 0 and new_description.isalpha():
-                return
+                break
             else:
                 raise ValueError("")
         except ValueError as e:
@@ -220,7 +221,7 @@ def get_transaction_amount():
             if new_amount != "" and 0 < new_amount < 1000:
                 print()
                 typingPrint(Colors.BLUE + "             Loading new expense summary..." + Colors.WHITE)
-
+                break
             else:
                 raise ValueError("")
         except ValueError as e:
@@ -568,5 +569,5 @@ def pennywise_program():
     delayed_clear()
     main_menu()
 
-print("TESTING CLEAR SCREEN")
+print("TEST CLEAR SCREEN")
 pennywise_program()
