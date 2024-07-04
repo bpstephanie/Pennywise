@@ -93,8 +93,8 @@ def get_transaction_date():
         try:
             print()
             print("""    
-                Please enter the date of the transaction in the following format
-                (DD/MM/YYYY):""")
+                Please enter the date of the transaction in the 
+                following format (DD/MM/YYYY):""")
             print()
             expense_input_date = input("    >")
             global new_date
@@ -341,7 +341,7 @@ def add_new_expense():
     """
     get_transaction_date()
     clear_screen()
-    get_transaction_category()
+    get_transaction_category(user1)
     clear_screen()
     get_transaction_description()
     clear_screen()
