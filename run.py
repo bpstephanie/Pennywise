@@ -601,7 +601,7 @@ def by_month():
     print()
     print(Fore.CYAN + """
         If you would like to see your exact transactions per month,
-    please go to View Statements by Month.""" + Style.RESET_ALL)
+    please go to View Statements by Date.""" + Style.RESET_ALL)
     print()
     print("""
     What would you like to do next?
