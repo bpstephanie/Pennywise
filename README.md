@@ -31,7 +31,6 @@ Welcome to <a href="https://pennywise-budget-tracker-ce1c05dc8133.herokuapp.com/
       * [By Date](<#by-date>)
       * [By Month](<#by-month>)
       * [By Category](<#by-category>)
-    * [Add Budget Goals](<#add-budget=goals>)
   * [**Future Features**](<#future-features>)
 * [**Technologies Used**](<#technologies-used>)
   * [Languages](<#languages>)
@@ -111,7 +110,16 @@ The worksheet has 4 columns of data that save the date, category, description an
  - ### Colour Scheme
    Pennywise is back-end program therefore not much styling or visual design has been implementes. 
 
-   * [Ansi Colors](https://pypi.org/project/ansicolors/) library for Python was used to add colour to the program to give visual feedback to the user.
+   * [Colorama](https://pypi.org/project/colorama/) library for Python was used to add colour to the program to give visual feedback to the user.
+    - Red has been used for invalid input messages.
+    - Blue has been used for loading messages.
+    - Yellow has been used for messages regarding exiting the program or   
+      returning to the Main Menu.
+    - Cyan has been used for 
+    - Light cyan has been used for instructions before user input.
+    - Magenta has been for feedback regarding the worksheet being updated 
+      successfully.
+    - Dim style has been used to give extra information about user input.
 
  [Back To Top](<#contents>)
 
@@ -119,10 +127,10 @@ The worksheet has 4 columns of data that save the date, category, description an
   ## Existing Features
 
   - ### Welcome Page
-    When the user first enters the site, a welcome message modal appears with two buttons, the 'How To Play' button which takes the user to the instructions for the quiz and the 'Let's get Started' button which closes the modal and takes the user to the [Main Game Page](<#main-game-page>).
+    When the user first enters the site, the welcome page greets them. The user sees the logo and a short message explaining what the program does. Whilst the user is viewing this page, the [Main Menu](<#main-menu>) is loading.
 
-    Welcome Message Modal Desktop:\
-    ![Welcome Message Modal Desktop](media/site-screenshots/welcome-modal.png)
+    Welcome Page:\
+    ![Welcome Page](media/site-screenshots/welcome-modal.png)
 
     Welcome Message Modal Mobile:\
     ![Welcome Message Modal Mobile](media/site-screenshots//welcome-modal-mobile.png)
