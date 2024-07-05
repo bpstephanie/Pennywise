@@ -1,5 +1,5 @@
 # Pennywise
-budget tracker explanation
+Pennywise is a budget tracker that has been created with the user in mind.
 
 Welcome to <a href="https://pennywise-budget-tracker-ce1c05dc8133.herokuapp.com/">Pennywise</a>
 
@@ -134,7 +134,7 @@ The worksheet has 4 columns of data that save the date, category, description an
   
   <details><summary>Welcome Page</summary>
   
-    ![Welcome Page](assets/images/welcome_page.png)
+  ![Welcome Page](assets/images/welcome_page.png)
   
   </details>
 
@@ -143,7 +143,7 @@ The worksheet has 4 columns of data that save the date, category, description an
 
   <details><summary>Main Menu</summary>
     
-    ![Main Menu](assets/images/main-menu.png)
+  ![Main Menu](assets/images/main-menu.png)
 
   </details>
 
@@ -154,13 +154,13 @@ The worksheet has 4 columns of data that save the date, category, description an
       The user is asked for the date and is shown the format it needs to be in. If the user enters an invalid response an error message appears and the user is asked to re-enter the information in the correct format.
     <details><summary>Add Date of Transaction</summary>
       
-      ![Add Date of Transaction](assets/images/add-expense-date)
+    ![Add Date of Transaction](assets/images/add-expense-date)
     
     </details>
 
     <details><summary>Invalid Input</summary>
       
-      ![Add Date of Transaction Invalid Input](assets/images/add_expense_date_invalid_input)
+    ![Add Date of Transaction Invalid Input](assets/images/add_expense_date_invalid_input)
     
     </details>
     
@@ -168,13 +168,13 @@ The worksheet has 4 columns of data that save the date, category, description an
       The user is asked for the category of the transaction. If the user enters an invalid response an error message appears and the user is asked to re-enter the information in the correct format.
     <details><summary>Add Category of Transaction</summary>
     
-      ![Add Category of Transaction](assets/images/add-expense-category)
+    ![Add Category of Transaction](assets/images/add-expense-category)
     
     </details>
 
     <details><summary>Invalid Input</summary>
       
-      ![Add Category of Transaction Invalid Input](assets/images/add_expense_category_invalid_input)
+    ![Add Category of Transaction Invalid Input](assets/images/add_expense_category_invalid_input)
     
     </details>
 
@@ -183,13 +183,13 @@ The worksheet has 4 columns of data that save the date, category, description an
     
     <details><summary>Add Description of Transaction</summary>
       
-      ![Add Description of Transaction](assets/images/add-expense-description)
+    ![Add Description of Transaction](assets/images/add-expense-description)
     
     </details>
 
     <details><summary>Invalid Input</summary>
       
-      ![Add Description of Transaction Invalid Input](assets/images/add_expense_description_invalid_input)
+    ![Add Description of Transaction Invalid Input](assets/images/add_expense_description_invalid_input)
     
     </details>
 
@@ -197,13 +197,13 @@ The worksheet has 4 columns of data that save the date, category, description an
       The user is asked for the amount of the transaction. They are shown the format the input needs to be. If the user enters an invalid response an error message appears and the user is asked to re-enter the information in the correct format.
     <details><summary>Add Amount of Transaction</summary>
       
-      ![Add Amount of Transaction](assets/images/add-expense-amount)
+    ![Add Amount of Transaction](assets/images/add-expense-amount)
     
     </details>
 
     <details><summary>Invalid Input</summary>
       
-      ![Add Amount of Transaction Invalid Input](assets/images/add_expense_amount_invalid_input)
+    ![Add Amount of Transaction Invalid Input](assets/images/add_expense_amount_invalid_input)
     
     </details>
 
@@ -217,19 +217,19 @@ The worksheet has 4 columns of data that save the date, category, description an
       If the user inputs in invalid response they will be shown an error message and be asked to enter a valid response.
     <details><summary>Confirm Transaction Page</summary>
       
-      ![Confirm Transaction](assets/images/confirm_expense.png)
+    ![Confirm Transaction](assets/images/confirm_expense.png)
     
     </details>
 
     <details><summary>Confirm Transaction Invalid Input</summary>
       
-      ![Confirm Transaction Invalid Input](assets/images/confirm_expense_invalid_input.png)
+    ![Confirm Transaction Invalid Input](assets/images/confirm_expense_invalid_input.png)
     
     </details>
 
     <details><summary>Confirm Transaction Page if answered 'N'</summary>
       
-      ![Confirm Transaction Page if answered 'N'](assets/images/confirm_expense_no_input.png)
+    ![Confirm Transaction Page if answered 'N'](assets/images/confirm_expense_no_input.png)
     
     </details>
 
@@ -238,13 +238,13 @@ The worksheet has 4 columns of data that save the date, category, description an
 
     <details><summary>Worksheet Updated</summary>
       
-      ![Worksheet Updated](assets/images/updating_worksheet.png)
+    ![Worksheet Updated](assets/images/updating_worksheet.png)
     
     </details>
 
     <details><summary>Worksheet Menu Invalid Input</summary>
       
-      ![Worksheet Menu Invalid Input](assets/images/updating_worksheet_invalid_response.png)
+    ![Worksheet Menu Invalid Input](assets/images/updating_worksheet_invalid_response.png)
     
     </details>
 
@@ -254,13 +254,13 @@ The worksheet has 4 columns of data that save the date, category, description an
 
     <details><summary>View Statement Menu</summary>
       
-      ![View Statement Menu](assets/images/view_statement_menu.png)
+    ![View Statement Menu](assets/images/view_statement_menu.png)
     
     </details>
 
     <details><summary>View Statement Menu Invalid Input</summary>
       
-      ![View Statement Menu Invalid Input](assets/images/view_statement_menu_invalid_input.png)
+    ![View Statement Menu Invalid Input](assets/images/view_statement_menu_invalid_input.png)
     
     </details>
     
@@ -269,46 +269,44 @@ The worksheet has 4 columns of data that save the date, category, description an
 
     <details><summary>View Statement By Date</summary>
       
-      ![View Statement By Date](assets/images/by_date_top.png)
+    ![View Statement By Date](assets/images/by_date_top.png)
     
     </details>
 
     <details><summary>View Statement By Date Menu Invalid Input</summary>
       
-      ![View Statement By Date Menu Invalid Input](assets/images/by_date_invalid_response.png)
+    ![View Statement By Date Menu Invalid Input](assets/images/by_date_invalid_response.png)
     
     </details>
 
     - #### By Month
-      The user is shown the total amount they have spent each month.
+      The user is shown the total amount they have spent each month. Below there is a choice menu
 
     <details><summary>View Statement By Month</summary>
       
-      ![View Statement By Month](assets/images/by_month.png)
+    ![View Statement By Month](assets/images/by_month.png)
     
     </details>
 
     <details><summary>View Statement By Month Menu Invalid Input</summary>
       
-      ![View Statement By Month Menu Invalid Input](assets/images/by_month_invalid_input.png)
+    ![View Statement By Month Menu Invalid Input](assets/images/by_month_invalid_input.png)
     
     </details>
 
 
-    - #### By Category
-  
-  - ### Add Budget Goals
-
-  - ### Input Validation
-      
+    - #### By Category      
   
  [Back To Top](<#contents>)
 
 ### Future Features
 
-  - Have difficulty levels, ranging from easy to expert.
-  - Have a high score functionality for users to play many times and track their scores.
-  - Have different topics, for example, a quiz on the countries in Africa or Asia.
+  -  Have a budget goals section when the user can set their target spending for each category. To encourage users to meet their target they would be shown a congratulatory message if they succeed. On the other hand, if the overspend they would be shown an image of a scary, angry clown. The idea for this comes from the name  'Pennywise', being that it is the name of the clown from the movie 'It'.
+  - Give the user the ability to delete transactions or edit parts of an expense.
+  - Give the user the ability to input any income and deduct spending from that.
+  - An automated total for the View Statement By Month page, currently the site owner has to add the code for every new month after an expense has been added for that month.
+  - The ability to login with a username and password to keep data safe and secure.
+  - The ability to add more users with the use of multiple google sheets.
 
  [Back To Top](<#contents>)
 
