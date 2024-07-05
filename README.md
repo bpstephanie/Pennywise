@@ -10,7 +10,7 @@ A view-only version of the Google Sheet can be accessed [here](https://docs.goog
 
 ## Contents
 * [**User Experience UX**](<#user-experience-ux>)
-  * [Site Owner's Goal](<#site-owner's-goals>)
+  * [Site Owners Goal](<#site-owners-goals>)
   * [User Stories](<#user-stories>)
   * [Site Structure](<#site-structure>)
   * [Flowchart](<#flowchart>)
@@ -36,12 +36,14 @@ A view-only version of the Google Sheet can be accessed [here](https://docs.goog
   * [**Future Features**](<#future-features>)
 * [**Technologies Used**](<#technologies-used>)
   * [Languages](<#languages>)
-  * [Resources and Tools](<#rescources-and-tools>)
+  * [Frameworks, Libraries and Packages](<#frameworks-libraries-and-packages>)
 * [**Testing**](<#testing>)
   * [Testing User Stories](<#testing-user-stories>)
-  * [Code Validation](<#code-validation>)
+    * [Site Owner](<#site-owner>) 
+  * [Validation](<#validation>)
   * [Additional Testing](<#additional-testing>)
   * [Known Bugs](<#known-bugs>)
+    * [Unresolved Bugs](<#unresolved-bugs>)
 * [**Deployment**](<#deployment>)
   * [**To Deploy the Project**](<#to-deploy-the-project>)
   * [**To Fork the Project**](<#to-fork-the-project>)
@@ -52,7 +54,7 @@ A view-only version of the Google Sheet can be accessed [here](https://docs.goog
 * [**Acknowledgements**](<#acknowledgements>)
 
 # User Experience UX
-### Site Owner's Goal
+### Site Owners Goal
 * Site Owner:
     - As a site owner, I want users to easily understand what the program does.
     - As a site owner, I want users to be able to navigate through the program without any issues.
@@ -369,7 +371,9 @@ Provided as part of Code Institute's template:
 * [HTML5](https://html.spec.whatwg.org/)
 * [JavaScript](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/What_is_JavaScript)
 
-### Frameworks, Libraries and Packages
+[Back To Top](<#contents>)
+
+### Frameworks Libraries and Packages
 * [Google Sheets](https://workspace.google.com/products/sheets/) - used to host the application data.
 * [Gitpod](https://www.gitpod.io/#get-started) - used for writing code, committing and pushing to [Github](https://github.com/).
 * [Github](https://github.com/) - used for storing the repository and for version control.
@@ -393,7 +397,7 @@ Provided as part of Code Institute's template:
 
 # Testing
 ### Testing User Stories
-  * Site Owner:
+  #### Site Owner
     - As a site owner, I want users to easily understand what the program does.
         - On the welcome page, it clearly states that Pennywise is a budget tracker. Also on the main menu all options are to do with expenses.
 
@@ -403,7 +407,9 @@ Provided as part of Code Institute's template:
     - As a site owner, I want users to be able to add their expenses, view their expenses.
         - Pennywise has two main sections, the first where users can add new transactions and the second where users can view their expenses in 3 different ways. 
 
- * Site-users:
+  [Back To Top](<#contents>)
+
+  #### Site-users
     - As a user, I want to understand what the program does instantly. 
         - The name of the site is 'Pennywise' where penny is the smallest denomination of the pound sterling and wise means to have experience, knowledge and good judgement. Not only this, but there is a welcome message stating the Pennywise is a buget tracker.
 
@@ -518,6 +524,11 @@ Provided as part of Code Institute's template:
     - Previously to using [colorama](https://pypi.org/project/colorama/) to print colours to the terminal, [ANSI colors](https://pypi.org/project/ansicolors/) was used. The switch ocurred due to random numbers from the colour codes being printed to the terminal and the text itself not being in the correct colour.
       - After much research, it was decided that [colorama](https://pypi.org/project/colorama/) would be a better fit for the project.
 
+  ##### Unresolved Bugs
+    - If the user starts to type whilst typing print is 'typing', whatever is typed by the user will be printed to the terminal. If what the user writes is an option on the next page, for example '2', then the user will be redirected to that option for the choice menu consecutively.
+
+  [Back To Top](<#contents>)
+
 # Deployment
 
 ### **To Deploy on Heroku**
@@ -526,7 +537,7 @@ The program was developed using [Gitpod](https://www.gitpod.io/#get-started). Al
 
   Before starting the process on [Heroku](https://dashboard.heroku.com/), you first need to enter 'pip3 freeze > requirements.txt' in the terminal in your IDE. This adds a list of dependencies to your requirements.txt file needed for deployment. Commit these changes and push to GitHub before you deploy.
 
-      * You can also update your requirements.txt file once you have already deployed to Heroku, by entering 'pip freeze > requirements.txt'. Don't forget to commit your changes and push to GitHub.
+  -  You can also update your 'requirements.txt' file once you have already deployed to Heroku, by entering 'pip freeze > requirements.txt'. Don't forget to commit your changes and push to GitHub.
 
   The process of deploying to [Heroku](https://dashboard.heroku.com/) is as follows:
 
