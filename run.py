@@ -37,7 +37,7 @@ def clear_screen():
 
 def delayed_clear():
     """
-    Clears CLI code after 10 seconds
+    Clears CLI code after 6 seconds
     """
 
     time.sleep(6)
@@ -45,10 +45,14 @@ def delayed_clear():
 
 #Python Typing Text Effect - www.101computing.net/python-typing-text-effect/
 def typingPrint(text):
-  for character in text:
-    sys.stdout.write(character)
-    sys.stdout.flush()
-    time.sleep(0.05)
+    """
+    In place of print() to create a typing text effect
+    """
+
+    for character in text:
+        sys.stdout.write(character)
+        sys.stdout.flush()
+        time.sleep(0.05)
 
 def welcome_page():
     """
