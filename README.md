@@ -482,17 +482,132 @@ Provided as part of Code Institute's template:
 
 ### Known Bugs
 #### Fixed Bugs
+  - During my mid-way point mentor session, a few bugs were found:
 
+      - The first being that a user could input blank spaces for the expense category and the expense description meaning empty cells would be uploaded to the connected worksheet. This was a problem due to having empty strings when the data was 
+      iterated over. 
+        - The appropriate method was added to validate that the user's input is all letters. This solution does however mean that Pennywise can only accept 1 word answers for both categories.
+
+      - The second being that a user could input a negative number for the expense amount. This was a problem due to a negative sign not being able to be converted into a float.
+        - Parameters were added to the code to only accept numbers higher than 0.
+
+      - The third being that four or more invalid inputs by the user crashed the program resulting in the user having to refresh the page or having to press the 'Run Program' button to exit out of the crashed site and start again. 
+        - All code was arranged into while loops to stop this from happening.
+
+      - The fourth and biggest bug was the clear screen function not working. When the user was asked to input the date, the category, the description and the amount, segments of the previous 'page' were left on the screen. This was a very tough bug to overcome - taking over 24 hours.
+        - Lots of research was done and the function was moved to different parts of the code to see if it would work elsewhere. The solution to this problem was finally found on slack where a fellow coursemate had the same problem. The fix was easy, all that needed to be done was to add 'print(“\033c”, end=“”)' to the clear screen function. I am very grateful to my coursemates on slack as without them I do not know If I would have been able to 'squash' this bug.
+    
+  - During the final stages of the project, a few more bugs appeared:
+
+    - The first being an infinite loop of invalid error messages.
+      - This had a quick fix, the code had to be nested perfectly into the try/except block and if/else clause if there was one.
+
+    - Previously to using [colorama](https://pypi.org/project/colorama/) to print colours to the terminal, [ANSI colors](https://pypi.org/project/ansicolors/) was used. The switch ocurred due to random numbers from the colour codes being printed to the terminal and the text itself not being in the correct colour.
+      - After much research, it was decided that [colorama](https://pypi.org/project/colorama/) would be a better fit for the project.
 
 # Deployment
-This site was deployed to GitHub pages. The steps to deploy are as follows:
+The program was developed using [Gitpod](https://www.gitpod.io/#get-started). All commit messages were pushed to  which was then committed and pushed to [Github](https://github.com/) using the GitPod terminal. The finished project was deployed in [Heroku](https://dashboard.heroku.com/).
 
-  1. In the GitHub repository, navigate to the Settings tab. 
-  2. Next, navigate to the Pages tab on the left hand side.
-  3. Under Source, select main from the Branch dropdown menu. Then click save.
-  4. Once the main branch has been selected, the page will automatically be refreshed with a detailed ribbon display to indicate the successful deployment. 
+  Before starting the process on [Heroku](https://dashboard.heroku.com/), you first need to enter 'pip3 freeze > requirements.txt' in the terminal in your IDE. This adds a list of dependencies to your requirements.txt file needed for deployment. Commit these changes and push to GitHub before you deploy.
 
-![How To Deploy](https://github.com/bpstephanie/The_Country_Quiz/blob/main/media/deployment.png)
+      - You can also update your requirements.txt file once you have already deployed to Heroku, by entering 'pip freeze > requirements.txt'. Don't forget to commit your changes and push to GitHub.
+
+  The process of deploying to [Heroku](https://dashboard.heroku.com/) is as follows:
+
+  1. Log into [Heroku](https://dashboard.heroku.com/) (or create an account).
+
+  <details><summary>Heroku Step 1</summary>
+  
+  ![Heroku Step 1](assets/images/heroku_one.png)
+
+  </details>
+
+  2. In the top right hand corner there is a button 'New' that releases a dropdown menu, where you need to click 'Create a new app'.
+
+  <details><summary>Heroku Step 2</summary>
+  
+  ![Heroku Step 2](assets/images/heroku_two.png)
+
+  </details>
+
+  3. On the next page, you will need to add a name for your app and input what region you are in. Bear in mind that each app name is unique therefore you may need to try some different options out. Once you have decided on an app name and selected which region you are in. Click 'Create app'
+
+  <details><summary>Heroku Step 3</summary>
+  
+  ![Heroku Step 3](assets/images/heroku_three.png)
+
+  </details>
+
+  4. On the next page, click the 'Settings' tab. Once you have clicked on the settings tab, click 'Reveal Config Vars' in the 'Config Vars' section. Next you will need to add values. For Pennywise, two values were added:
+      - The first was the credentials (KEY = "CREDS", VALUE = "my credentials"). Once the key and value input fields have been filled you have to click 'Add'.
+      - The second was KEY = "PORT", VALUE = "8000". Then click 'Add'
+
+  <details><summary>Heroku Step 4 - Settings Tab</summary>
+  
+  ![Heroku Step 4 - Settings Tab](assets/images/heroku_four_settings.png)
+
+  </details>
+
+  <details><summary>Heroku Step 4 - Config Vars Section</summary>
+  
+  ![Heroku Step 4 - Config Vars Section](assets/images/heroku_four_config.png)
+
+  </details>
+
+  <details><summary>Heroku Step 4 - Config Vars Section - KEY / VALUE Inputs</summary>
+  
+  ![Heroku Step 4 - Config Vars Section - KEY / VALUE Inputs](assets/images/heroku_four_key_value.png)
+
+  </details>
+
+  5. Next you need to add buildpacks to the application which will run when the application is deployed. These allow all dependencies to be installed for the application. The 'Buildpacks' are located under the 'Config Vars' section on the 'Settings' Tab. Click 'Add buildpack'. Click on 'python', then 'Add Buildpack'. Then click 'node.js', then 'Add Buildpack'. The order they are listed is important; python needs to be listed above node.js. If you have added them in the wrong order you can click and drag them to be in the right order.
+
+  <details><summary>Heroku Step 5 - Buildpacks Section</summary>
+  
+  ![Heroku Step 5 - Buildpacks Section](assets/images/heroku_five_add_bp.png)
+
+  </details>
+
+  <details><summary>Heroku Step 5 - Add Buildpacks</summary>
+  
+  ![Heroku Step 5 - Add Buildpacks](assets/images/heroku_five_bp_mainscreen.png)
+
+  </details>
+
+  6. Next you need to go to the 'Deploy' tab. For 'Deployment Method', click 'GitHub'. Search for the repository name you want to deploy and then click connect.
+
+  <details><summary>Heroku Step 6 - Deploy Tab</summary>
+  
+  ![Heroku Step 6 - Deploy Tab](assets/images/heroku_six.png)
+
+  </details>
+
+  <details><summary>Heroku Step 6 - Deployment Method</summary>
+  
+  ![Heroku Step 6 - Deployment Method](assets/images/heroku_six_deployment_meth.png)
+
+  </details>
+
+  <details><summary>Heroku Step 6 - Connect to GitHub</summary>
+  
+  Pennywise has already been connected to Heroku so mine will look a little different from yours. However, where you can see 'App Connected to GitHub' on the image, you will see 'Connect to GitHub, next to that you'll be able to search for the repository you want to connect.
+
+  ![Heroku Step 6 - Connect to GitHub](assets/images/heroku_six_connect.png)
+
+  </details>
+
+  7. Scroll down to the sections below, called 'Automatic Deploys' and 'Manual Deploy'. Here you need to choose which option best suits your project. Once selected, click 'Deploy Branch'.
+
+  <details><summary>Heroku Step 7 - Deploy</summary>
+
+  I have chosen to go ahead with 'Automatic Deploys' so I don't have to manually deploy every time I push to GitHub.
+  
+  ![Heroku Step 7 - Deploy](assets/images/heroku_seven.png)
+
+  </details>
+
+
+
 
 The live link can be found here - https://bpstephanie.github.io/The_Country_Quiz/ 
 
@@ -501,9 +616,12 @@ The live link can be found here - https://bpstephanie.github.io/The_Country_Quiz
 A copy of the GitHub Repository can be made by forking the GitHub account. This copy can be viewed and changes can be made to the copy without affecting the original repository. The steps to fork the repository are as follows:
 
   1. Log in to GitHub and locate the repository.
+
+  
+
   2. On the right hand side of the page, in line with the repository name, is a button called 'Fork', click on the button to create a copy of the original repository in your GitHub Account.
   
-![How To Fork](https://github.com/bpstephanie/The_Country_Quiz/blob/main/media/fork.png)
+  
 
 ### **To Clone the Project**
 
