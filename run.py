@@ -97,10 +97,11 @@ def get_transaction_date():
         try:
             print()
             print(Fore.LIGHTCYAN_EX + """
-            Please enter the date of the transaction in the following format
-    (DD/MM/YYYY):""")
+            Please enter the date of the transaction in the following
+            format (DD/MM/YYYY):""")
             print()
-            expense_input_date = input("    >" + Style.RESET_ALL)
+            expense_input_date = input("""
+            >""" + Style.RESET_ALL)
             global new_date
             # Converts user date input into datetime object
             # Credit in README
@@ -117,8 +118,8 @@ def get_transaction_date():
                 raise ValueError("")
         except ValueError:
             print(Fore.RED + '''
-                Invalid data. Please enter a date which lies between 01/01/2024
-                and today.'''
+            Invalid data. Please enter a date which lies between 01/01/2024
+            and today.'''
                   + Fore.WHITE)
     clear_screen()
 
@@ -159,21 +160,22 @@ def get_transaction_category(user1):
             print()
             print(Fore.LIGHTCYAN_EX + '''
             Please enter the category of the transaction:''')
-            user_input = input("    > " + Style.RESET_ALL)
+            user_input = input("            > " + Style.RESET_ALL)
             print()
 
-            global expense_input_category
-            expense_input_category = user_input.capitalize()
-            if 3 <= len(expense_input_category) <= 15 and
-            len(expense_input_category.strip()) != 0 and
-            expense_input_category.isalpha():
+            global exp_cat
+            exp_cat = user_input.capitalize()
+            if (
+                2 < len(exp_cat) < 16 and len(exp_cat.strip()) != 0 and
+                    exp_cat.isalpha()
+            ):
                 break
             else:
                 raise ValueError("")
         except ValueError as e:
             print(Fore.RED + f"""
-                Invalid input: {e} The category must be ONE word between 3 - 15
-                letters.""" + Fore.WHITE)
+            Invalid input: {e} The category must be ONE word between 3 - 15
+            letters.""" + Fore.WHITE)
 
 
 def get_transaction_description():
@@ -194,21 +196,23 @@ def get_transaction_description():
     while True:
         try:
             print(Fore.LIGHTCYAN_EX + '''
-                Please enter the description of the transaction.''')
-            global new_description
-            new_description = input('    >' + Style.RESET_ALL)
+            Please enter the description of the transaction.''')
+            global new_dscr
+            new_dscr = input('''
+            >''' + Style.RESET_ALL)
 
             # Credit in README
-            if 3 <= len(new_description) <= 30 and
-            len(new_description.strip()) != 0 and
-            new_description.isalpha():
+            if (
+                3 <= len(new_dscr) <= 30 and len(new_dscr.strip()) != 0
+                    and new_dscr.isalpha()
+            ):
                 break
             else:
                 raise ValueError("")
         except ValueError as e:
             print(Fore.RED + f"""
-                Invalid input: The description needs to be ONE word between
-                3 - 30 letters long.""" + Fore.WHITE)
+            Invalid input: The description needs to be ONE word between
+            3 - 30 letters long.""" + Fore.WHITE)
 
 
 def get_transaction_amount():
@@ -228,28 +232,28 @@ def get_transaction_amount():
     while True:
         try:
             print(Fore.LIGHTCYAN_EX + '''
-                Please enter the amount of the transaction, e.g. 29.95''')
+        Please enter the amount of the transaction, e.g. 29.95''')
             print()
             print(Style.DIM + """
-                Please do not include currency and make sure you have entered a
+        Please do not include currency and make sure you have entered a
         number between 0 - 999.""")
-            user_input = float(input(Style.NORMAL + '    >' + Style.RESET_ALL))
+            user_input = float(input(Style.NORMAL + """
+            >""" + Style.RESET_ALL))
             global new_amount
             # Credit in README
             new_amount = float("{:.2f}".format(user_input))
             if new_amount != "" and 0 < new_amount < 1000:
                 print()
                 typingPrint(Fore.BLUE + """
-                                  Loading new expense summary..."""
+                            Loading new expense summary..."""
                             + Fore.WHITE)
                 break
             else:
                 raise ValueError("")
         except ValueError as e:
-            print(Fore.RED +
-                  """    Invalid input: Please make sure you have entered
-                  a number between
-                  0 - 999.""" + Fore.WHITE)
+            print(Fore.RED + """
+            Invalid input: Please make sure you have entered
+            a number between 0 - 999.""" + Fore.WHITE)
 
 
 def confirm_new_expense():
@@ -270,19 +274,19 @@ def confirm_new_expense():
     """)
     print()
     print(f"                     Date:               {new_date}")
-    print(f"                     Category:           {expense_input_category}")
-    print(f"                     Description:        {new_description}")
+    print(f"                     Category:           {exp_cat}")
+    print(f"                     Description:        {new_dscr}")
     print(f"                     Amount:             £{new_amount}")
     print()
 
     while True:
         try:
             print(Fore.LIGHTCYAN_EX + """
-                         Is this information correct? Please enter Y/N""")
-            user_input = input("                    >" + Style.RESET_ALL)
+                Is this information correct? Please enter Y/N""")
+            user_input = input("                >" + Style.RESET_ALL)
             if user_input.lower() == "y":
-                confirmed_expense = [str(new_date), expense_input_category,
-                                     new_description, new_amount]
+                confirmed_expense = [str(new_date), exp_cat,
+                                     new_dscr, new_amount]
                 update_worksheet(confirmed_expense)
                 break
             elif user_input.lower() == 'n':
@@ -303,35 +307,33 @@ def confirm_new_expense():
                                           + Style.RESET_ALL)
                         print()
                         if no_answer == "1":
-                            typingPrint(Fore.BLUE +
-                                        """Deleting new expense data, please
-                                        wait..."""
+                            typingPrint(Fore.BLUE + """
+            Deleting new expense data, please wait..."""
                                         + Fore.WHITE)
                             clear_screen()
                             add_new_expense()
                         elif no_answer == "2":
-                            typingPrint(Fore.YELLOW +
-                                        """Deleting new expense data and
-                                        returning to Main Menu, please wait...
-                                        """ + Fore.WHITE)
+                            typingPrint(Fore.YELLOW + """
+        Deleting new expense data and returning to Main Menu, please wait..."""
+                                        + Fore.WHITE)
                             clear_screen()
                             main_menu()
                         elif no_answer.lower() == "y":
                             confirmed_expense = [new_date,
-                                                 expense_input_category,
-                                                 new_description, new_amount]
+                                                 exp_category,
+                                                 new_dscr, new_amount]
                             update_worksheet(confirmed_expense)
                         else:
                             raise ValueError("")
                     except ValueError as e:
                         print(Fore.RED + """
-                              Invalid input: Please choose one of the options
-                              above""" + Fore.WHITE)
+                    Invalid input: Please choose one of the options above"""
+                              + Fore.WHITE)
             else:
                 raise ValueError("")
         except ValueError as e:
             print(Fore.RED + """
-                  Invalid input: Please choose one of the options above""" +
+            Invalid input: Please choose one of the options above""" +
                   Fore.WHITE)
 
 
@@ -345,7 +347,8 @@ def update_worksheet(data):
     user1_expenses = SHEET.worksheet("user1")
     user1_expenses.append_row(data)
     print(Fore.MAGENTA + Style.BRIGHT + """
-          Worksheet updated successfully.""" + Style.RESET_ALL)
+                  Worksheet updated successfully."""
+          + Style.RESET_ALL)
     print()
     print("""
             What would you like to do next?
@@ -357,21 +360,21 @@ def update_worksheet(data):
     while True:
         try:
             user_input = input(Fore.LIGHTCYAN_EX + """
-                        >""" + Style.RESET_ALL)
+            >""" + Style.RESET_ALL)
             if user_input == "1":
-                print(f"    You chose option: {user_input}")
+                print(f"        You chose option: {user_input}")
                 print()
                 typingPrint(Fore.BLUE + """
-                        Add new expense form is loading, please wait...
+                    Add new expense form is loading, please wait...
                         """ + Fore.WHITE)
                 clear_screen()
                 add_new_expense()
                 break
             elif user_input == "2":
-                print(f"    You chose option: {user_input}")
+                print(f"        You chose option: {user_input}")
                 print()
                 typingPrint(Fore.YELLOW + """
-                           Returning to Main Menu, please wait..."""
+                    Returning to Main Menu, please wait..."""
                             + Fore.WHITE)
                 clear_screen()
                 main_menu()
@@ -380,7 +383,7 @@ def update_worksheet(data):
                 raise ValueError("")
         except ValueError as e:
             print(Fore.RED + f"""
-                Invalid data: Please select one of the options provided
+            Invalid data: Please select one of the options provided
                 """ + Fore.WHITE)
 
 
@@ -449,7 +452,7 @@ def by_date():
                 raise ValueError("")
         except ValueError as e:
             print(Fore.RED + f"""
-                  Invalid input: Please choose one of the options above."""
+            Invalid input: Please choose one of the options above."""
                   + Fore.WHITE)
 
 
@@ -658,7 +661,7 @@ def view_statement():
         2. By month
         3. By category""")
     print("""
-            If you would like to go back to the main menu, please enter MM""")
+        If you would like to go back to the main menu, please enter MM""")
     while True:
         try:
             user_input = input(Fore.LIGHTCYAN_EX + "        >"
@@ -696,8 +699,8 @@ def view_statement():
                 raise ValueError("")
         except ValueError:
             print(Fore.RED + """
-                    Invalid data: Please choose one of the options above or
-                    enter MM to go back to the Main Menu.""" + Fore.WHITE)
+            Invalid data: Please choose one of the options above or
+            enter MM to go back to the Main Menu.""" + Fore.WHITE)
 
 
 def main_menu():
@@ -746,7 +749,7 @@ def main_menu():
                 raise ValueError("")
         except ValueError as e:
             print(Fore.RED + f"""
-                    Invalid input: Please choose one of the options above"""
+            Invalid input: Please choose one of the options above"""
                   + Fore.WHITE)
 
 
