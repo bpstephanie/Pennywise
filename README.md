@@ -159,7 +159,9 @@ The worksheet has 4 columns of data that save the date, category, description an
     [Back To Top](<#contents>)
 
     - #### Add Date of Transaction
-      The user is asked for the date and is shown the format it needs to be in. If the user enters an invalid response an error message appears and the user is asked to re-enter the information in the correct format.
+      The user is asked for the date and is shown the format it needs to be in. If the user enters an invalid response an error message appears and the user is asked to re-enter the information in the correct format. 
+      
+      The user can only add a transaction that was made from the beginningg of the year to date. This range was chosen as users will only be able to add expenses that occur within the same year. The idea of Pennywise is for the user to keep on top of their finances and to do that they need to be active on the program. It was decided that letting a user add expenses that happen too far in the past would not be in keeping with Pennywise's mission.
 
       <details><summary>Add Date of Transaction</summary>
         
@@ -524,7 +526,7 @@ The program was developed using [Gitpod](https://www.gitpod.io/#get-started). Al
 
   Before starting the process on [Heroku](https://dashboard.heroku.com/), you first need to enter 'pip3 freeze > requirements.txt' in the terminal in your IDE. This adds a list of dependencies to your requirements.txt file needed for deployment. Commit these changes and push to GitHub before you deploy.
 
-      - You can also update your requirements.txt file once you have already deployed to Heroku, by entering 'pip freeze > requirements.txt'. Don't forget to commit your changes and push to GitHub.
+      * You can also update your requirements.txt file once you have already deployed to Heroku, by entering 'pip freeze > requirements.txt'. Don't forget to commit your changes and push to GitHub.
 
   The process of deploying to [Heroku](https://dashboard.heroku.com/) is as follows:
 
