@@ -79,7 +79,7 @@ At the top left of the page, just above the console screen, there is a Run Progr
 
 ### Flowchart
 
-The flowchart for Pennywise was made with the online service [Diagrams.net](https://app.diagrams.net/). The goal was to keep it as simple to understand as possible. It was made prior to starting and was a very helpful guide when coding the logic.
+The flowchart for Pennywise was made with the online service [Diagrams.net](https://app.diagrams.net/). The goal was to keep it as simple to understand as possible. It was made prior to starting and was a very helpful guide when coding the logic. As you can see, one of the branches off the [main menu](<#main-menu>) is not in the final deployed project. Due to time constraints, the scope of the project had to be reduced. However, I fully intend on adding this feature in the future. You can learn more about it in the [future features](<#future-features>) section.
 
 <details><summary>Flowchart</summary>
 
@@ -130,7 +130,7 @@ The worksheet has 4 columns of data that save the date, category, description an
   ## Existing Features
 
   - ### Welcome Page
-    When the user first enters the site, the welcome page greets them. The user sees the logo and a short message explaining what the program does. Whilst the user is viewing this page, the [Main Menu](<#main-menu>) is loading.
+    When the user first enters the site, the welcome page greets them. The user sees the logo and a short message explaining what the program does. Whilst the user is viewing this page, the [main menu](<#main-menu>) is loading.
   
     <details><summary>Welcome Page</summary>
     
@@ -609,7 +609,8 @@ The program was developed using [Gitpod](https://www.gitpod.io/#get-started). Al
 
   </details>
 
-The live link can be found here - 
+  
+The live link can be found here - <a href="https://pennywise-budget-tracker-ce1c05dc8133.herokuapp.com/">Pennywise</a>
 
 ### **To Fork the Project**
 
@@ -643,28 +644,37 @@ The steps to clone a project from GitHub are as follows:
 
   </details>
 
+  
+The live link can be found here - <a href="https://pennywise-budget-tracker-ce1c05dc8133.herokuapp.com/">Pennywise</a>
+
 [Back To Top](<#contents>)
 
 ## Credits 
+* In the clear screen function:
+    - The code was inspired by the following article [Geeks for Geeks](https://www.geeksforgeeks.org/clear-screen-python/).
+
+* In the typing print function:
+     - The code was inspired by the following article [101 Computing](https://www.101computing.net/python-typing-text-effect/).
 
 * In the get transaction date function: 
     - The code to convert user date input into datetime object was inspired by the following question and answer in [Stack Overflow](https://stackoverflow.com/questions/53248537/typeerror-not-supported-between-instances-of-datetime-datetime-and-str).
+
 
 * In the get transaction category function: 
     - The code to remove duplicates from a list was inspired by [Data Quest](https://www.dataquest.io/blog/how-to-remove-duplicates-from-a-python-list/).
 
 * In the get transaction description function: 
-    - The code to only accept letters was inspired by [Shiksha](https://www.shiksha.com/online-courses/articles/isalpha-method-in-python/#:~:text=The%20isalpha()%20method%20can,entered%20only%20contains%20alphabetic%20characters.)
+    - The code to only accept letters was inspired by [Shiksha](https://www.shiksha.com/online-courses/articles/isalpha-method-in-python/#:~:text=The%20isalpha()%20method%20can,entered%20only%20contains%20alphabetic%20characters.).
 
-    - The code to disallow the user from only entering, starting with or ending with whitespace was inspired by the following question and answer in [Stack Overflow](https://stackoverflow.com/questions/68417120/not-allowing-spaces-in-string-input-python)
+    - The code to disallow the user from only entering, starting with or ending with whitespace was inspired by the following question and answer in [Stack Overflow](https://stackoverflow.com/questions/68417120/not-allowing-spaces-in-string-input-python).
 
 * In get transaction amount function:
-    - The code for rounding user input to 2 decimal places was inspired by the following question and answer in [Stack Overflow](https://stackoverflow.com/questions/51690770/how-to-restrict-user-to-input-only-upto-two-decimal-point-float-numbers-in-pytho)
+    - The code for rounding user input to 2 decimal places was inspired by the following question and answer in [Stack Overflow](https://stackoverflow.com/questions/51690770/how-to-restrict-user-to-input-only-upto-two-decimal-point-float-numbers-in-pytho).
 
 * In by date function (part of view statement section):
-    - The code for sorting the date by date was inspired by [Python Docs](https://docs.python.org/3/howto/sorting.html)
+    - The code for sorting the date by date was inspired by [Python Docs](https://docs.python.org/3/howto/sorting.html).
 
-
+    - The code for printing date in the format of a table was inspired by [Educba](https://www.educba.com/python-print-table/).
 
 [Back To Top](<#contents>)
 
