@@ -506,6 +506,9 @@ Provided as part of Code Institute's template:
       - After much research, it was decided that [colorama](https://pypi.org/project/colorama/) would be a better fit for the project.
 
 # Deployment
+
+### **To Deploy on Heroku**
+
 The program was developed using [Gitpod](https://www.gitpod.io/#get-started). All commit messages were pushed to  which was then committed and pushed to [Github](https://github.com/) using the GitPod terminal. The finished project was deployed in [Heroku](https://dashboard.heroku.com/).
 
   Before starting the process on [Heroku](https://dashboard.heroku.com/), you first need to enter 'pip3 freeze > requirements.txt' in the terminal in your IDE. This adds a list of dependencies to your requirements.txt file needed for deployment. Commit these changes and push to GitHub before you deploy.
@@ -606,10 +609,7 @@ The program was developed using [Gitpod](https://www.gitpod.io/#get-started). Al
 
   </details>
 
-
-
-
-The live link can be found here - https://bpstephanie.github.io/The_Country_Quiz/ 
+The live link can be found here - 
 
 ### **To Fork the Project**
 
@@ -617,10 +617,13 @@ A copy of the GitHub Repository can be made by forking the GitHub account. This 
 
   1. Log in to GitHub and locate the repository.
 
-  
-
   2. On the right hand side of the page, in line with the repository name, is a button called 'Fork', click on the button to create a copy of the original repository in your GitHub Account.
+
+  <details><summary>How to Fork</summary>
   
+  ![How To Fork](assets/images/fork.png)
+
+  </details>
   
 
 ### **To Clone the Project**
@@ -634,7 +637,11 @@ The steps to clone a project from GitHub are as follows:
   5. Type 'git clone' then paste the URL copied from GitHub.
   6. Upon pressing enter, the local clone will be created.
 
-![How To Clone](https://github.com/bpstephanie/The_Country_Quiz/blob/main/media/clone.png)
+  <details><summary>How to Clone</summary>
+
+  ![How To Clone](assets/images/clone.png)
+
+  </details>
 
 [Back To Top](<#contents>)
 
