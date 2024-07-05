@@ -425,7 +425,7 @@ def by_category(user1):
     alphabetized_category_total = dict(sorted(category_total.items()))
     print(tabulate(alphabetized_category_total.items(), headers = ["Category", "Amount"]))
     print()
-    print(f"TOTAL:          {total_amount}")
+    print(f"TOTAL:          {math.ceil(total_amount*100)/100}")
     print()
     print(Fore.CYAN + """    PLEASE NOTE: If you have just added an new expense via the 
     'Add new expense form' it will not yet show up here. It will only 
@@ -463,50 +463,114 @@ def by_month():
     """
     Displays the amount the user has spent each month since the beginning of the year
     """
-    month_total = 0
+    jan_total = {}
+    feb_total = {}
+    mar_total = {}
+    apr_total = {}
+    may_total = {}
+    jun_total = {}
+    jul_total = {}
 
-    for entry in user1:
-        date_string = entry[0]
-        category = entry[1]
-        description = entry[2]
-        amount = float(entry[3])
+    for column in user1:
+        dates = column[0]
+        amount = float(column[3])
 
-        if date_string[3] == '0' and date_string[4] == '1':
-            month_total += amount
+        jan = dates[3] == '0' and dates[4] == '1'
+        if jan in jan_total:
+            jan_total[jan] += amount
         else:
-            month_total = amount
+            jan_total[jan] = amount
         
+        feb = dates[3] == '0' and dates[4] == '2'
+        if feb in feb_total:
+            feb_total[feb] += amount
+        else:
+            feb_total[feb] = amount
         
+        mar = dates[3] == '0' and dates[4] == '3'
+        if mar in mar_total:
+            mar_total[mar] += amount
+        else:
+            mar_total[mar] = amount
 
-    total_amount = 0
-    for value in user1:
-        total_amount += float(value[3])
+        apr = dates[3] == '0' and dates[4] == '4'
+        if apr in apr_total:
+            apr_total[apr] += amount
+        else:
+            apr_total[apr] = amount
+        
+        may = dates[3] == '0' and dates[4] == '5'
+        if may in may_total:
+            may_total[may] += amount
+        else:
+            may_total[may] = amount
+        
+        jun = dates[3] == '0' and dates[4] == '6'
+        if jun in jun_total:
+            jun_total[jun] += amount
+        else:
+            jun_total[jun] = amount
+        
+        jul = dates[3] == '0' and dates[4] == '7'
+        if jul in jul_total:
+            jul_total[jul] += amount
+        else:
+            jul_total[jul] = amount
 
-    print(total_amount)
+    print("""
+    --------------------------------------------------------------------
+                         View Statement By Month
+    --------------------------------------------------------------------
+    """)
 
-    #alphabetized_month = sorted(jan, key=lambda x:x[0])
-    #print(tabulate(jan, headers = ["Date", "Category", "Description", "Amount"]))
-    #print()
-    #print(f"TOTAL:          {total_amount}")
-            #if day_in_jan in january:
-            #    january[day_in_jan] += amount
-            #else:
-            #    january[day] = amount
-            
-    
-        #if date_string in january:
-        #    january[date_string] += amount
-        #else:
-        #    january[date_string] = amount
+    print(f'        In January, you spent                   {jan_total[1]}')
+    print(f'        In February, you spent                  {feb_total[1]}')
+    print(f'        In March, you spent                     {mar_total[1]}')
+    print(f'        In April, you spent                     {apr_total[1]}')
+    print(f'        In May, you spent                       {may_total[1]}')
+    print(f'        In June, you spent                      {jun_total[1]}')
+    print(f'        In July, you spent                      {jul_total[1]}')
 
-        #total_amount = 0
-        #for value in user1:
-        #    total_amount += float(value[3])
-        #print(total_amount)
+    print()
+    print(Fore.CYAN + """    If you would like to see your exact transactions per month,
+    please go to View Statements by Month.""" + Style.RESET_ALL)
+    print()
+    print("""
+    What would you like to do next?
 
+    1. Go to View Statement by date
+    2. Go back to View Statement Menu
+    3. Go back to Main Menu
+    """)
 
-
-
+    try:
+        user_input = input(Fore.LIGHTCYAN_EX + "    >" + Style.RESET_ALL)
+        if user_input == "1":
+            print("        You have chosen to View Statement by date.")
+            print()
+            typingPrint(Fore.BLUE + """
+                                Loading, please wait...""" + Fore.WHITE)
+            clear_screen()
+            by_date()
+        elif user_input == "2":
+            print("        You have chosen to go back to View Statement Menu.")
+            print()
+            typingPrint(Fore.BLUE + """
+                                Loading, please wait...""" + Fore.WHITE)
+            clear_screen()
+            view_statement()
+        elif user_input == "3":
+            print("        You have chosen to go back to Main Menu.")
+            print()
+            typingPrint(Fore.YELLOW + """
+                                Loading, please wait...""" + Fore.WHITE)
+            clear_screen()
+            main_menu()
+        else:
+            raise ValueError("")
+    except ValueError as e:
+        print(Fore.RED + "Invalid input: Please choose from one of the options above." + Style.RESET_ALL)    
+   
 def view_statement():
     """
     Displays a menu giving 3 options of how the user wants to see their statement: by month, by date, by category
@@ -614,6 +678,5 @@ def pennywise_program():
     delayed_clear()
     main_menu()
 
-print("ATTEMPT 9")
-#pennywise_program()
-by_month()
+pennywise_program()
+
