@@ -57,7 +57,7 @@ def welcome_page():
     """
     Displays program name and welcome text to user
     """
-    print(Fore.GREEN + '''
+    print(Fore.GREEN + Style.BRIGHT + '''
     
 
     $$$$$$                                            $$                   
@@ -70,7 +70,7 @@ def welcome_page():
                                         $$
                                    $$   $$                                   
                                     $$$$$                                    
-    ''' + Fore.WHITE + '''    
+    ''' + Style.RESET_ALL + '''    
     Welcome back to Pennywise, your budget tracker to keep you on top of
                                your expenses.
 

@@ -138,6 +138,8 @@ The worksheet has 4 columns of data that save the date, category, description an
   
   </details>
 
+  [Back To Top](<#contents>)
+
   - ### Main Menu
     The [Main Menu](<#main-menu>) gives the user 3 choices: [Add New Expense](<#add-new-expense>), [View Statement](<#view-statement>) or Exit. If the user chooses to exit, they will be redirected back to the [Welcome Page](<#welcome-page>).
 
@@ -147,8 +149,12 @@ The worksheet has 4 columns of data that save the date, category, description an
 
   </details>
 
+  [Back To Top](<#contents>)
+
   - ### Add New Expense
     The add new expense function collects 4 pieces of information from the user. These are the [date](<#add-date-of-transaction>), [category](<#add-category-of-transaction>), [description](<#add-description-of-transaction>) and [amount](<#add-amount-of-transaction>) of the transaction. Once all 4 details have been collected, the user is shown a summary of that information in the [Confirm Transaction](<#confirm-transaction>) function. If the user confirms all the details are correct. The google worksheet will be updated with the new expense. However, if the user entered something wrong they can choose to add the information again, or even return to the [Main Menu](<#main-menu>).
+
+    [Back To Top](<#contents>)
 
     - #### Add Date of Transaction
       The user is asked for the date and is shown the format it needs to be in. If the user enters an invalid response an error message appears and the user is asked to re-enter the information in the correct format.
@@ -163,6 +169,8 @@ The worksheet has 4 columns of data that save the date, category, description an
     ![Add Date of Transaction Invalid Input](assets/images/add_expense_date_invalid_input)
     
     </details>
+
+    [Back To Top](<#contents>)
     
     - #### Add Category of Transaction
       The user is asked for the category of the transaction. If the user enters an invalid response an error message appears and the user is asked to re-enter the information in the correct format.
@@ -177,6 +185,8 @@ The worksheet has 4 columns of data that save the date, category, description an
     ![Add Category of Transaction Invalid Input](assets/images/add_expense_category_invalid_input)
     
     </details>
+
+    [Back To Top](<#contents>)
 
     - #### Add Description of Transaction
       The user is asked for the description of the transaction. If the user enters an invalid response an error message appears and the user is asked to re-enter the information in the correct format.
@@ -193,6 +203,8 @@ The worksheet has 4 columns of data that save the date, category, description an
     
     </details>
 
+    [Back To Top](<#contents>)
+
     - #### Add Amount of Transaction
       The user is asked for the amount of the transaction. They are shown the format the input needs to be. If the user enters an invalid response an error message appears and the user is asked to re-enter the information in the correct format.
     <details><summary>Add Amount of Transaction</summary>
@@ -206,6 +218,8 @@ The worksheet has 4 columns of data that save the date, category, description an
     ![Add Amount of Transaction Invalid Input](assets/images/add_expense_amount_invalid_input)
     
     </details>
+
+    [Back To Top](<#contents>)
 
     - #### Confirm Expense
       Th user is shown all the information they have entered in the previous 4 steps in a format that is easy to read and understand. The user is asked to confirm if this information is correct. 
@@ -233,6 +247,8 @@ The worksheet has 4 columns of data that save the date, category, description an
     
     </details>
 
+    [Back To Top](<#contents>)
+
     - #### Update Worksheet
       Onces the user has been shown the worksheet has been updated successfully, they are shown another menu. They have 2 choices, to add another expense of to return to the main menu. The user will be shown an error message and asked to a valid response if they enter an invalid answer. 
 
@@ -248,6 +264,8 @@ The worksheet has 4 columns of data that save the date, category, description an
     
     </details>
 
+    [Back To Top](<#contents>)
+
   
   - ### View Statement Menu
     The view statement page displays to the user 3 ways in which they can see their statement: [by date](<#by-date>), [by month](<#by-month>) or [by category](<#by-category>). They are also given the option to return to the [main menu](<#main-menu>) if they enter 'MM'. If the user enters and invalid reponse they will be shown an error message.
@@ -260,9 +278,11 @@ The worksheet has 4 columns of data that save the date, category, description an
 
     <details><summary>View Statement Menu Invalid Input</summary>
       
-    ![View Statement Menu Invalid Input](assets/images/view_statement_menu_invalid_input.png)
+    ![View Statement Menu Invalid Input](assets/images/view_statement_menu_invalid_response.png)
     
     </details>
+
+    [Back To Top](<#contents>)
     
     - #### By Date
       The user is shown all transactions to date in a format that is easy to read and understand. Under all the transactions the user is asked if they would like to return to the [main menu](<#main-menu>) or the [view statement menu](<#view-statement-menu>). If the user enters and invalid response they are shown an error message and asked to enter their response again.
@@ -279,6 +299,8 @@ The worksheet has 4 columns of data that save the date, category, description an
     
     </details>
 
+    [Back To Top](<#contents>)
+
     - #### By Month
       The user is shown the total amount they have spent each month. Below there is a choice menu
 
@@ -290,23 +312,40 @@ The worksheet has 4 columns of data that save the date, category, description an
 
     <details><summary>View Statement By Month Menu Invalid Input</summary>
       
-    ![View Statement By Month Menu Invalid Input](assets/images/by_month_invalid_input.png)
+    ![View Statement By Month Menu Invalid Input](assets/images/by_month_invalid_response.png)
     
     </details>
 
+    [Back To Top](<#contents>)
 
-    - #### By Category      
+    - #### By Category
+      The user is shown how much they have spent in each category from the beginnning of the year to date.
+
+    <details><summary>View Statement By Category</summary>
+      
+    ![View Statement By Category](assets/images/by_category.png)
+    
+    </details>
+
+    <details><summary>View Statement By Category Menu Invalid Input</summary>
+      
+    ![View Statement By Category Menu Invalid Input](assets/images/by_category_invalid_response.png)
+    
+    </details>
+
   
  [Back To Top](<#contents>)
 
 ### Future Features
 
-  -  Have a budget goals section when the user can set their target spending for each category. To encourage users to meet their target they would be shown a congratulatory message if they succeed. On the other hand, if the overspend they would be shown an image of a scary, angry clown. The idea for this comes from the name  'Pennywise', being that it is the name of the clown from the movie 'It'.
   - Give the user the ability to delete transactions or edit parts of an expense.
-  - Give the user the ability to input any income and deduct spending from that.
-  - An automated total for the View Statement By Month page, currently the site owner has to add the code for every new month after an expense has been added for that month.
+  - Give the user the ability to input any income.
+  - Generate an automated total for the View Statement By Month page. Currently the site owner has to add the code for every new month after an expense has been added for that month.
   - The ability to login with a username and password to keep data safe and secure.
   - The ability to add more users with the use of multiple google sheets.
+  -  Have a budget goals section when the user can set their target spending for each category.
+    - To encourage users to meet their target they would be shown a congratulatory message if they succeed. 
+    - On the other hand, if the overspend they would be shown an image of a scary, angry clown. The idea for this comes from the name  'Pennywise', being that it is the name of the clown from the movie 'It'.
 
  [Back To Top](<#contents>)
 
@@ -333,7 +372,6 @@ The following languages were used to create and develop this website:
 * [Datetime](https://docs.python.org/3/library/datetime.html)
 * [Tabulate](https://pypi.org/project/tabulate/)
 * [Math](https://docs.python.org/3/library/math.html)
-* [Collections](https://docs.python.org/3/library/collections.html#)
 * [CloudConvert](https://cloudconvert.com/png-to-webp)
 * [TinyPNG](https://tinypng.com/)
 * [PEP8]
