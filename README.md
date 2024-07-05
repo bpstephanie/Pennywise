@@ -25,9 +25,9 @@ Welcome to <a href="https://pennywise-budget-tracker-ce1c05dc8133.herokuapp.com/
       * [Add Category of Transaction](<#add-category-of-transaction>)
       * [Add Description of Transaction](<#add-description-of-transaction>)
       * [Add Amount of Transaction](<#add-amount-of-transaction>)
-      * [Confirm Transaction](<#confirm-transaction>)
+      * [Confirm Expense](<#confirm-expense>)
       * [Update Worksheet](<#update-worksheet>)
-    * [View Statement](<#view-statement>)
+    * [View Statement Menu](<#view-statement-menu>)
       * [By Date](<#by-date>)
       * [By Month](<#by-month>)
       * [By Category](<#by-category>)
@@ -111,15 +111,16 @@ The worksheet has 4 columns of data that save the date, category, description an
    Pennywise is back-end program therefore not much styling or visual design has been implementes. 
 
    * [Colorama](https://pypi.org/project/colorama/) library for Python was used to add colour to the program to give visual feedback to the user.
-    - Red has been used for invalid input messages.
-    - Blue has been used for loading messages.
-    - Yellow has been used for messages regarding exiting the program or   
-      returning to the Main Menu.
-    - Cyan has been used for 
-    - Light cyan has been used for instructions before user input.
-    - Magenta has been for feedback regarding the worksheet being updated 
-      successfully.
-    - Dim style has been used to give extra information about user input.
+      - Red has been used for invalid input messages.
+      - Blue has been used for loading messages.
+      - Yellow has been used for messages regarding exiting the program   
+        or returning to the Main Menu.
+      - Cyan has been used for the please note messages in the view 
+        statement section.
+      - Light cyan has been used for instructions before user input.
+      - Magenta has been for feedback regarding the worksheet being 
+        updated successfully.
+      - Dim style has been used to give extra information about user input.
 
  [Back To Top](<#contents>)
 
@@ -129,28 +130,121 @@ The worksheet has 4 columns of data that save the date, category, description an
   - ### Welcome Page
     When the user first enters the site, the welcome page greets them. The user sees the logo and a short message explaining what the program does. Whilst the user is viewing this page, the [Main Menu](<#main-menu>) is loading.
 
-    Welcome Page:\
-    ![Welcome Page](media/site-screenshots/welcome-modal.png)
-
-    Welcome Message Modal Mobile:\
-    ![Welcome Message Modal Mobile](media/site-screenshots//welcome-modal-mobile.png)
+  <details>
+    <summary>Welcome Page</summary>
+    ![Welcome Page](assets/images/welcome_page.png)
+  </details>
 
   - ### Main Menu
+    The [Main Menu](<#main-menu>) gives the user 3 choices: [Add New Expense](<#add-new-expense>), [View Statement](<#view-statement>) or Exit. If the user chooses to exit, they will be redirected back to the [Welcome Page](<#welcome-page>).
+
+  <details>
+    <summary>Main Menu</summary>
+    ![Main Menu](assets/images/main-menu.png)
+  </details>
 
   - ### Add New Expense
+    The add new expense function collects 4 pieces of information from the user. These are the [date](<#add-date-of-transaction>), [category](<#add-category-of-transaction>), [description](<#add-description-of-transaction>) and [amount](<#add-amount-of-transaction>) of the transaction. Once all 4 details have been collected, the user is shown a summary of that information in the [Confirm Transaction](<#confirm-transaction>) function. If the user confirms all the details are correct. The google worksheet will be updated with the new expense. However, if the user entered something wrong they can choose to add the information again, or even return to the [Main Menu](<#main-menu>).
+
     - #### Add Date of Transaction
+      The user is asked for the date and is shown the format it needs to be in. If the user enters an invalid response an error message appears and the user is asked to re-enter the information in the correct format.
+    <details>
+      <summary>Add Date of Transaction</summary>
+      ![Add Date of Transaction](assets/images/add-expense-date)
+    </details>
+
+    <details>
+      <summary>Invalid Input</summary>
+      ![Add Date of Transaction Invalid Input](assets/images/add_expense_date_invalid_input)
+    </details>
     
     - #### Add Category of Transaction
+      The user is asked for the category of the transaction. If the user enters an invalid response an error message appears and the user is asked to re-enter the information in the correct format.
+    <details>
+      <summary>Add Category of Transaction</summary>
+      ![Add Category of Transaction](assets/images/add-expense-category)
+    </details>
+
+    <details>
+      <summary>Invalid Input</summary>
+      ![Add Category of Transaction Invalid Input](assets/images/add_expense_category_invalid_input)
+    </details>
 
     - #### Add Description of Transaction
+      The user is asked for the description of the transaction. If the user enters an invalid response an error message appears and the user is asked to re-enter the information in the correct format.
+    <details>
+      <summary>Add Description of Transaction</summary>
+      ![Add Description of Transaction](assets/images/add-expense-description)
+    </details>
+
+    <details>
+      <summary>Invalid Input</summary>
+      ![Add Description of Transaction Invalid Input](assets/images/add_expense_description_invalid_input)
+    </details>
 
     - #### Add Amount of Transaction
+      The user is asked for the amount of the transaction. They are shown the format the input needs to be. If the user enters an invalid response an error message appears and the user is asked to re-enter the information in the correct format.
+    <details>
+      <summary>Add Amount of Transaction</summary>
+      ![Add Amount of Transaction](assets/images/add-expense-amount)
+    </details>
 
-    - #### Confirm Transaction
+    <details>
+      <summary>Invalid Input</summary>
+      ![Add Amount of Transaction Invalid Input](assets/images/add_expense_amount_invalid_input)
+    </details>
+
+    - #### Confirm Expense
+      Th user is shown all the information they have entered in the previous 4 steps in a format that is easy to read and understand. The user is asked to confirm if this information is correct. 
+      
+      If the user chooses 'Y', the worksheet will be updated and the user will receive feedback once it has been successful. 
+      
+      However, if the user chooses 'N' they will be shown a new menu of choices. They can choose to re-enter the informtion and be taken back to the [add new expense](<#add-new-expense>) process, return to [main menu](<#main-menu>) or choose to confirm the information above. The third option is in case the user mis-typed their answer before.
+
+      If the user inputs in invalid response they will be shown an error message and be asked to enter a valid response.
+    <details>
+      <summary>Confirm Transaction Page</summary>
+      ![Confirm Transaction](assets/images/confirm_expense.png)
+    </details>
+
+    <details>
+      <summary>Confirm Transaction Invalid Input</summary>
+      ![Confirm Transaction Invalid Input](assets/images/confirm_expense_invalid_input.png)
+    </details>
+
+    <details>
+      <summary>Confirm Transaction Page if answered 'N'</summary>
+      ![Confirm Transaction Page if answered 'N'](assets/images/confirm_expense_no_input.png)
+    </details>
 
     - #### Update Worksheet
+      Onces the user has been shown the worksheet has been updated successfully, they are shown another menu. They have 2 choices, to add another expense of to return to the main menu. The user will be shown an error message and asked to a valid response if they enter an invalid answer. 
+
+    <details>
+      <summary>Worksheet Updated</summary>
+      ![Worksheet Updated](assets/images/updating_worksheet.png)
+    </details>
+
+    <details>
+      <summary>Worksheet Menu Invalid Input</summary>
+      ![Worksheet Menu Invalid Input](assets/images/updating_worksheet_invalid_response.png)
+    </details>
+
   
-  - ### View Statement
+  - ### View Statement Menu
+    The view statement page displays to the user 3 ways in which they can see their statement: [by date](<#by-date>), [by month](<#by-month>) or [by category](<#by-category>). They are also given the option to return to the [main menu](<#main-menu>) if they enter 'MM'. If the user enters and invalid reponse they will be shown an error message.
+
+    <details>
+      <summary>View Statement Menu</summary>
+      ![View Statement Menu](assets/images/view_statement_menu.png)
+    </details>
+
+    <details>
+      <summary>View Statement Menu Invalid Input</summary>
+      ![View Statement Menu Invalid Input](assets/images/view_statement_menu_invalid_input.png)
+    </details>
+
+    
     - #### By Date
 
     - #### By Month
