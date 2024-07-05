@@ -1,10 +1,12 @@
 # Pennywise
-Pennywise is a budget tracker that has been created with the user in mind.
+
+Pennywise is Python command line interface (CLI) budget tracker application. It has been designed with the user in mind. The site allows users to add expenses, and view what they have spent their money on in a variety of different ways.
 
 Welcome to <a href="https://pennywise-budget-tracker-ce1c05dc8133.herokuapp.com/">Pennywise</a>
 
-
 ![Pennywise](assets/images/welcome_page.png)
+
+A view-only version of the Google Sheet can be accessed [here](https://docs.google.com/spreadsheets/d/1zpXZlE0GFNmF6ZhRUVD2RSFju2QEtEy0YYqaNOESAv4/edit?usp=sharing)
 
 ## Contents
 * [**User Experience UX**](<#user-experience-ux>)
@@ -457,6 +459,15 @@ Provided as part of Code Institute's template:
   This project does not require a fully responsive design. However, I tested Pennywise with a few more methods. The site is not compatible with mobile phones or tablets.
 
   #### Browser Compatability
+
+  Pennywise has been tested in the following browsers and here are the results:
+  
+  <details><summary>Browser Compatibility Result</summary>
+  
+  ![Browser Compatibility Result](assets/images/browser_compatibility.png)
+
+  </details>
+  There are no issues.
 
   #### Lighthouse
 
