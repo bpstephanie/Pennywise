@@ -45,12 +45,11 @@ A view-only version of the Google Sheet can be accessed [here](https://docs.goog
   * [Known Bugs](<#known-bugs>)
     * [Unresolved Bugs](<#unresolved-bugs>)
 * [**Deployment**](<#deployment>)
-  * [**To Deploy the Project**](<#to-deploy-the-project>)
+  * [**To Deploy on Heroku**](<#to-deploy-on-heroku>)
   * [**To Fork the Project**](<#to-fork-the-project>)
   * [**To Clone the Project**](<#to-clone-the-project>)
 * [**Credits**](<#credits>)
   * [**Content**](<#content>)
-  * [**Media**](<#media>)
 * [**Acknowledgements**](<#acknowledgements>)
 
 # User Experience UX
@@ -73,7 +72,7 @@ A view-only version of the Google Sheet can be accessed [here](https://docs.goog
 
 ### Site Structure
 
-Pennywise is a terminal based application that consists of one page.When the program is run, the user is shown the welcome page with the program's name and a short message explaining what it is. After a short while the user is shown the Main Menu. The Main Menu has four option: add new expense, view statement, view budget goals and exit.
+Pennywise is a terminal based application that consists of one page. When the program is run, the user is shown the welcome page with the program's name and a short message explaining what it is. After a short while the user is shown the Main Menu. The Main Menu has four option: add new expense, view statement, view budget goals and exit.
 
 Pennywise was structured with the user in mind, whichever option the user chooses, once they have completed that action they are given the option to go back to the Main Menu or in some cases a sub-menu.
 
@@ -95,7 +94,7 @@ The flowchart for Pennywise was made with the online service [Diagrams.net](http
 
 ### Data Model
 
-[Google Sheets](https://workspace.google.com/products/sheets/) have been used to store all data. All data the the user inputs and views is retreived from and update to the Google Sheet. The name of the workbook is Pennywise and the name of the worksheet is user1.
+[Google Sheets](https://workspace.google.com/products/sheets/) have been used to store all data. All data the user inputs and views is retrieved from and update to the Google Sheet. The name of the workbook is Pennywise and the name of the worksheet is user1.
 
 The worksheet has 4 columns of data that save the date, category, description and amount of each transaction.
 
@@ -111,10 +110,10 @@ The worksheet has 4 columns of data that save the date, category, description an
 ### Design Choices
 
  - ### Typography
-   Due to Pennywise being a terminal based application, no specific typography has been used. The standard font is being used in the terminal.
+  Due to Pennywise being a terminal based application, no specific typography has been used. The standard font is being used in the terminal.
 
  - ### Colour Scheme
-   Pennywise is back-end program therefore not much styling or visual design has been implementes. 
+  Pennywise is back-end program therefore not much styling or visual design has been implemented. 
 
    * [Colorama](https://pypi.org/project/colorama/) library for Python was used to add colour to the program to give visual feedback to the user.
       - Red has been used for invalid input messages.
@@ -163,7 +162,7 @@ The worksheet has 4 columns of data that save the date, category, description an
     - #### Add Date of Transaction
       The user is asked for the date and is shown the format it needs to be in. If the user enters an invalid response an error message appears and the user is asked to re-enter the information in the correct format. 
       
-      The user can only add a transaction that was made from the beginningg of the year to date. This range was chosen as users will only be able to add expenses that occur within the same year. The idea of Pennywise is for the user to keep on top of their finances and to do that they need to be active on the program. It was decided that letting a user add expenses that happen too far in the past would not be in keeping with Pennywise's mission.
+      The user can only add a transaction that was made from the beginning of the year to date. This range was chosen as users will only be able to add expenses that occur within the same year. The idea of Pennywise is for the user to keep on top of their finances and to do that they need to be active on the program. It was decided that letting a user add expenses that happen too far in the past would not be in keeping with Pennywise's mission.
 
       <details><summary>Add Date of Transaction</summary>
         
@@ -259,7 +258,7 @@ The worksheet has 4 columns of data that save the date, category, description an
       [Back To Top](<#contents>)
 
     - #### Update Worksheet
-      Onces the user has been shown the worksheet has been updated successfully, they are shown another menu. They have 2 choices, to add another expense of to return to the main menu. The user will be shown an error message and asked to a valid response if they enter an invalid answer. 
+      Once the user has been shown the worksheet has been updated successfully, they are shown another menu. They have 2 choices, to add another expense of to return to the main menu. The user will be shown an error message and asked to a valid response if they enter an invalid answer. 
 
       <details><summary>Worksheet Updated</summary>
         
@@ -277,7 +276,7 @@ The worksheet has 4 columns of data that save the date, category, description an
 
   
   - ### View Statement Menu
-    The view statement page displays to the user 3 ways in which they can see their statement: [by date](<#by-date>), [by month](<#by-month>) or [by category](<#by-category>). They are also given the option to return to the [main menu](<#main-menu>) if they enter 'MM'. If the user enters and invalid reponse they will be shown an error message.
+    The view statement page displays to the user 3 ways in which they can see their statement: [by date](<#by-date>), [by month](<#by-month>) or [by category](<#by-category>). They are also given the option to return to the [main menu](<#main-menu>) if they enter 'MM'. If the user enters and invalid response they will be shown an error message.
 
     <details><summary>View Statement Menu</summary>
       
@@ -328,7 +327,7 @@ The worksheet has 4 columns of data that save the date, category, description an
       [Back To Top](<#contents>)
 
     - #### By Category
-      The user is shown how much they have spent in each category from the beginnning of the year to date.
+      The user is shown how much they have spent in each category from the beginning of the year to date.
 
       <details><summary>View Statement By Category</summary>
         
@@ -411,7 +410,7 @@ Provided as part of Code Institute's template:
 
   #### Site-users
     - As a user, I want to understand what the program does instantly. 
-        - The name of the site is 'Pennywise' where penny is the smallest denomination of the pound sterling and wise means to have experience, knowledge and good judgement. Not only this, but there is a welcome message stating the Pennywise is a buget tracker.
+        - The name of the site is 'Pennywise' where penny is the smallest denomination of the pound sterling and wise means to have experience, knowledge and good judgement. Not only this, but there is a welcome message stating the Pennywise is a budget tracker.
 
     - As a user, I want to be able to add my expenses and confirm if they are correct.
         - Users can add expenses by inputting 4 key details. At every step of the way there is input validation and before the user adds the new transaction to the worksheet they must confirm that all details are correct.
@@ -466,7 +465,7 @@ Provided as part of Code Institute's template:
 
   This project does not require a fully responsive design. However, I tested Pennywise with a few more methods. The site is not compatible with mobile phones or tablets.
 
-  #### Browser Compatability
+  #### Browser Compatibility
 
   Pennywise has been tested in the following browsers and here are the results:
   
@@ -489,7 +488,7 @@ Provided as part of Code Institute's template:
 
   #### WAVE
 
-  The site was also tested using [Wave](https://wave.webaim.org/). There are no errors howvever there is 1 contrast error. This error is on the button 'Run Program' which is part of the code supplied in the Code Institute template. There are also 2 alerts, which are also from the Code Institute template: the first being that there is no heading structure and the second that there are no page regions.
+  The site was also tested using [Wave](https://wave.webaim.org/). There are no errors however there is 1 contrast error. This error is on the button 'Run Program' which is part of the code supplied in the Code Institute template. There are also 2 alerts, which are also from the Code Institute template: the first being that there is no heading structure and the second that there are no page regions.
 
   <details><summary>WAVE Result</summary>
   
@@ -514,7 +513,7 @@ Provided as part of Code Institute's template:
         - All code was arranged into while loops to stop this from happening.
 
       - The fourth and biggest bug was the clear screen function not working. When the user was asked to input the date, the category, the description and the amount, segments of the previous 'page' were left on the screen. This was a very tough bug to overcome - taking over 24 hours.
-        - Lots of research was done and the function was moved to different parts of the code to see if it would work elsewhere. The solution to this problem was finally found on slack where a fellow coursemate had the same problem. The fix was easy, all that needed to be done was to add 'print(“\033c”, end=“”)' to the clear screen function. I am very grateful to my coursemates on slack as without them I do not know If I would have been able to 'squash' this bug.
+        - Lots of research was done and the function was moved to different parts of the code to see if it would work elsewhere. The solution to this problem was finally found on slack where a fellow course mate had the same problem. The fix was easy, all that needed to be done was to add 'print(“\033c”, end=“”)' to the clear screen function. I am very grateful to my course mates on slack as without them I do not know If I would have been able to 'squash' this bug.
     
   - During the final stages of the project, a few more bugs appeared:
 
@@ -525,7 +524,8 @@ Provided as part of Code Institute's template:
       - After much research, it was decided that [colorama](https://pypi.org/project/colorama/) would be a better fit for the project.
 
   ##### Unresolved Bugs
-    - If the user starts to type whilst typing print is 'typing', whatever is typed by the user will be printed to the terminal. If what the user writes is an option on the next page, for example '2', then the user will be redirected to that option for the choice menu consecutively.
+
+  If the user starts to type whilst typing print is 'typing', whatever is typed by the user will be printed to the terminal. If what the user writes is an option on the next page, for example '2', then the user will be redirected to that option for the choice menu consecutively.
 
   [Back To Top](<#contents>)
 
@@ -636,6 +636,8 @@ The program was developed using [Gitpod](https://www.gitpod.io/#get-started). Al
   
 The live link can be found here - <a href="https://pennywise-budget-tracker-ce1c05dc8133.herokuapp.com/">Pennywise</a>
 
+[Back To Top](<#contents>)
+
 ### **To Fork the Project**
 
 A copy of the GitHub Repository can be made by forking the GitHub account. This copy can be viewed and changes can be made to the copy without affecting the original repository. The steps to fork the repository are as follows:
@@ -649,7 +651,8 @@ A copy of the GitHub Repository can be made by forking the GitHub account. This 
   ![How To Fork](assets/images/fork.png)
 
   </details>
-  
+
+[Back To Top](<#contents>)
 
 ### **To Clone the Project**
 
