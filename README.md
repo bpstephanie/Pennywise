@@ -36,8 +36,9 @@ Welcome to <a href="https://pennywise-budget-tracker-ce1c05dc8133.herokuapp.com/
   * [Languages](<#languages>)
   * [Resources and Tools](<#rescources-and-tools>)
 * [**Testing**](<#testing>)
+  * [Testing User Stories](<#testing-user-stories>)
   * [Code Validation](<#code-validation>)
-  * [Additional Teasting](<#additional-testing>)
+  * [Additional Testing](<#additional-testing>)
   * [Known Bugs](<#known-bugs>)
 * [**Deployment**](<#deployment>)
   * [**To Deploy the Project**](<#to-deploy-the-project>)
@@ -53,7 +54,7 @@ Welcome to <a href="https://pennywise-budget-tracker-ce1c05dc8133.herokuapp.com/
 * Site Owner:
     - As a site owner, I want users to easily understand what the program does.
     - As a site owner, I want users to be able to navigate through the program without any issues.
-    - As a site owner, I want users to be able to add their expenses, view their expenses and set their budget goals.
+    - As a site owner, I want users to be able to add their expenses, view their expenses.
 
 ### User Stories
 
@@ -63,7 +64,6 @@ Welcome to <a href="https://pennywise-budget-tracker-ce1c05dc8133.herokuapp.com/
     - As a user, I want to be able to track my expenses.
     - As a user, I want to be able to view my expenses in different formats that are easy to understand.
     - As a user, I want to get visual feedback when I've done something wrong.
-    - As a user, I want 
 
 [Back To Top](<#contents>)
 
@@ -347,8 +347,8 @@ The worksheet has 4 columns of data that save the date, category, description an
   - The ability to login with a username and password to keep data safe and secure.
   - The ability to add more users with the use of multiple google sheets.
   -  Have a budget goals section when the user can set their target spending for each category.
-    - To encourage users to meet their target they would be shown a congratulatory message if they succeed. 
-    - On the other hand, if the overspend they would be shown an image of a scary, angry clown. The idea for this comes from the name  'Pennywise', being that it is the name of the clown from the movie 'It'.
+      - To encourage users to meet their target they would be shown a congratulatory message if they succeed. 
+      - On the other hand, if the overspend they would be shown an image of a scary, angry clown. The idea for this comes from the name  'Pennywise', being that it is the name of the clown from the movie 'It'.
 
  [Back To Top](<#contents>)
 
@@ -388,9 +388,101 @@ Provided as part of Code Institute's template:
  [Back To Top](<#contents>)
 
 # Testing
+### Testing User Stories
+  * Site Owner:
+    - As a site owner, I want users to easily understand what the program does.
+        - On the welcome page, it clearly states that Pennywise is a budget tracker. Also on the main menu all options are to do with expenses.
 
+    - As a site owner, I want users to be able to navigate through the program without any issues.
+        - Each time the user completes a section, there is a choice menu where users can reach different parts of the program.
+
+    - As a site owner, I want users to be able to add their expenses, view their expenses.
+        - Pennywise has two main sections, the first where users can add new transactions and the second where users can view their expenses in 3 different ways. 
+
+ * Site-users:
+    - As a user, I want to understand what the program does instantly. 
+        - The name of the site is 'Pennywise' where penny is the smallest denomination of the pound sterling and wise means to have experience, knowledge and good judgement. Not only this, but there is a welcome message stating the Pennywise is a buget tracker.
+
+    - As a user, I want to be able to add my expenses and confirm if they are correct.
+        - Users can add expenses by inputting 4 key details. At every step of the way there is input validation and before the user adds the new transaction to the worksheet they must confirm that all details are correct.
+
+    - As a user, I want to be able to track my expenses.
+        - In the view statement section, users can see their statement by date. 
+
+    - As a user, I want to be able to view my expenses in different formats that are easy to understand.
+        - Pennywise displays the users' expenses in 3 different ways, depending on their needs.
+
+    - As a user, I want to get visual feedback when I've done something wrong.
+        - If the user's input is not valid, a red error message appears on screen with some extra information to help the user respond correctly.
+
+  [Back To Top](<#contents>)
+
+### Validation
+#### Code Validation
+  #### Python Validation
+
+  The code was validated using Pep8 Linter. No errors were found in its final testing.
+
+  <details><summary>PEP8 Code Validator</summary>
+  
+  ![PEP8 Validator Result](assets/images/PEP8_validation.png)
+
+  </details>
+
+  #### HTML Validation
+
+  No errors were returned when passing through the official W3C validator.
+
+  <details><summary>HTML5 Code Validator</summary>
+  
+  ![HTML Validator Result](assets/images/html_validator.png)
+
+  </details>
+
+  #### CSS Validation
+
+  No errors were returned when passing through the official W3C validator.
+
+  <details><summary>CSS Code Validator</summary>
+  
+  ![CSS Validator Result](assets/images/css_validator.png)
+
+  </details>  
 
  [Back To Top](<#contents>)
+
+### Additional Testing
+  #### Responsiveness Test
+
+  This project does not require a fully responsive design. However, I tested Pennywise with a few more methods. The site is not compatible with mobile phones or tablets.
+
+  #### Browser Compatability
+
+  #### Lighthouse
+
+  The site was tested using [Google Lighthouse](https://developers.google.com/web/tools/lighthouse). The results were as follows:
+
+  <details><summary>Google Lighthouse Result</summary>
+  
+  ![Google Lighthouse Result](assets/images/lighthouse_result.png)
+
+  </details>
+
+  #### WAVE
+
+  The site was also tested using [Wave](https://wave.webaim.org/). There are no errors howvever there is 1 contrast error. This error is on the button 'Run Program' which is part of the code supplied in the Code Institute template. There are also 2 alerts, which are also from the Code Institute template: the first being that there is no heading structure and the second that there are no page regions.
+
+  <details><summary>WAVE Result</summary>
+  
+  ![WAVE Result](assets/images/wave_result.png)
+
+  </details>
+  
+  [Back To Top](<#contents>)
+
+### Known Bugs
+#### Fixed Bugs
+
 
 # Deployment
 This site was deployed to GitHub pages. The steps to deploy are as follows:
