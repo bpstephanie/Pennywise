@@ -331,7 +331,6 @@ def update_worksheet(data):
                 raise ValueError("")
         except ValueError as e:
             print(Fore.RED + f'    Invalid data: Please select one of the options provided' + Fore.WHITE)
-            delayed_clear()
 
 def add_new_expense():
     """
