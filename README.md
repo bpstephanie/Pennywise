@@ -132,24 +132,24 @@ The worksheet has 4 columns of data that save the date, category, description an
   - ### Welcome Page
     When the user first enters the site, the welcome page greets them. The user sees the logo and a short message explaining what the program does. Whilst the user is viewing this page, the [Main Menu](<#main-menu>) is loading.
   
-  <details><summary>Welcome Page</summary>
-  
-  ![Welcome Page](assets/images/welcome_page.png)
-  
-  </details>
+    <details><summary>Welcome Page</summary>
+    
+    ![Welcome Page](assets/images/welcome_page.png)
+    
+    </details>
 
-  [Back To Top](<#contents>)
+    [Back To Top](<#contents>)
 
   - ### Main Menu
     The [Main Menu](<#main-menu>) gives the user 3 choices: [Add New Expense](<#add-new-expense>), [View Statement](<#view-statement>) or Exit. If the user chooses to exit, they will be redirected back to the [Welcome Page](<#welcome-page>).
 
-  <details><summary>Main Menu</summary>
-    
-  ![Main Menu](assets/images/main-menu.png)
+    <details><summary>Main Menu</summary>
+      
+    ![Main Menu](assets/images/main_menu.png)
 
-  </details>
+    </details>
 
-  [Back To Top](<#contents>)
+    [Back To Top](<#contents>)
 
   - ### Add New Expense
     The add new expense function collects 4 pieces of information from the user. These are the [date](<#add-date-of-transaction>), [category](<#add-category-of-transaction>), [description](<#add-description-of-transaction>) and [amount](<#add-amount-of-transaction>) of the transaction. Once all 4 details have been collected, the user is shown a summary of that information in the [Confirm Transaction](<#confirm-transaction>) function. If the user confirms all the details are correct. The google worksheet will be updated with the new expense. However, if the user entered something wrong they can choose to add the information again, or even return to the [Main Menu](<#main-menu>).
@@ -158,68 +158,70 @@ The worksheet has 4 columns of data that save the date, category, description an
 
     - #### Add Date of Transaction
       The user is asked for the date and is shown the format it needs to be in. If the user enters an invalid response an error message appears and the user is asked to re-enter the information in the correct format.
-    <details><summary>Add Date of Transaction</summary>
-      
-    ![Add Date of Transaction](assets/images/add-expense-date)
-    
-    </details>
 
-    <details><summary>Invalid Input</summary>
+      <details><summary>Add Date of Transaction</summary>
+        
+      ![Add Date of Transaction](assets/images/add_expense_date.png)
       
-    ![Add Date of Transaction Invalid Input](assets/images/add_expense_date_invalid_input)
-    
-    </details>
+      </details>
 
-    [Back To Top](<#contents>)
+      <details><summary>Invalid Input</summary>
+        
+      ![Add Date of Transaction Invalid Input](assets/images/add_expense_date_invalid_input.png)
+      
+      </details>
+
+      [Back To Top](<#contents>)
     
     - #### Add Category of Transaction
       The user is asked for the category of the transaction. If the user enters an invalid response an error message appears and the user is asked to re-enter the information in the correct format.
-    <details><summary>Add Category of Transaction</summary>
-    
-    ![Add Category of Transaction](assets/images/add-expense-category)
-    
-    </details>
 
-    <details><summary>Invalid Input</summary>
+      <details><summary>Add Category of Transaction</summary>
       
-    ![Add Category of Transaction Invalid Input](assets/images/add_expense_category_invalid_input)
-    
-    </details>
+      ![Add Category of Transaction](assets/images/add_expense_category.png)
+      
+      </details>
 
-    [Back To Top](<#contents>)
+      <details><summary>Invalid Input</summary>
+        
+      ![Add Category of Transaction Invalid Input](assets/images/add_expense_category_invalid_input.png)
+      
+      </details>
+
+      [Back To Top](<#contents>)
 
     - #### Add Description of Transaction
       The user is asked for the description of the transaction. If the user enters an invalid response an error message appears and the user is asked to re-enter the information in the correct format.
     
-    <details><summary>Add Description of Transaction</summary>
+      <details><summary>Add Description of Transaction</summary>
+        
+      ![Add Description of Transaction](assets/images/add_expense_description.png)
       
-    ![Add Description of Transaction](assets/images/add-expense-description)
-    
-    </details>
+      </details>
 
-    <details><summary>Invalid Input</summary>
+      <details><summary>Invalid Input</summary>
+        
+      ![Add Description of Transaction Invalid Input](assets/images/add_expense_description_invalid_input.png)
       
-    ![Add Description of Transaction Invalid Input](assets/images/add_expense_description_invalid_input)
-    
-    </details>
+      </details>
 
-    [Back To Top](<#contents>)
+      [Back To Top](<#contents>)
 
     - #### Add Amount of Transaction
       The user is asked for the amount of the transaction. They are shown the format the input needs to be. If the user enters an invalid response an error message appears and the user is asked to re-enter the information in the correct format.
     <details><summary>Add Amount of Transaction</summary>
       
-    ![Add Amount of Transaction](assets/images/add-expense-amount)
-    
-    </details>
-
-    <details><summary>Invalid Input</summary>
+      ![Add Amount of Transaction](assets/images/add_expense_amount.png)
       
-    ![Add Amount of Transaction Invalid Input](assets/images/add_expense_amount_invalid_input)
-    
-    </details>
+      </details>
 
-    [Back To Top](<#contents>)
+      <details><summary>Invalid Input</summary>
+        
+      ![Add Amount of Transaction Invalid Input](assets/images/add_expense_amount_invalid_input.png)
+      
+      </details>
+
+      [Back To Top](<#contents>)
 
     - #### Confirm Expense
       Th user is shown all the information they have entered in the previous 4 steps in a format that is easy to read and understand. The user is asked to confirm if this information is correct. 
@@ -229,42 +231,43 @@ The worksheet has 4 columns of data that save the date, category, description an
       However, if the user chooses 'N' they will be shown a new menu of choices. They can choose to re-enter the informtion and be taken back to the [add new expense](<#add-new-expense>) process, return to [main menu](<#main-menu>) or choose to confirm the information above. The third option is in case the user mis-typed their answer before.
 
       If the user inputs in invalid response they will be shown an error message and be asked to enter a valid response.
-    <details><summary>Confirm Transaction Page</summary>
-      
-    ![Confirm Transaction](assets/images/confirm_expense.png)
-    
-    </details>
 
-    <details><summary>Confirm Transaction Invalid Input</summary>
+      <details><summary>Confirm Transaction Page</summary>
+        
+      ![Confirm Transaction](assets/images/confirm_expense.png)
       
-    ![Confirm Transaction Invalid Input](assets/images/confirm_expense_invalid_input.png)
-    
-    </details>
+      </details>
 
-    <details><summary>Confirm Transaction Page if answered 'N'</summary>
+      <details><summary>Confirm Transaction Invalid Input</summary>
+        
+      ![Confirm Transaction Invalid Input](assets/images/confirm_expense_invalid_input.png)
       
-    ![Confirm Transaction Page if answered 'N'](assets/images/confirm_expense_no_input.png)
-    
-    </details>
+      </details>
 
-    [Back To Top](<#contents>)
+      <details><summary>Confirm Transaction Page if answered 'N'</summary>
+        
+      ![Confirm Transaction Page if answered 'N'](assets/images/confirm_expense_no_input.png)
+      
+      </details>
+
+      [Back To Top](<#contents>)
 
     - #### Update Worksheet
       Onces the user has been shown the worksheet has been updated successfully, they are shown another menu. They have 2 choices, to add another expense of to return to the main menu. The user will be shown an error message and asked to a valid response if they enter an invalid answer. 
 
-    <details><summary>Worksheet Updated</summary>
+      <details><summary>Worksheet Updated</summary>
+        
+      ![Worksheet Updated](assets/images/updating_worksheet.png)
       
-    ![Worksheet Updated](assets/images/updating_worksheet.png)
-    
-    </details>
+      </details>
 
-    <details><summary>Worksheet Menu Invalid Input</summary>
+      <details><summary>Worksheet Menu Invalid Input</summary>
+        
+      ![Worksheet Menu Invalid Input](assets/images/updating_worksheet_invalid_response.png)
       
-    ![Worksheet Menu Invalid Input](assets/images/updating_worksheet_invalid_response.png)
-    
-    </details>
+      </details>
 
-    [Back To Top](<#contents>)
+      [Back To Top](<#contents>)
 
   
   - ### View Statement Menu
@@ -287,54 +290,54 @@ The worksheet has 4 columns of data that save the date, category, description an
     - #### By Date
       The user is shown all transactions to date in a format that is easy to read and understand. Under all the transactions the user is asked if they would like to return to the [main menu](<#main-menu>) or the [view statement menu](<#view-statement-menu>). If the user enters and invalid response they are shown an error message and asked to enter their response again.
 
-    <details><summary>View Statement By Date</summary>
+      <details><summary>View Statement By Date</summary>
+        
+      ![View Statement By Date](assets/images/by_date_top.png)
       
-    ![View Statement By Date](assets/images/by_date_top.png)
-    
-    </details>
+      </details>
 
-    <details><summary>View Statement By Date Menu Invalid Input</summary>
+      <details><summary>View Statement By Date Menu Invalid Input</summary>
+        
+      ![View Statement By Date Menu Invalid Input](assets/images/by_date_invalid_response.png)
       
-    ![View Statement By Date Menu Invalid Input](assets/images/by_date_invalid_response.png)
-    
-    </details>
+      </details>
 
-    [Back To Top](<#contents>)
+      [Back To Top](<#contents>)
 
     - #### By Month
       The user is shown the total amount they have spent each month. Below there is a choice menu
 
-    <details><summary>View Statement By Month</summary>
+      <details><summary>View Statement By Month</summary>
+        
+      ![View Statement By Month](assets/images/by_month.png)
       
-    ![View Statement By Month](assets/images/by_month.png)
-    
-    </details>
+      </details>
 
-    <details><summary>View Statement By Month Menu Invalid Input</summary>
+      <details><summary>View Statement By Month Menu Invalid Input</summary>
+        
+      ![View Statement By Month Menu Invalid Input](assets/images/by_month_invalid_response.png)
       
-    ![View Statement By Month Menu Invalid Input](assets/images/by_month_invalid_response.png)
-    
-    </details>
+      </details>
 
-    [Back To Top](<#contents>)
+      [Back To Top](<#contents>)
 
     - #### By Category
       The user is shown how much they have spent in each category from the beginnning of the year to date.
 
-    <details><summary>View Statement By Category</summary>
+      <details><summary>View Statement By Category</summary>
+        
+      ![View Statement By Category](assets/images/by_category.png)
       
-    ![View Statement By Category](assets/images/by_category.png)
-    
-    </details>
+      </details>
 
-    <details><summary>View Statement By Category Menu Invalid Input</summary>
+      <details><summary>View Statement By Category Menu Invalid Input</summary>
+        
+      ![View Statement By Category Menu Invalid Input](assets/images/by_category_invalid_response.png)
       
-    ![View Statement By Category Menu Invalid Input](assets/images/by_category_invalid_response.png)
-    
-    </details>
+      </details>
 
-  
- [Back To Top](<#contents>)
+    
+      [Back To Top](<#contents>)
 
 ### Future Features
 
@@ -362,25 +365,25 @@ Provided as part of Code Institute's template:
 * [HTML5](https://html.spec.whatwg.org/)
 * [JavaScript](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/What_is_JavaScript)
 
-### RFrameworks, Libraries and Packages
-* [Google Sheets](https://workspace.google.com/products/sheets/)
-* [Gitpod](https://www.gitpod.io/#get-started) 
-* [Github](https://github.com/)
-* [Gitbash](https://en.wikipedia.org/wiki/Bash_(Unix_shell))
-* [Heroku](https://dashboard.heroku.com/)
-* [GSpread](https://docs.gspread.org/en/latest/)
-* [GoogleOAuth](https://developers.google.com/identity/protocols/oauth2)
+### Frameworks, Libraries and Packages
+* [Google Sheets](https://workspace.google.com/products/sheets/) - used to host the application data.
+* [Gitpod](https://www.gitpod.io/#get-started) - used for writing code, committing and pushing to [Github](https://github.com/).
+* [Github](https://github.com/) - used for storing the repository and for version control.
+* [Gitbash](https://en.wikipedia.org/wiki/Bash_(Unix_shell)) - used to host and edit the project. before committing.
+* [Heroku](https://dashboard.heroku.com/) - used to deploy and host the project. 
+* [GSpread](https://docs.gspread.org/en/latest/) - used to manipulate the date in the [google sheet](https://workspace.google.com/products/sheets/).
+* [GoogleOAuth](https://developers.google.com/identity/protocols/oauth2) - used to authenticate the program to access Google's API.
 * [Patorjk](https://patorjk.com/) - used to create the logo, however it had to be edited as was too large for the console.
-* [Time](https://docs.python.org/3/library/time.html)
-* [Os](https://docs.python.org/3/library/os.html)
-* [Sys](https://docs.python.org/3/library/sys.html)
-* [Datetime](https://docs.python.org/3/library/datetime.html)
-* [Tabulate](https://pypi.org/project/tabulate/)
-* [Math](https://docs.python.org/3/library/math.html)
+* [Time](https://docs.python.org/3/library/time.html) - used to delay clear screen.
+* [Os](https://docs.python.org/3/library/os.html) - used to clear screen in between menus and where the user needs to input data.
+* [Sys](https://docs.python.org/3/library/sys.html) - used for typing print function.
+* [Datetime](https://docs.python.org/3/library/datetime.html) - used to validate date inputs.
+* [Tabulate](https://pypi.org/project/tabulate/) - used to organise date into table format.
+* [Math](https://docs.python.org/3/library/math.html) - used for sums and to round.
 * [Colorama](https://pypi.org/project/colorama/) - used to add colour to the terminal.
 * [CloudConvert](https://cloudconvert.com/png-to-webp) - used to convert images to  webp.
 * [TinyPNG](https://tinypng.com/) - used to optimize images.
-* [PEP8](https://peps.python.org/pep-0008/)
+* [PEP8](https://peps.python.org/pep-0008/) - used to validate python code.
 
  [Back To Top](<#contents>)
 
