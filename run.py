@@ -97,8 +97,8 @@ def get_transaction_date():
         try:
             print()
             print(Fore.LIGHTCYAN_EX + """
-            Please enter the date of the transaction in the following
-            format (DD/MM/YYYY):""")
+        Please enter the date of the transaction in the following
+        format (DD/MM/YYYY):""")
             print()
             expense_input_date = input("""
             >""" + Style.RESET_ALL)
@@ -151,7 +151,7 @@ def get_transaction_category(user1):
             one_cat_list.append(category)
     sorted_list = sorted(one_cat_list)
     for i in sorted_list:
-        print(f'            {i}')
+        print(f'                    {i}')
 
     print()
 
@@ -235,10 +235,10 @@ def get_transaction_amount():
         Please enter the amount of the transaction, e.g. 29.95''')
             print()
             print(Style.DIM + """
-        Please do not include currency and make sure you have entered a
-        number between 0 - 999.""")
+        Please do not include currency and make sure you have 
+        entered a number between 0 - 999.""")
             user_input = float(input(Style.NORMAL + """
-            >""" + Style.RESET_ALL))
+        >""" + Style.RESET_ALL))
             global new_amount
             # Credit in README
             new_amount = float("{:.2f}".format(user_input))
@@ -347,7 +347,7 @@ def update_worksheet(data):
     user1_expenses = SHEET.worksheet("user1")
     user1_expenses.append_row(data)
     print(Fore.MAGENTA + Style.BRIGHT + """
-                  Worksheet updated successfully."""
+                Worksheet updated successfully."""
           + Style.RESET_ALL)
     print()
     print("""
@@ -362,7 +362,7 @@ def update_worksheet(data):
             user_input = input(Fore.LIGHTCYAN_EX + """
             >""" + Style.RESET_ALL)
             if user_input == "1":
-                print(f"        You chose option: {user_input}")
+                print(f"            You chose option: {user_input}")
                 print()
                 typingPrint(Fore.BLUE + """
                     Add new expense form is loading, please wait...
@@ -371,7 +371,7 @@ def update_worksheet(data):
                 add_new_expense()
                 break
             elif user_input == "2":
-                print(f"        You chose option: {user_input}")
+                print(f"            You chose option: {user_input}")
                 print()
                 typingPrint(Fore.YELLOW + """
                     Returning to Main Menu, please wait..."""
@@ -481,8 +481,7 @@ def by_category(user1):
     for value in user1:
         total_amount += float(value[3])
 
-    alphabetized_category
-    _total = dict(sorted(category_total.items()))
+    alphabetized_category_total = dict(sorted(category_total.items()))
     print(tabulate(
         alphabetized_category_total.items(), headers=["Category", "Amount"]))
     print()
