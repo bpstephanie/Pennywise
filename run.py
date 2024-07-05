@@ -303,18 +303,16 @@ def update_worksheet(data):
     user1_expenses.append_row(data)
     print(Fore.MAGENTA + Style.BRIGHT + '                   Worksheet updated successfully.' + Style.RESET_ALL)
     print()
-
-    while True:
-        print("""
-        What would you like to do next?
+    print("""
+            What would you like to do next?
         
-        1. Add another expense
-        2. Go back to Main Menu
+            1. Add another expense
+            2. Go back to Main Menu
         """)
 
+    while True:
         try:
-            user_input = input(Fore.LIGHTCYAN_EX + "    >" + Style.RESET_ALL)
-            
+            user_input = input(Fore.LIGHTCYAN_EX + "            >" + Style.RESET_ALL)
             if user_input == "1":
                 print(f"    You chose option: {user_input}")
                 print()
