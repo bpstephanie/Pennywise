@@ -380,14 +380,14 @@ def by_date():
                 print("    You have chosen to go back to View Statement Menu.")
                 print()
                 typingPrint(Fore.BLUE + """
-                                Loading, please wait...""" + Fore.WHITE)
+                            Loading, please wait...""" + Fore.WHITE)
                 clear_screen()
                 view_statement()
             elif user_input.lower() == "2":
                 print("    You have chosen togo back to Main Menu.")
                 print()
                 typingPrint(Fore.YELLOW + """
-                                Loading, please wait...""" + Fore.WHITE)
+                            Loading, please wait...""" + Fore.WHITE)
                 clear_screen()
                 main_menu()
             else:
@@ -421,7 +421,7 @@ def by_category(user1):
         total_amount += float(value[3])
        
     alphabetized_category_total = dict(sorted(category_total.items()))
-    print(tabulate(alphabetized_category_total.items(), headers = ["Category", "Amount"]))
+    print(f'            {tabulate(alphabetized_category_total.items(), headers = ["Category", "Amount"])}')
     print()
     print(f"TOTAL:          {math.ceil(total_amount*100)/100}")
     print()
@@ -592,28 +592,28 @@ def view_statement():
                 print("        You have chosen option 1: By date.")
                 print()
                 typingPrint(Fore.BLUE + """
-                                Loading, please wait...""" + Fore.WHITE)
+                            Loading, please wait...""" + Fore.WHITE)
                 clear_screen()
                 by_date()
             elif user_input == "2":
                 print("        You have chosen option 2: By month.")
                 print()
                 typingPrint(Fore.BLUE + """
-                                Loading, please wait...""" + Fore.WHITE)
+                            Loading, please wait...""" + Fore.WHITE)
                 clear_screen()
                 by_month()
             elif user_input == "3":
                 print("        You have chosen option 3: By category.")
                 print()
                 typingPrint(Fore.BLUE + """
-                                Loading, please wait...""" + Fore.WHITE)
+                            Loading, please wait...""" + Fore.WHITE)
                 clear_screen()
                 by_category(user1)
             elif user_input.lower() == "mm":
                 print("        You have chosen to go back to the Main Menu")
                 print()
                 typingPrint(Fore.YELLOW + """
-                                Loading, please wait...""" + Fore.WHITE)
+                            Loading, please wait...""" + Fore.WHITE)
                 clear_screen()
                 main_menu()
                 break
