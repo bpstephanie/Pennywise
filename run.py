@@ -6,7 +6,6 @@ import sys
 import datetime
 from tabulate import tabulate
 import math
-from collections import defaultdict
 import colorama
 from colorama import Back, Fore, Style
 
@@ -56,7 +55,7 @@ def typingPrint(text):
 
 def welcome_page():
     """
-    Displays welcome text
+    Displays program name and welcome text to user
     """
     print(Fore.GREEN + '''
     
@@ -81,7 +80,7 @@ def welcome_page():
 
 def get_transaction_date():
     """
-    Gets the date of the transaction from the user.
+    Gets the date of the transaction they want to add from the user.
     """
     print("""
     --------------------------------------------------------------------
@@ -121,7 +120,7 @@ def get_transaction_date():
 
 def get_transaction_category(user1):
     """
-    Gets the category of the transaction from the user.
+    Gets the category of the transaction they want to add from the user.
     """
     print("""
     --------------------------------------------------------------------
@@ -169,7 +168,7 @@ def get_transaction_category(user1):
         
 def get_transaction_description():
     """
-    Gets the description of the transaction from the user.
+    Gets the description of the transaction they want to add from the user.
     """
     print("""
     --------------------------------------------------------------------
@@ -198,7 +197,7 @@ def get_transaction_description():
 
 def get_transaction_amount():
     """
-    Gets the amount of the transaction from the user.
+    Gets the amount of the transaction they want to add from the user.
     """
     print("""
     --------------------------------------------------------------------
@@ -235,7 +234,8 @@ def get_transaction_amount():
 def confirm_new_expense():
     """
     Summarizes all the new expense information the user has given.
-    Asks user to confirm all details are correct.
+    Asks user to confirm all details are correct. If not user can 
+    start again or return to main menu.
     """
     print()
     print("""
@@ -299,7 +299,7 @@ def confirm_new_expense():
 
 def update_worksheet(data):
     """
-        Update user1 worksheet, add new row with the list data provided
+    Updates user1 worksheet, adds new row with the list data provided
     """
     typingPrint(Fore.BLUE + "                   Updating worksheet, please wait..." + Fore.WHITE)
     print()
@@ -338,7 +338,7 @@ def update_worksheet(data):
 
 def add_new_expense():
     """
-    
+    The step-by-step of how a user inputs information to add a new expense.
     """
     get_transaction_date()
     clear_screen()
@@ -462,7 +462,8 @@ def by_category(user1):
 
 def by_month():
     """
-    Displays the amount the user has spent each month since the beginning of the year
+    Displays the amount the user has spent each month since the beginning of the year.
+    New months have to be manually added once transaction have been added in that month.
     """
     jan_total = {}
     feb_total = {}
@@ -574,7 +575,7 @@ def by_month():
    
 def view_statement():
     """
-    Displays a menu giving 3 options of how the user wants to see their statement: by month, by date, by category
+    Displays a menu giving 3 options of how the user wants to see their statement: by date, by month, by category
     """
     clear_screen()
     print("""
