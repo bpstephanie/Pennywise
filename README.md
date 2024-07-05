@@ -355,7 +355,12 @@ The worksheet has 4 columns of data that save the date, category, description an
 
 The following languages were used to create and develop this website:
 
-* [Python](https://www.python.org/)
+* [Python3](https://www.python.org/)
+
+Provided as part of Code Institute's template:
+
+* [HTML5](https://html.spec.whatwg.org/)
+* [JavaScript](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/What_is_JavaScript)
 
 ### RFrameworks, Libraries and Packages
 * [Google Sheets](https://workspace.google.com/products/sheets/)
@@ -372,9 +377,10 @@ The following languages were used to create and develop this website:
 * [Datetime](https://docs.python.org/3/library/datetime.html)
 * [Tabulate](https://pypi.org/project/tabulate/)
 * [Math](https://docs.python.org/3/library/math.html)
-* [CloudConvert](https://cloudconvert.com/png-to-webp)
-* [TinyPNG](https://tinypng.com/)
-* [PEP8]
+* [Colorama](https://pypi.org/project/colorama/) - used to add colour to the terminal.
+* [CloudConvert](https://cloudconvert.com/png-to-webp) - used to convert images to  webp.
+* [TinyPNG](https://tinypng.com/) - used to optimize images.
+* [PEP8](https://peps.python.org/pep-0008/)
 
  [Back To Top](<#contents>)
 
@@ -421,44 +427,36 @@ The steps to clone a project from GitHub are as follows:
 
 ## Credits 
 
-* Wireframes: [Balsamiq](https://balsamiq.com)
-* Favicon: [Favicon](https://favicon.io/)
-* Fonts: [Google Fonts](https://fonts.google.com/)
-* Icons: [Fontawesome](https://fontawesome.com/)
-* Colour Palettes: [Coolors](https://www.bbcgoodfood.com/)
-* Mock-up: [Am I Responsive](https://ui.dev/amiresponsive)
-* Chrome for Developers: [Dev Tools](https://developer.chrome.com/docs/devtools)
+* In the get transaction date function: 
+    - The code to convert user date input into datetime object was inspired by the following question and answer in [Stack Overflow](https://stackoverflow.com/questions/53248537/typeerror-not-supported-between-instances-of-datetime-datetime-and-str).
 
-* The code to create the modals was inspired by [W3Schools](https://www.w3schools.com/howto/howto_css_modals.asp).
-* The code to implement audio in JavaScript  by [Noah Ekin](https://noaheakin.medium.com/adding-sound-to-your-js-web-app-f6a0ca728984).
-* This YouTube tutorial was followed for the basic setup of the quiz [James Q Quick](https://www.youtube.com/watch?v=zZdQGs62cR8&list=PLDlWc9AfQBfZIkdVaOQXi1tizJeNJipEx&index=4).
-* The code to randomize quiz questions was inspired by [She Codes](https://www.shecodes.io/athena/10246-how-to-show-random-questions-in-a-quiz-using-javascript).
-* The code for the score area was inspired by the Code Institute Love Maths Project.
+* In the get transaction category function: 
+    - The code to remove duplicates from a list was inspired by [Data Quest](https://www.dataquest.io/blog/how-to-remove-duplicates-from-a-python-list/).
+
+* In the get transaction description function: 
+    - The code to only accept letters was inspired by [Shiksha](https://www.shiksha.com/online-courses/articles/isalpha-method-in-python/#:~:text=The%20isalpha()%20method%20can,entered%20only%20contains%20alphabetic%20characters.)
+
+    - The code to disallow the user from only entering, starting with or ending with whitespace was inspired by the following question and answer in [Stack Overflow](https://stackoverflow.com/questions/68417120/not-allowing-spaces-in-string-input-python)
+
+* In get transaction amount function:
+    - The code for rounding user input to 2 decimal places was inspired by the following question and answer in [Stack Overflow](https://stackoverflow.com/questions/51690770/how-to-restrict-user-to-input-only-upto-two-decimal-point-float-numbers-in-pytho)
+
+* In by date function (part of view statement section):
+    - The code for sorting the date by date was inspired by [Python Docs](https://docs.python.org/3/howto/sorting.html)
+
+
 
 [Back To Top](<#contents>)
 
 ### Content
 
-* The majority of the quiz question and answer content came from myself. A few questions were fact checked with [Visit South America](https://visitsouthamerica.co/)
-
-
-[Back To Top](<#contents>)
-
-### Media
-
-The images are from [Pixabay](https://pixabay.com/) and [Flag Colour Codes](https://www.flagcolorcodes.com/).
-
-The llama graphic is from [Pixabay](https://pixabay.com/) and I created the background in [Canva](https://www.canva.com/).
-
-The flag images were made opaque with [OnlinePNGTools](https://onlinepngtools.com/change-png-opacity#:~:text=World's%20simplest%20online%20Portable%20Network,%2C%20quick%2C%20and%20very%20powerful.).
-
-The images were optimised with [Tinypng](https://tinypng.com/).
+* All of the content was written by myself.
 
 [Back To Top](<#contents>)
 
 ## Acknowledgements
 
-The Country Quiz has been completed as a Portfolio 2 Project, part of the Full Stack Software Developer Diploma at Code Institute. I would like to thank my Code Institute mentor,  Precious Ijege for his advice and support, the Slack community, and everyone at Code Institute for their feedback and guidance. 
+Pennywise has been completed as a Portfolio 3 Project, part of the Full Stack Software Developer Diploma at Code Institute. I would like to thank my Code Institute mentor,  Precious Ijege for his advice and support, the Slack community, and everyone at Code Institute for their feedback and guidance. 
 
 Stephanie Bell 2024.
 
