@@ -320,7 +320,7 @@ def confirm_new_expense():
                             main_menu()
                         elif no_answer.lower() == "y":
                             confirmed_expense = [new_date,
-                                                 exp_category,
+                                                 exp_cat,
                                                  new_dscr, new_amount]
                             update_worksheet(confirmed_expense)
                         else:
