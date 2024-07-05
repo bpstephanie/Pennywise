@@ -235,7 +235,7 @@ def get_transaction_amount():
         Please enter the amount of the transaction, e.g. 29.95''')
             print()
             print(Style.DIM + """
-        Please do not include currency and make sure you have 
+        Please do not include currency and make sure you have
         entered a number between 0 - 999.""")
             user_input = float(input(Style.NORMAL + """
         >""" + Style.RESET_ALL))
