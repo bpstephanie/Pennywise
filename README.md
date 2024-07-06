@@ -57,7 +57,7 @@ A view-only version of the Google Sheet can be accessed [here](https://docs.goog
 * Site Owner:
     - As a site owner, I want users to easily understand what the program does.
     - As a site owner, I want users to be able to navigate through the program without any issues.
-    - As a site owner, I want users to be able to add their expenses, view their expenses.
+    - As a site owner, I want users to be able to add their expenses and view their expenses.
 
 ### User Stories
 
@@ -72,7 +72,7 @@ A view-only version of the Google Sheet can be accessed [here](https://docs.goog
 
 ### Site Structure
 
-Pennywise is a terminal based application that consists of one page. When the program is run, the user is shown the welcome page with the program's name and a short message explaining what it is. After a short while the user is shown the Main Menu. The Main Menu has four option: add new expense, view statement, view budget goals and exit.
+Pennywise is a terminal based application. When the program is run, the user is shown the welcome page with the program's name and a short message explaining what it is. After a short while the user is shown the Main Menu. The Main Menu has four option: add new expense, view statement, view budget goals and exit.
 
 Pennywise was structured with the user in mind, whichever option the user chooses, once they have completed that action they are given the option to go back to the Main Menu or in some cases a sub-menu.
 
@@ -403,7 +403,7 @@ Provided as part of Code Institute's template:
     - As a site owner, I want users to be able to navigate through the program without any issues.
         - Each time the user completes a section, there is a choice menu where users can reach different parts of the program.
 
-    - As a site owner, I want users to be able to add their expenses, view their expenses.
+    - As a site owner, I want users to be able to add their expenses and view their expenses.
         - Pennywise has two main sections, the first where users can add new transactions and the second where users can view their expenses in 3 different ways. 
 
   [Back To Top](<#contents>)
