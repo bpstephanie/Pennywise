@@ -158,7 +158,7 @@ def get_transaction_category(user1):
     while True:
         try:
             print()
-            print(Fore.LIGHTCYAN_EX + Style.BRIGHT +'''
+            print(Fore.LIGHTCYAN_EX + Style.BRIGHT + '''
             Please enter the category of the transaction:''')
             user_input = input("            > " + Fore.WHITE)
             print()
@@ -433,7 +433,8 @@ def by_date():
     """)
     while True:
         try:
-            user_input = input(Fore.LIGHTCYAN_EX + Style.BRIGHT + "    >" + Fore.WHITE)
+            user_input = input(Fore.LIGHTCYAN_EX + Style.BRIGHT + "    >"
+                               + Fore.WHITE)
             if user_input.lower() == "1":
                 print("    You have chosen to go back to View Statement Menu.")
                 print()
@@ -500,7 +501,8 @@ def by_category(user1):
     """)
 
     try:
-        user_input = input(Fore.LIGHTCYAN_EX + Style.BRIGHT + "    >" + Fore.WHITE)
+        user_input = input(Fore.LIGHTCYAN_EX + Style.BRIGHT + "    >"
+                           + Fore.WHITE)
         if user_input == "1":
             print("        You have chosen to go back to View Statement Menu.")
             print()
@@ -612,7 +614,8 @@ def by_month():
     """)
 
     try:
-        user_input = input(Fore.LIGHTCYAN_EX + Style.BRIGHT + "    >" + Fore.WHITE)
+        user_input = input(Fore.LIGHTCYAN_EX + Style.BRIGHT + "    >"
+                           + Fore.WHITE)
         if user_input == "1":
             print("        You have chosen to View Statement by date.")
             print()
@@ -723,24 +726,24 @@ def main_menu():
             user_input = input(Fore.LIGHTCYAN_EX + Style.BRIGHT + "        >"
                                + Fore.WHITE)
             if user_input == "1":
-                print(f"        You chose option: {user_input}")
+                print(Style.NORMAL + f"        You chose option: {user_input}")
                 print()
-                typingPrint(Fore.BLUE + """
+                typingPrint(Fore.BLUE + Style.BRIGHT + """
                     Add new expense form is loading, please wait..."""
                             + Fore.WHITE)
                 clear_screen()
                 add_new_expense()
             elif user_input == "2":
-                print(f"        You chose option: {user_input}")
+                print(Style.NORMAL + f"        You chose option: {user_input}")
                 print()
-                typingPrint(Fore.BLUE + """
+                typingPrint(Fore.BLUE + Style.BRIGHT + """
                     View statement is loading, please wait...""" + Fore.WHITE)
                 clear_screen()
                 view_statement()
             elif user_input == "3":
-                print(f"        You chose option: {user_input}")
+                print(Style.NORMAL + f"        You chose option: {user_input}")
                 print()
-                typingPrint(Fore.YELLOW + """
+                typingPrint(Fore.YELLOW + Style.BRIGHT + """
                             Exiting, please wait...""" + Fore.WHITE)
                 clear_screen()
                 pennywise_program()
