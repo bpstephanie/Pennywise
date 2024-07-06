@@ -400,32 +400,32 @@ Provided as part of Code Institute's template:
 # Testing
 ### Testing User Stories
   #### Site Owner
-    - As a site owner, I want users to easily understand what the program does.
-        - On the welcome page, it clearly states that Pennywise is a budget tracker. Also on the main menu all options are to do with expenses.
+  - As a site owner, I want users to easily understand what the program does.
+    - On the welcome page, it clearly states that Pennywise is a budget tracker. Also on the main menu all options are to do with expenses.
 
-    - As a site owner, I want users to be able to navigate through the program without any issues.
-        - Each time the user completes a section, there is a choice menu where users can reach different parts of the program.
+  - As a site owner, I want users to be able to navigate through the program without any issues.
+    - Each time the user completes a section, there is a choice menu where users can reach different parts of the program.
 
-    - As a site owner, I want users to be able to add their expenses and view their expenses.
-        - Pennywise has two main sections, the first where users can add new transactions and the second where users can view their expenses in 3 different ways. 
+  - As a site owner, I want users to be able to add their expenses and view their expenses.
+    - Pennywise has two main sections, the first where users can add new transactions and the second where users can view their expenses in 3 different ways. 
 
   [Back To Top](<#contents>)
 
   #### Site-users
-    - As a user, I want to understand what the program does instantly. 
-        - The name of the site is 'Pennywise' where penny is the smallest denomination of the pound sterling and wise means to have experience, knowledge and good judgement. Not only this, but there is a welcome message stating the Pennywise is a budget tracker.
+  - As a user, I want to understand what the program does instantly. 
+    - The name of the site is 'Pennywise' where penny is the smallest denomination of the pound sterling and wise means to have experience, knowledge and good judgement. Not only this, but there is a welcome message stating the Pennywise is a budget tracker.
 
-    - As a user, I want to be able to add my expenses and confirm if they are correct.
-        - Users can add expenses by inputting 4 key details. At every step of the way there is input validation and before the user adds the new transaction to the worksheet they must confirm that all details are correct.
+  - As a user, I want to be able to add my expenses and confirm if they are correct.
+    - Users can add expenses by inputting 4 key details. At every step of the way there is input validation and before the user adds the new transaction to the worksheet they must confirm that all details are correct.
 
-    - As a user, I want to be able to track my expenses.
-        - In the view statement section, users can see their statement by date. 
+  - As a user, I want to be able to track my expenses.
+    - In the view statement section, users can see their statement by date. 
 
-    - As a user, I want to be able to view my expenses in different formats that are easy to understand.
-        - Pennywise displays the users' expenses in 3 different ways, depending on their needs.
+  - As a user, I want to be able to view my expenses in different formats that are easy to understand.
+    - Pennywise displays the users' expenses in 3 different ways, depending on their needs.
 
-    - As a user, I want to get visual feedback when I've done something wrong.
-        - If the user's input is not valid, a red error message appears on screen with some extra information to help the user respond correctly.
+  - As a user, I want to get visual feedback when I've done something wrong.
+    - If the user's input is not valid, a red error message appears on screen with some extra information to help the user respond correctly.
 
   [Back To Top](<#contents>)
 
