@@ -290,7 +290,7 @@ def confirm_new_expense():
                 update_worksheet(confirmed_expense)
                 break
             elif user_input.lower() == 'n':
-                print("""
+                print(Style.NORMAL + """
             Would you like to:
 
             1. Re-enter the information?
@@ -302,7 +302,7 @@ def confirm_new_expense():
                 while True:
                     try:
                         print()
-                        no_answer = input(Fore.LIGHTCYAN_EX +
+                        no_answer = input(Fore.LIGHTCYAN_EX + Style.BRIGHT +
                                           """                >"""
                                           + Fore.WHITE)
                         print()
@@ -350,7 +350,7 @@ def update_worksheet(data):
                 Worksheet updated successfully."""
           + Fore.WHITE)
     print()
-    print("""
+    print(Style.NORMAL + """
             What would you like to do next?
 
             1. Add another expense
@@ -359,7 +359,7 @@ def update_worksheet(data):
 
     while True:
         try:
-            user_input = input(Fore.LIGHTCYAN_EX + """
+            user_input = input(Fore.LIGHTCYAN_EX + Style.BRIGHT + """
             >""" + Fore.WHITE)
             if user_input == "1":
                 print(f"            You chose option: {user_input}")
@@ -443,7 +443,7 @@ def by_date():
                 clear_screen()
                 view_statement()
             elif user_input.lower() == "2":
-                print("    You have chosen togo back to Main Menu.")
+                print("    You have chosen to go back to Main Menu.")
                 print()
                 typingPrint(Fore.YELLOW + """
                             Loading, please wait...""" + Fore.WHITE)
@@ -726,24 +726,24 @@ def main_menu():
             user_input = input(Fore.LIGHTCYAN_EX + Style.BRIGHT + "        >"
                                + Fore.WHITE)
             if user_input == "1":
-                print(Style.NORMAL + f"        You chose option: {user_input}")
+                print(f"        You chose option: {user_input}")
                 print()
-                typingPrint(Fore.BLUE + Style.BRIGHT + """
+                typingPrint(Fore.BLUE + """
                     Add new expense form is loading, please wait..."""
                             + Fore.WHITE)
                 clear_screen()
                 add_new_expense()
             elif user_input == "2":
-                print(Style.NORMAL + f"        You chose option: {user_input}")
+                print(f"        You chose option: {user_input}")
                 print()
-                typingPrint(Fore.BLUE + Style.BRIGHT + """
+                typingPrint(Fore.BLUE + """
                     View statement is loading, please wait...""" + Fore.WHITE)
                 clear_screen()
                 view_statement()
             elif user_input == "3":
-                print(Style.NORMAL + f"        You chose option: {user_input}")
+                print(f"        You chose option: {user_input}")
                 print()
-                typingPrint(Fore.YELLOW + Style.BRIGHT + """
+                typingPrint(Fore.YELLOW + """
                             Exiting, please wait...""" + Fore.WHITE)
                 clear_screen()
                 pennywise_program()
