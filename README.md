@@ -72,17 +72,17 @@ A view-only version of the Google Sheet can be accessed [here](https://docs.goog
 
 ### Site Structure
 
-Pennywise is a terminal based application. When the program is run, the user is shown the welcome page with the program's name and a short message explaining what it is. After a short while the user is shown the Main Menu. The Main Menu has four option: add new expense, view statement, view budget goals and exit.
+Pennywise is a terminal based application. When the program is run, the user is shown the welcome page with the program's name and a short message explaining what it is. After a short while the user is shown the [main menu](<#main-menu>). The [main menu](<#main-menu>) has three option: [add new expense](<#add-new-expense>), [view statement](<#view-statement>) and exit.
 
-Pennywise was structured with the user in mind, whichever option the user chooses, once they have completed that action they are given the option to go back to the Main Menu or in some cases a sub-menu.
+Pennywise was structured with the user in mind, whichever option the user chooses, once they have completed that action they are given the option to go back to the [main menu](<#main-menu>) or in some cases a sub-menu.
 
-At the top left of the page, just above the console screen, there is a Run Program button which will reload Pennywise.
+At the top left of the page, just above the console screen, there is a Run Program button which will reload Pennywise at any point that the user chooses.
 
 [Back To Top](<#contents>)
 
 ### Flowchart
 
-The flowchart for Pennywise was made with the online service [Diagrams.net](https://app.diagrams.net/). The goal was to keep it as simple to understand as possible. It was made prior to starting and was a very helpful guide when coding the logic. As you can see, one of the branches off the [main menu](<#main-menu>) is not in the final deployed project. Due to time constraints, the scope of the project had to be reduced. However, I fully intend on adding this feature in the future. You can learn more about it in the [future features](<#future-features>) section.
+The flowchart for Pennywise was made with the online service [Diagrams.net](https://app.diagrams.net/). The goal was to keep it as simple to understand as possible. It was made prior to starting and was a very helpful guide when coding the logic. As you can see, one of the branches off the [main menu](<#main-menu>), 'View budget goals', is not in the final deployed project. Due to time constraints, the scope of the project had to be reduced. However, I fully intend on adding this feature in the future. You can learn more about it in the [future features](<#future-features>) section.
 
 <details><summary>Flowchart</summary>
 
@@ -94,7 +94,7 @@ The flowchart for Pennywise was made with the online service [Diagrams.net](http
 
 ### Data Model
 
-[Google Sheets](https://workspace.google.com/products/sheets/) have been used to store all data. All data the user inputs and views is retrieved from and update to the Google Sheet. The name of the workbook is Pennywise and the name of the worksheet is user1.
+[Google Sheets](https://workspace.google.com/products/sheets/) have been used to store all data. All data the user inputs and views is retrieved from and updated to the Google Sheet. The name of the workbook is Pennywise and the name of the worksheet is user1.
 
 The worksheet has 4 columns of data that save the date, category, description and amount of each transaction.
 
@@ -126,6 +126,7 @@ The worksheet has 4 columns of data that save the date, category, description an
       - Magenta has been for feedback regarding the worksheet being 
         updated successfully.
       - Dim style has been used to give extra information about user input.
+      - Bright style has been used for all coloured text apart from where dim style is being used.
 
  [Back To Top](<#contents>)
 
@@ -155,7 +156,7 @@ The worksheet has 4 columns of data that save the date, category, description an
     [Back To Top](<#contents>)
 
   - ### Add New Expense
-    The add new expense function collects 4 pieces of information from the user. These are the [date](<#add-date-of-transaction>), [category](<#add-category-of-transaction>), [description](<#add-description-of-transaction>) and [amount](<#add-amount-of-transaction>) of the transaction. Once all 4 details have been collected, the user is shown a summary of that information in the [Confirm Transaction](<#confirm-transaction>) function. If the user confirms all the details are correct. The google worksheet will be updated with the new expense. However, if the user entered something wrong they can choose to add the information again, or even return to the [Main Menu](<#main-menu>).
+    The add new expense function collects 4 pieces of information from the user. These are the [date](<#add-date-of-transaction>), [category](<#add-category-of-transaction>), [description](<#add-description-of-transaction>) and [amount](<#add-amount-of-transaction>) of the transaction. Once all 4 details have been collected, the user is shown a summary of that information in the [confirm transaction](<#confirm-transaction>) function. If the user confirms all the details are correct. The google worksheet will be updated with the new expense. However, if the user entered something wrong they can choose to add the information again, or even return to the [main menu](<#main-menu>).
 
     [Back To Top](<#contents>)
 
@@ -214,6 +215,7 @@ The worksheet has 4 columns of data that save the date, category, description an
 
     - #### Add Amount of Transaction
       The user is asked for the amount of the transaction. They are shown the format the input needs to be. If the user enters an invalid response an error message appears and the user is asked to re-enter the information in the correct format.
+
     <details><summary>Add Amount of Transaction</summary>
       
       ![Add Amount of Transaction](assets/images/add_expense_amount.png)
@@ -233,7 +235,7 @@ The worksheet has 4 columns of data that save the date, category, description an
       
       If the user chooses 'Y', the worksheet will be updated and the user will receive feedback once it has been successful. 
       
-      However, if the user chooses 'N' they will be shown a new menu of choices. They can choose to re-enter the informtion and be taken back to the [add new expense](<#add-new-expense>) process, return to [main menu](<#main-menu>) or choose to confirm the information above. The third option is in case the user mis-typed their answer before.
+      However, if the user chooses 'N' they will be shown a new menu of choices. They can choose to re-enter the informtion and be taken back to the [add new expense](<#add-new-expense>) process, return to the [main menu](<#main-menu>) or choose to confirm the information above. The third option is in case the user mis-typed their answer before.
 
       If the user inputs in invalid response they will be shown an error message and be asked to enter a valid response.
 
@@ -258,7 +260,7 @@ The worksheet has 4 columns of data that save the date, category, description an
       [Back To Top](<#contents>)
 
     - #### Update Worksheet
-      Once the user has been shown the worksheet has been updated successfully, they are shown another menu. They have 2 choices, to add another expense of to return to the main menu. The user will be shown an error message and asked to a valid response if they enter an invalid answer. 
+      Once the user has been shown the worksheet has been updated successfully, they are shown another menu. They have 2 choices, to add another expense of to return to the [main menu](<#main-menu>). The user will be shown an error message and asked for a valid response if they enter an invalid answer. 
 
       <details><summary>Worksheet Updated</summary>
         
@@ -310,7 +312,7 @@ The worksheet has 4 columns of data that save the date, category, description an
       [Back To Top](<#contents>)
 
     - #### By Month
-      The user is shown the total amount they have spent each month. Below there is a choice menu
+      The user is shown the total amount they have spent each month and a message below stating that if they wish to see the transactions they should go to view statment [by date](<#by-date>). Below, there is a a choice menu where they can choose form three options, the first being to [view statement](<#view-statement-menu>) [by date](<#by-date>), the second to return to the [view statement menu](<#view-statement-menu>) and the third to return to the [main menu](<#main-menu>). If the user enters an invalid response they will be shown an error message and asked to re-enter their choice.
 
       <details><summary>View Statement By Month</summary>
         
@@ -327,7 +329,7 @@ The worksheet has 4 columns of data that save the date, category, description an
       [Back To Top](<#contents>)
 
     - #### By Category
-      The user is shown how much they have spent in each category from the beginning of the year to date.
+      The user is shown how much they have spent in each category from the beginning of the year to date. Underneath, the user is shown another choice menu where they can choose whether to go back to the [view statement menu](<#view-statement-menu>) or the [main menu](<#main-menu>). If the user enters a choice that is not available they will be shown an error message and asked to re-enter their choice.
 
       <details><summary>View Statement By Category</summary>
         
@@ -351,7 +353,7 @@ The worksheet has 4 columns of data that save the date, category, description an
   - Generate an automated total for the View Statement By Month page. Currently the site owner has to add the code for every new month after an expense has been added for that month.
   - The ability to login with a username and password to keep data safe and secure.
   - The ability to add more users with the use of multiple google sheets.
-  -  Have a budget goals section when the user can set their target spending for each category.
+  -  Have a budget goals section whre the user can set their target spending for each category.
       - To encourage users to meet their target they would be shown a congratulatory message if they succeed. 
       - On the other hand, if the overspend they would be shown an image of a scary, angry clown. The idea for this comes from the name  'Pennywise', being that it is the name of the clown from the movie 'It'.
 
@@ -381,6 +383,7 @@ Provided as part of Code Institute's template:
 * [GSpread](https://docs.gspread.org/en/latest/) - used to manipulate the date in the [google sheet](https://workspace.google.com/products/sheets/).
 * [GoogleOAuth](https://developers.google.com/identity/protocols/oauth2) - used to authenticate the program to access Google's API.
 * [Patorjk](https://patorjk.com/) - used to create the logo, however it had to be edited as was too large for the console.
+* [Diagrams.net](https://app.diagrams.net/) - used to create the flowchart.
 * [Time](https://docs.python.org/3/library/time.html) - used to delay clear screen.
 * [Os](https://docs.python.org/3/library/os.html) - used to clear screen in between menus and where the user needs to input data.
 * [Sys](https://docs.python.org/3/library/sys.html) - used for typing print function.
@@ -463,7 +466,7 @@ Provided as part of Code Institute's template:
 ### Additional Testing
   #### Responsiveness Test
 
-  This project does not require a fully responsive design. However, I tested Pennywise with a few more methods. The site is not compatible with mobile phones or tablets.
+  This project does not require a fully responsive design. However, Pennywise was tested with a few more methods. The site is not compatible with mobile phones or tablets.
 
   #### Browser Compatibility
 
@@ -502,8 +505,7 @@ Provided as part of Code Institute's template:
 #### Fixed Bugs
   - During my mid-way point mentor session, a few bugs were found:
 
-      - The first being that a user could input blank spaces for the expense category and the expense description meaning empty cells would be uploaded to the connected worksheet. This was a problem due to having empty strings when the data was 
-      iterated over. 
+      - The first being that a user could input blank spaces for the expense category and the expense description meaning empty cells would be uploaded to the connected worksheet. This was a problem due to having empty strings when the data was iterated over. 
         - The appropriate method was added to validate that the user's input is all letters. This solution does however mean that Pennywise can only accept 1 word answers for both categories.
 
       - The second being that a user could input a negative number for the expense amount. This was a problem due to a negative sign not being able to be converted into a float.
