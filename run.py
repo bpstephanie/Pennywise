@@ -70,7 +70,7 @@ def welcome_page():
                                         $$
                                    $$   $$
                                     $$$$$
-    ''' + Style.RESET_ALL + '''
+    ''' + Fore.WHITE + '''
     Welcome back to Pennywise, your budget tracker to keep you on top of
                                your expenses.
     ''')
@@ -101,7 +101,7 @@ def get_transaction_date():
         format (DD/MM/YYYY):""")
             print()
             expense_input_date = input("""
-            >""" + Style.RESET_ALL)
+            >""" + Fore.WHITE)
             global new_date
             # Converts user date input into datetime object
             # Credit in README
@@ -160,7 +160,7 @@ def get_transaction_category(user1):
             print()
             print(Fore.LIGHTCYAN_EX + '''
             Please enter the category of the transaction:''')
-            user_input = input("            > " + Style.RESET_ALL)
+            user_input = input("            > " + Fore.WHITE)
             print()
 
             global exp_cat
@@ -199,7 +199,7 @@ def get_transaction_description():
             Please enter the description of the transaction.''')
             global new_dscr
             new_dscr = input('''
-            >''' + Style.RESET_ALL)
+            >''' + Fore.WHITE)
 
             # Credit in README
             if (
@@ -234,11 +234,11 @@ def get_transaction_amount():
             print(Fore.LIGHTCYAN_EX + '''
         Please enter the amount of the transaction, e.g. 29.95''')
             print()
-            print(Style.DIM + """
+            print(Style.NORMAL + """
         Please do not include currency and make sure you have
         entered a number between 0 - 999.""")
-            user_input = float(input(Style.NORMAL + """
-        >""" + Style.RESET_ALL))
+            user_input = float(input(Style.BRIGHT + """
+        >""" + Fore.WHITE))
             global new_amount
             # Credit in README
             new_amount = float("{:.2f}".format(user_input))
@@ -283,7 +283,7 @@ def confirm_new_expense():
         try:
             print(Fore.LIGHTCYAN_EX + """
                 Is this information correct? Please enter Y/N""")
-            user_input = input("                >" + Style.RESET_ALL)
+            user_input = input("                >" + Fore.WHITE)
             if user_input.lower() == "y":
                 confirmed_expense = [str(new_date), exp_cat,
                                      new_dscr, new_amount]
@@ -304,7 +304,7 @@ def confirm_new_expense():
                         print()
                         no_answer = input(Fore.LIGHTCYAN_EX +
                                           """                >"""
-                                          + Style.RESET_ALL)
+                                          + Fore.WHITE)
                         print()
                         if no_answer == "1":
                             typingPrint(Fore.BLUE + """
@@ -346,9 +346,9 @@ def update_worksheet(data):
     print()
     user1_expenses = SHEET.worksheet("user1")
     user1_expenses.append_row(data)
-    print(Fore.MAGENTA + Style.BRIGHT + """
+    print(Fore.MAGENTA + """
                 Worksheet updated successfully."""
-          + Style.RESET_ALL)
+          + Fore.WHITE)
     print()
     print("""
             What would you like to do next?
@@ -360,7 +360,7 @@ def update_worksheet(data):
     while True:
         try:
             user_input = input(Fore.LIGHTCYAN_EX + """
-            >""" + Style.RESET_ALL)
+            >""" + Fore.WHITE)
             if user_input == "1":
                 print(f"            You chose option: {user_input}")
                 print()
@@ -424,7 +424,7 @@ def by_date():
           """    PLEASE NOTE: If you have just added an new expense via
           the 'Add new expense form' it will not yet show up here. It
           will only be able to view once you log on again."""
-          + Style.RESET_ALL)
+          + Fore.WHITE)
     print()
     print("""
     What would you like to do next?
@@ -433,7 +433,7 @@ def by_date():
     """)
     while True:
         try:
-            user_input = input(Fore.LIGHTCYAN_EX + "    >" + Style.RESET_ALL)
+            user_input = input(Fore.LIGHTCYAN_EX + "    >" + Fore.WHITE)
             if user_input.lower() == "1":
                 print("    You have chosen to go back to View Statement Menu.")
                 print()
@@ -500,7 +500,7 @@ def by_category(user1):
     """)
 
     try:
-        user_input = input(Fore.LIGHTCYAN_EX + "    >" + Style.RESET_ALL)
+        user_input = input(Fore.LIGHTCYAN_EX + "    >" + Fore.WHITE)
         if user_input == "1":
             print("        You have chosen to go back to View Statement Menu.")
             print()
@@ -520,7 +520,7 @@ def by_category(user1):
     except ValueError as e:
         print(Fore.RED + """
         Invalid input: Please choose from one of the options above."""
-              + Style.RESET_ALL)
+              + Fore.WHITE)
 
 
 def by_month():
@@ -601,7 +601,7 @@ def by_month():
     print()
     print(Fore.CYAN + """
         If you would like to see your exact transactions per month,
-    please go to View Statements by Date.""" + Style.RESET_ALL)
+    please go to View Statements by Date.""" + Fore.WHITE)
     print()
     print("""
     What would you like to do next?
@@ -612,7 +612,7 @@ def by_month():
     """)
 
     try:
-        user_input = input(Fore.LIGHTCYAN_EX + "    >" + Style.RESET_ALL)
+        user_input = input(Fore.LIGHTCYAN_EX + "    >" + Fore.WHITE)
         if user_input == "1":
             print("        You have chosen to View Statement by date.")
             print()
@@ -640,7 +640,7 @@ def by_month():
     except ValueError as e:
         print(Fore.RED + """
         Invalid input: Please choose from one of the options above."""
-              + Style.RESET_ALL)
+              + Fore.WHITE)
 
 
 def view_statement():
@@ -664,7 +664,7 @@ def view_statement():
     while True:
         try:
             user_input = input(Fore.LIGHTCYAN_EX + "        >"
-                               + Style.RESET_ALL)
+                               + Fore.WHITE)
             if user_input == "1":
                 print("        You have chosen option 1: By date.")
                 print()
@@ -721,7 +721,7 @@ def main_menu():
     while True:
         try:
             user_input = input(Fore.LIGHTCYAN_EX + "        >"
-                               + Style.RESET_ALL)
+                               + Fore.WHITE)
             if user_input == "1":
                 print(f"        You chose option: {user_input}")
                 print()
